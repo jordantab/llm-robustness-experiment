@@ -1,0 +1,3 @@
+[submodule "benchmarks/promptbench"]
+	path = benchmarks/promptbench
+	url = https://github.com/april-yyt/promptbench.git
