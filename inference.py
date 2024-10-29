@@ -24,8 +24,8 @@ class Inference(object):
 
         self.device = device if device else "cpu"
         
-        if self.service == 'mata-llama':
-            self.pipe = pipeline(self.service, model=self.model, device=self.device)
+        if self.service == 'meta-huggingface':
+            self.pipe = pipeline("text-generation", model=self.model, device=self.device)
     
         if self.service == 'openai':
             self.openai_client = openai.OpenAI(api_key=TOKENS['openai_api_key']) 

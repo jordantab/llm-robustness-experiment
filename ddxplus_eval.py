@@ -23,15 +23,19 @@ def run_ddxplus_experiment(dataloader: DataDDXPlus, inference: Inference):
     for idx in tqdm(range(data_len)):
         information, correct_label = dataloader.get_content_by_idx(idx)
         prediction = inference.predict(information, prompt)
+        # print(f"Prediction - {prediction} | Ground Truth - {correct_label}")
+
         predictions.append(prediction.lower())
         ground_truth.append(correct_label.lower())
 
+        # break
+        # exit()
         # if prediction.lower() != correct_label.lower():
         #     print(f"Prediction - {prediction} | Ground Truth - {correct_label}")
             
     accuracy = accuracy_score(ground_truth, predictions)
     precision = precision_score(
-        ground_truth, predictions, average='weighted')
+        ground_truth, predictions, average='weighted', zero_division=0)
     recall = recall_score(ground_truth, predictions, average='weighted', zero_division=0)
     f1 = f1_score(ground_truth, predictions, average='weighted', zero_division=0)
     print(f'Accuracy Score: {accuracy:.2f}')
@@ -45,6 +49,7 @@ def run_ddxplus_experiment(dataloader: DataDDXPlus, inference: Inference):
         "recall": recall,
         "f1-score": f1
     }
+    
     return metrics
 
 def main():
@@ -64,15 +69,19 @@ def main():
     MODEL_LIST = \
     [
         # {
-        #     "model" : "meta-llama/Llama-2-7b-chat-hf",
+        #     "model" : "meta-llama/Llama-2-7b",
         #     "service": "meta-huggingface"
         # },
-        # {
-        #     "model" : "gpt-3.5-turbo",
-        #     "service": "openai"
-        # },
+        {
+            "model" : "gpt-3.5-turbo",
+            "service": "openai"
+        },
         {
             "model" : "llama3.2",
+            "service": "ollama"
+        },
+        {
+            "model" : "llama2",
             "service": "ollama"
         },
         {
@@ -81,10 +90,6 @@ def main():
         },
         {
             "model" : "mixtral",
-            "service": "ollama"
-        },
-        {
-            "model" : "llama2",
             "service": "ollama"
         },
         {
@@ -102,7 +107,7 @@ def main():
             label_set=dataloader.get_label(),
             model_set=None,
             label_to_id=None,
-            device=0
+            device=None
         )
         metrics = run_ddxplus_experiment(dataloader, inference)
         metric_log.append([llm_model["model"], llm_model["service"], metrics["accuracy"], metrics["precision"], metrics["recall"], metrics["f1-score"]])
