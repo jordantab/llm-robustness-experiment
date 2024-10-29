@@ -6,6 +6,7 @@ from sklearn.metrics import f1_score, accuracy_score, precision_score, recall_sc
 from transformers import pipeline
 from langchain_ollama.llms import OllamaLLM
 import json
+import csv
 import os
 import boto3
 from tqdm import tqdm
@@ -94,6 +95,38 @@ def bedrock_invoke_model(review):
     return response_text
 
 
+def calculate_metrics(predictions, correct_labels):
+    accuracy = accuracy_score(correct_labels, predictions)
+    precision = precision_score(
+        correct_labels, predictions, average='weighted', zero_division=0)
+    recall = recall_score(
+        correct_labels, predictions, average='weighted', zero_division=0)
+    f1 = f1_score(correct_labels, predictions,
+                  average='weighted', zero_division=0)
+    return accuracy, precision, recall, f1
+
+
+def store_results(model_id, accuracy, precision, recall, f1):
+    results_dir = "results/baseline"
+    results_path = os.path.join(results_dir, "flipkart_results.csv")
+
+    os.makedirs(results_dir, exist_ok=True)
+
+    # Check if the CSV file already exists
+    file_exists = os.path.isfile(results_path)
+
+    with open(results_path, 'a', newline='') as f:
+        writer = csv.writer(f)
+
+        # Write header if the file does not exist
+        if not file_exists:
+            writer.writerow(
+                ["model_id", "accuracy", "precision", "recall", "f1"])
+
+        # Write the results as a new row
+        writer.writerow([model_id, accuracy, precision, recall, f1])
+
+
 def run_experiment(df, model, model_id):
     filename = f"{model_id.replace('/', '_')}_predictions.json"
 
@@ -117,14 +150,8 @@ def run_experiment(df, model, model_id):
 
             # Calculate and print metrics every 10 reviews
             if (i + 1) % 10 == 0 or i == num_reviews - 1:
-                accuracy = accuracy_score(
-                    correct_labels[:len(predictions)], predictions)
-                precision = precision_score(
-                    correct_labels[:len(predictions)], predictions, average='weighted', zero_division=0)
-                recall = recall_score(
-                    correct_labels[:len(predictions)], predictions, average='weighted', zero_division=0)
-                f1 = f1_score(
-                    correct_labels[:len(predictions)], predictions, average='weighted', zero_division=0)
+                accuracy, precision, recall, f1 = calculate_metrics(
+                    predictions, correct_labels[:len(predictions)])
 
                 tqdm.write(f'\nProgress: {
                            i + 1}/{num_reviews} reviews processed.')
@@ -134,11 +161,9 @@ def run_experiment(df, model, model_id):
                 tqdm.write(f'F1 Score: {f1:.2f}\n')
 
     # Final metrics after all predictions
-    accuracy = accuracy_score(correct_labels, predictions)
-    precision = precision_score(
-        correct_labels, predictions, average='weighted', zero_division=0)
-    recall = recall_score(correct_labels, predictions, average='weighted', zero_division=0)
-    f1 = f1_score(correct_labels, predictions, average='weighted', zero_division=0)
+    accuracy, precision, recall, f1 = calculate_metrics(
+        predictions, correct_labels)
+
     tqdm.write(f'\nFinal Metrics:')
     tqdm.write(f'Accuracy: {accuracy:.2f}')
     tqdm.write(f'Precision: {precision:.2f}')
@@ -160,7 +185,14 @@ def main():
     accuracy, precision, recall, f1 = run_experiment(
         length_filtered_df, model, model_id)
 
-    # TODO: store the results
+    # Calculate existing results
+    # actual_labels = length_filtered_df['Sentiment'].tolist()
+    # predictions = load_predictions(f'{model_id}_predictions.json')
+    # accuracy, precision, recall, f1 = calculate_metrics(
+    #     predictions, actual_labels)
+
+    # store the results
+    store_results(model_id, accuracy, precision, recall, f1)
 
 
 if __name__ == "__main__":
