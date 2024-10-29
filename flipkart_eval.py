@@ -44,6 +44,7 @@ def ollama_invoke_model(review, model):
     response = model.invoke(prompt)
     try:
         # Extract the JSON response
+        response = response.replace("'", '"')
         response_json = json.loads(response)
         return response_json['sentiment']
     except (json.JSONDecodeError, KeyError):
@@ -119,11 +120,11 @@ def run_experiment(df, model, model_id):
                 accuracy = accuracy_score(
                     correct_labels[:len(predictions)], predictions)
                 precision = precision_score(
-                    correct_labels[:len(predictions)], predictions, average='weighted')
+                    correct_labels[:len(predictions)], predictions, average='weighted', zero_division=0)
                 recall = recall_score(
-                    correct_labels[:len(predictions)], predictions, average='weighted')
+                    correct_labels[:len(predictions)], predictions, average='weighted', zero_division=0)
                 f1 = f1_score(
-                    correct_labels[:len(predictions)], predictions, average='weighted')
+                    correct_labels[:len(predictions)], predictions, average='weighted', zero_division=0)
 
                 tqdm.write(f'\nProgress: {
                            i + 1}/{num_reviews} reviews processed.')
@@ -135,9 +136,9 @@ def run_experiment(df, model, model_id):
     # Final metrics after all predictions
     accuracy = accuracy_score(correct_labels, predictions)
     precision = precision_score(
-        correct_labels, predictions, average='weighted')
-    recall = recall_score(correct_labels, predictions, average='weighted')
-    f1 = f1_score(correct_labels, predictions, average='weighted')
+        correct_labels, predictions, average='weighted', zero_division=0)
+    recall = recall_score(correct_labels, predictions, average='weighted', zero_division=0)
+    f1 = f1_score(correct_labels, predictions, average='weighted', zero_division=0)
     tqdm.write(f'\nFinal Metrics:')
     tqdm.write(f'Accuracy: {accuracy:.2f}')
     tqdm.write(f'Precision: {precision:.2f}')
