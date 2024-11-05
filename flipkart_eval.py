@@ -19,7 +19,7 @@ def import_dataset():
 
 
 def save_predictions(predictions, filename):
-    with open(filename, 'w') as f:
+    with open(os.path.join(f"predictions/baseline/flipkart/{filename}"), 'w') as f:
         json.dump(predictions, f)
 
 
@@ -50,7 +50,7 @@ def ollama_invoke_model(review, model):
         return response_json['sentiment']
     except (json.JSONDecodeError, KeyError):
         print(f"Error parsing response: {response}")
-        return 'neutral'
+        return 'error'
 
 
 def bedrock_invoke_model(review):
@@ -180,7 +180,7 @@ def main():
     filtered_df = df[df['Summary'].notna()]
     length_filtered_df = filtered_df[filtered_df['Summary'].str.len().between(
         150, 160)]
-    model_id = "mixtral"
+    model_id = "llama2:7b"
     model = OllamaLLM(model=model_id)
     accuracy, precision, recall, f1 = run_experiment(
         length_filtered_df, model, model_id)
