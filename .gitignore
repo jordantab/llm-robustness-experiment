@@ -163,3 +163,10 @@ cython_debug/
 
 
 .streamlit/
+.DS_Store
+pb_env
+pb_results
+checkpoints
+logs
+utils
+archive
