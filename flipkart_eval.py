@@ -53,47 +53,6 @@ def ollama_invoke_model(review, model):
         return 'error'
 
 
-def bedrock_invoke_model(review):
-    '''
-    Model inference through AWS Bedrock
-    '''
-    prompt = f"You are a world class sentiment analyst that only outputs JSON. You reply in JSON format with the field 'sentiment'. The field can take one of three values: 'positive', 'neutral', 'negative'.\nExample Sentence: 'I hate this product'\nExample Answer: {{'sentiment': 'negative'}}. Now here is my question, what is the sentiment of the following sentence?\n Sentence: {
-        review}"
-
-    client = boto3.client("bedrock-runtime", region_name="us-east-1")
-
-    model_id = "mistral.mixtral-8x7b-instruct-v0:1"
-
-    prompt = "Describe the purpose of a 'hello world' program in one line."
-
-    native_request = {
-        "anthropic_version": "bedrock-2024-02-29",
-        "max_tokens": 512,
-        "temperature": 0.5,
-        "messages": [
-            {
-                "role": "user",
-                "content": [{"type": "text", "text": prompt}],
-            }
-        ],
-    }
-
-    request = json.dumps(native_request)
-
-    try:
-        # Invoke the model with the request.
-        response = client.invoke_model(modelId=model_id, body=request)
-
-    except (ClientError, Exception) as e:
-        print(f"ERROR: Can't invoke '{model_id}'. Reason: {e}")
-        exit(1)
-
-    model_response = json.loads(response["body"].read())
-
-    response_text = model_response["content"][0]["text"]
-    print(response_text)
-    return response_text
-
 
 def calculate_metrics(predictions, correct_labels):
     accuracy = accuracy_score(correct_labels, predictions)
