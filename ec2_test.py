@@ -14,7 +14,11 @@ def cuda_test():
 def transformer_test():
     print(2)
     try:
-        generator = pipeline("text-generation", model="meta-llama/Llama-2-7b-hf")
+        generator = pipeline(
+            "text-generation", 
+            model="meta-llama/Llama-2-7b-hf", 
+            device_map="auto"
+        )
         print("Transformers library is working correctly!")
         
         # Generate text
@@ -28,4 +32,5 @@ def transformer_test():
 
 if __name__ == "__main__":
     print(1)
+    # cuda_test()
     transformer_test()
