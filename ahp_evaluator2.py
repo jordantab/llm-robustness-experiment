@@ -5,6 +5,7 @@ from datetime import datetime
 import json
 import time
 import numpy as np
+import pandas as pd
 from typing import Dict, List, Union, Tuple
 from langchain_ollama.llms import OllamaLLM
 from datasets import load_dataset
@@ -24,7 +25,7 @@ class AHPEvaluator:
         
         try:
             self.model = OllamaLLM(model=model_id)
-            if self.type == "adv":
+            if self.r_type == "adv":
                 if benchmark == "promptbench":
                     self.dataset = load_dataset("glue", dataset_name)["validation"]
                 else:  # advglue++
@@ -33,6 +34,9 @@ class AHPEvaluator:
                 if num_samples:
                     self.dataset = self.dataset.select(range(num_samples))
                 setattr(self.dataset, 'dataset_name', dataset_name)
+            else:
+                if benchmark == "flipkart":
+                    self.dataset = self._import_dataset()
             
         except Exception as e:
             logging.error(f"Failed to initialize model or dataset: {str(e)}")
@@ -60,15 +64,17 @@ class AHPEvaluator:
             }
         elif self.benchmark == "flipkart":
             self.task_prompts = {
-                "You are a world-class sentiment analyst. Respond ONLY in JSON format with a single field 'sentiment', "
-                "which can be either 'positive', 'neutral', or 'negative'.\n"
-                "Output format example: {'sentiment': 'negative'}\n\n"
-                f"Analyze the sentiment of the following sentence without any explanation or additional text.\nSentence: {review}"
+                "flipkart": (
+                    "You are a world-class sentiment analyst. Respond ONLY in JSON format with a single key 'sentiment' and a corresponding value,"
+                    "which can be either 'positive', 'neutral', or 'negative'.\n"
+                    "Analyze the sentiment of the following sentence without any explanation or additional text.\nSentence: {review}"
+                ),
+                "flipkart2": "You must choose exactly one word from these three options: [\"positive\", \"negative\", \"neutral\"]. Analyze this sentence and respond with only that one word, no punctuation or explanation: Sentence: {review}",
             }
         # TODO: else (DDX)
 
         # Label mappings
-        if self.type == 'adv':
+        if self.r_type == 'adv':
             self.label_maps = {
                 "sst2": {0: "negative", 1: "positive"},
                 "qnli": {0: "no", 1: "yes"},
@@ -113,6 +119,28 @@ class AHPEvaluator:
                 "verify": ""
             }
 
+    def _import_dataset(self):
+        paths = {
+            "flipkart": "benchmarks/flipkart-sentiment.csv",
+            "ddx": ""
+        }
+        dataset_path = paths[self.benchmark]
+
+        if self.benchmark == "flipkart":
+            # Load the required columns only
+            df = pd.read_csv(dataset_path, usecols=['Summary', 'Sentiment'])
+            
+            # Filter rows where 'Summary' is not NaN and length is between 150 and 160
+            df = df[df['Summary'].notna()]
+            df = df[df['Summary'].str.len().between(20, 20)]
+            return df
+            # Convert to dictionary with Summary as key and Sentiment as value
+            summary_to_sentiment = dict(zip(df['Summary'], df['Sentiment']))
+            
+            # print(summary_to_sentiment)
+            return summary_to_sentiment
+        
+        return {}
 
     def safety_validity_assessment(self, text, max_iterations=3):
         """Perform safety and validity assessment with iteration limit"""
@@ -184,9 +212,9 @@ class AHPEvaluator:
                     return None
                 time.sleep(1)
 
-    def format_prompt(self, instance: Dict) -> str:
+    def format_prompt(self, instance) -> str:
         """Format prompt based on dataset and benchmark type"""
-        if self.type == "adv":
+        if self.r_type == "adv":
             if self.dataset_name == "sst2":
                 content = instance["sentence"]
                 return self.task_prompts[self.dataset_name].format(content=content)
@@ -198,20 +226,22 @@ class AHPEvaluator:
         # Add other dataset formats as needed
         else:
             if self.benchmark == "flipkart":
-                review = instance["review"]
+                print(instance)
+                review = instance["Summary"]
+                print(review)
                 return self.task_prompts[self.benchmark].format(review=review)
             # TODO: DDX specific if necessary
             else:
                 return None
         return None
 
-    # TODO: Will type Dict work with OOD datasets?
     def evaluate_sample(self, instance: Dict) -> Tuple[int, int]:
         """Evaluate a single sample with AHP protection"""
         prompt = self.format_prompt(instance)
         if not prompt:
             return None, None
-
+        print(prompt)
+        return
         refined_prompt, quality = self.safety_validity_assessment(prompt)
         
         if quality == "no":

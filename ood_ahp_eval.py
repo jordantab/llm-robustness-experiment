@@ -3,7 +3,7 @@ import argparse
 from datetime import datetime
 import json
 import os
-from ahp_evaluator import AHPEvaluator
+from ahp_evaluator2 import AHPEvaluator
 from tqdm import tqdm
 
 logging.basicConfig(
@@ -18,12 +18,21 @@ logging.basicConfig(
 def run_evaluation(args):
     evaluator = AHPEvaluator(
         model_id=args.model_id,
+        robustness_type=args.robustness_type,
         benchmark=args.benchmark
     )
 
     labels = []
     predictions = []
     checkpoint_interval = max(10, len(evaluator.dataset) // 10)
+    
+    for i, row in enumerate(tqdm(evaluator.dataset.iterrows(), desc=f"Evaluating {args.benchmark}")):
+        instance = {'Summary': row[1]["Summary"], 'Sentiment': row[1]["Sentiment"]}
+        pred, label = evaluator.evaluate_sample(instance)
+        # print("pred, label: ", pred, label)
+        break
+    return
+
     
     # TODO: update the samples we are looping through
     for i, instance in enumerate(tqdm(evaluator.dataset, desc=f"Evaluating {args.benchmark}")):
@@ -68,11 +77,12 @@ def run_evaluation(args):
 def main():
     parser = argparse.ArgumentParser(description="Run OOD AHP evaluation")
     parser.add_argument('--model_id', type=str, required=True, help="Model Identifier")
-    parser.add_argument('--benchmark', type=str, choices=['flipkart', 'ddx'], required=True, help="Benchmark to use")
+    parser.add_argument('--robustness_type', type=str, required=True, help="Adv or OOD")
+    parser.add_argument('--benchmark', type=str, choices=['promptbench','flipkart', 'ddx'], required=True, help="Benchmark to use")
 
     args = parser.parse_args()
     results = run_evaluation(args)
-    print(f"Final Metrics: {results['metrics']}")
+    # print(f"Final Metrics: {results['metrics']}")
 
 if __name__ == "__main__":
     main()
