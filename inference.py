@@ -5,6 +5,13 @@ from transformers import pipeline
 import openai
 import ollama
 
+from huggingface_hub import login
+from langchain_ollama.llms import OllamaLLM
+
+import json
+
+login("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")
+
 class Inference(object):
 
     def __init__(self,
@@ -30,7 +37,8 @@ class Inference(object):
         if self.service == 'openai':
             self.openai_client = openai.OpenAI(api_key=TOKENS['openai_api_key']) 
 
-
+        if self.service == 'ollama-langchain':
+            self.llm = OllamaLLM(model=self.model)
             
     def predict(self, sentence, prompt):
         if self.service == 'meta-huggingface':
@@ -77,6 +85,22 @@ class Inference(object):
                     ]
                 )
             prediction = response['message']['content'].replace(".", '')
+
+        if self.service == 'ollama-langchain':
+            input = (
+                f"{prompt}\n\n"
+                f"Dialogue: {sentence}"
+            )
+            
+            model_out = self.llm.invoke(f"{prompt} {sentence}")
+            try:
+                # Extract the JSON response
+                response = model_out.replace("'", '"')
+                response_json = json.loads(response)
+                prediction = response_json['sentiment']
+            except (json.JSONDecodeError, KeyError):
+                print(f"Error parsing response: {response}")
+                prediction = 'error'
 
         return prediction
     

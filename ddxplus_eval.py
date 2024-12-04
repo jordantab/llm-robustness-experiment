@@ -56,7 +56,7 @@ def main():
     '''
     Orchestrator
     '''
-    dataloader = DataDDXPlus("benchmarks/ddxplus-hao.csv", task='ddxplus')
+    dataloader = DataDDXPlus("benchmarks/ddxplus-hao.csv", task='ddxplus-json')
     # print("Prompt - ", dataloader.get_prompt(), "\n")
     print("Label Set - ", dataloader.get_label(), "\n")
     # print("Example data (idx 0) - ", dataloader.get_content_by_idx(0), "\n")
@@ -72,30 +72,34 @@ def main():
         #     "model" : "meta-llama/Llama-2-7b",
         #     "service": "meta-huggingface"
         # },
-        {
-            "model" : "gpt-3.5-turbo",
-            "service": "openai"
-        },
-        {
-            "model" : "llama3.2",
-            "service": "ollama"
-        },
+        # {
+        #     "model" : "gpt-3.5-turbo",
+        #     "service": "openai"
+        # },
+        # {
+        #     "model" : "llama3.2",
+        #     "service": "ollama"
+        # },
         {
             "model" : "llama2",
-            "service": "ollama"
+            "service": "ollama-langchain"
         },
-        {
-            "model" : "mistral",
-            "service": "ollama"
-        },
-        {
-            "model" : "mixtral",
-            "service": "ollama"
-        },
-        {
-            "model" : "phi",
-            "service": "ollama"
-        },
+        # {
+        #     "model" : "llama2",
+        #     "service": "ollama"
+        # },
+        # {
+        #     "model" : "mistral",
+        #     "service": "ollama"
+        # },
+        # {
+        #     "model" : "mixtral",
+        #     "service": "ollama"
+        # },
+        # {
+        #     "model" : "phi",
+        #     "service": "ollama"
+        # },
     ]
 
     for llm_model in MODEL_LIST:
