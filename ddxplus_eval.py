@@ -18,20 +18,19 @@ def run_ddxplus_experiment(dataloader: DataDDXPlus, inference: Inference):
 
     prompt = dataloader.get_prompt()
 
+    run_data = []
+
     predictions = []
     ground_truth = []
     for idx in tqdm(range(data_len)):
-        information, correct_label = dataloader.get_content_by_idx(idx)
+        information, correct_label, all_possible_labels = dataloader.get_content_by_idx(idx)
         prediction = inference.predict(information, prompt)
         # print(f"Prediction - {prediction} | Ground Truth - {correct_label}")
 
         predictions.append(prediction.lower())
         ground_truth.append(correct_label.lower())
 
-        # break
-        # exit()
-        # if prediction.lower() != correct_label.lower():
-        #     print(f"Prediction - {prediction} | Ground Truth - {correct_label}")
+        run_data.append([prediction, correct_label, information])
             
     accuracy = accuracy_score(ground_truth, predictions)
     precision = precision_score(
@@ -50,7 +49,7 @@ def run_ddxplus_experiment(dataloader: DataDDXPlus, inference: Inference):
         "f1-score": f1
     }
     
-    return metrics
+    return metrics, run_data
 
 def main():
     '''
@@ -58,7 +57,7 @@ def main():
     '''
     dataloader = DataDDXPlus("benchmarks/ddxplus-hao.csv", task='ddxplus-json')
     # print("Prompt - ", dataloader.get_prompt(), "\n")
-    print("Label Set - ", dataloader.get_label(), "\n")
+    # print("Label Set - ", dataloader.get_label(), "\n")
     # print("Example data (idx 0) - ", dataloader.get_content_by_idx(0), "\n")
 
     metric_log = [
@@ -80,10 +79,10 @@ def main():
         #     "model" : "llama3.2",
         #     "service": "ollama"
         # },
-        {
-            "model" : "llama2",
-            "service": "ollama-langchain"
-        },
+        # {
+        #     "model" : "llama2",
+        #     "service": "ollama-langchain"
+        # },
         # {
         #     "model" : "llama2",
         #     "service": "ollama"
@@ -92,6 +91,10 @@ def main():
         #     "model" : "mistral",
         #     "service": "ollama"
         # },
+        {
+            "model" : "mixtral",
+            "service": "ollama-langchain"
+        },
         # {
         #     "model" : "mixtral",
         #     "service": "ollama"
@@ -105,21 +108,27 @@ def main():
     for llm_model in MODEL_LIST:
         print(f"Running experiment for {llm_model['model']} using {llm_model['service']}")
         inference = Inference(
-            task='ddxplus',
+            task='ddxplus-json',
             service=llm_model["service"],
             model=llm_model["model"],
             label_set=dataloader.get_label(),
-            model_set=None,
-            label_to_id=None,
+            # context_prompt="Give me a short description of {disease} disease and its symptoms. Answer in ONLY 20 words and keep it concise. Don't include any other information.",
+            # rephrase_prompt="Rephrase the following structured medical history into a concise,\
+            #                 medically relevant paragraph that includes all the provided information without omitting any details.\
+            #                 Maintain a professional and clinical tone:\
+            #                 \n Medical History: {dialogue}",
             device=None
         )
-        metrics = run_ddxplus_experiment(dataloader, inference)
+
+        metrics, run_data = run_ddxplus_experiment(dataloader, inference)
         metric_log.append([llm_model["model"], llm_model["service"], metrics["accuracy"], metrics["precision"], metrics["recall"], metrics["f1-score"]])
     
     # Save to CSV
     df = pd.DataFrame(metric_log)
     df.to_csv("ddxplus_eval.csv", index=False)
 
+    df = pd.DataFrame(run_data)
+    df.to_csv("ddxplus_run_data.csv", index=False)
 
 if __name__ == "__main__":
     main()

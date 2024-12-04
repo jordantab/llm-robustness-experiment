@@ -22,7 +22,8 @@ class DataDDXPlus(object):
         self.data_task = self.get_data_by_task(task)
         content = self.data_task.iloc[idx]['Information']
         label = self.data_task.iloc[idx]['Diagnosis']
-        return content, label
+        all_possible_labels = self.data_task.iloc[idx]['Diag_Set']
+        return content, label, all_possible_labels
 
     def get_prompt(self):
         return PROMPT_SET[self.task]

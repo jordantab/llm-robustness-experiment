@@ -31,7 +31,6 @@ PROMPT_SET = {
     ],
     'ddxplus-json': [
         "Imagine you are a doctor. Based on the dialogue, what is the diagnosis? \
-        Respond ONLY in JSON with a single field 'disease'.\n\
         The answer can only be one from:\n\
         'spontaneous pneumothorax', 'cluster headache', 'boerhaave', 'spontaneous rib fracture',\
         'gerd', 'hiv (initial infection)', 'anemia', 'viral pharyngitis', 'inguinal hernia', 'myasthenia gravis',\
@@ -41,8 +40,10 @@ PROMPT_SET = {
         'unstable angina', 'stable angina', 'ebola', 'acute otitis media', 'panic attack', 'bronchospasm / acute asthma exacerbation',\
         'bronchitis', 'acute copd exacerbation / infection', 'pulmonary embolism', 'urti', 'influenza', 'pneumonia',\
         'acute rhinosinusitis', 'chronic rhinosinusitis', 'bronchiolitis', 'pulmonary neoplasm', 'possible nstemi / stemi',\
-        'sarcoidosis', 'pancreatic neoplasm', 'acute pulmonary edema', 'pericarditis'.\
-        Analyze the prompt and answer without any explanation or additional text.",
+        'sarcoidosis', 'acute pulmonary edema', 'pericarditis'.\n\
+        Respond ONLY in JSON with a single field 'disease'.\n\
+        Output format example: {'disease': 'spontaneous pneumothorax'}\
+        Analyze the dialogue and answer without any explanation or additional text.",
     ],
     'translation_en_to_zh': [
         'Translate the following sentence from Engilish to Chinese. '
@@ -61,6 +62,7 @@ LABEL_SET = {
     'mnli-mm': ['entailment', 'neutral', 'contradiction'],
     'rte': ['entailment', 'not_entailment'],
     'ddxplus': ['spontaneous pneumothorax', 'cluster headache', 'boerhaave', 'spontaneous rib fracture', 'gerd', 'hiv (initial infection)', 'anemia', 'viral pharyngitis', 'inguinal hernia', 'myasthenia gravis', 'whooping cough', 'anaphylaxis', 'epiglottitis', 'guillain-barré syndrome', 'acute laryngitis', 'croup', 'psvt', 'atrial fibrillation', 'bronchiectasis', 'allergic sinusitis', 'chagas', 'scombroid food poisoning', 'myocarditis', 'larygospasm', 'acute dystonic reactions', 'localized edema', 'sle', 'tuberculosis', 'unstable angina', 'stable angina', 'ebola', 'acute otitis media', 'panic attack', 'bronchospasm / acute asthma exacerbation', 'bronchitis', 'acute copd exacerbation / infection', 'pulmonary embolism', 'urti', 'influenza', 'pneumonia', 'acute rhinosinusitis', 'chronic rhinosinusitis', 'bronchiolitis', 'pulmonary neoplasm', 'possible nstemi / stemi', 'sarcoidosis', 'pancreatic neoplasm', 'acute pulmonary edema', 'pericarditis', 'cannot decide'],
+    'ddxplus-json': ['spontaneous pneumothorax', 'cluster headache', 'boerhaave', 'spontaneous rib fracture', 'gerd', 'hiv (initial infection)', 'anemia', 'viral pharyngitis', 'inguinal hernia', 'myasthenia gravis', 'whooping cough', 'anaphylaxis', 'epiglottitis', 'guillain-barré syndrome', 'acute laryngitis', 'croup', 'psvt', 'atrial fibrillation', 'bronchiectasis', 'allergic sinusitis', 'chagas', 'scombroid food poisoning', 'myocarditis', 'larygospasm', 'acute dystonic reactions', 'localized edema', 'sle', 'tuberculosis', 'unstable angina', 'stable angina', 'ebola', 'acute otitis media', 'panic attack', 'bronchospasm / acute asthma exacerbation', 'bronchitis', 'acute copd exacerbation / infection', 'pulmonary embolism', 'urti', 'influenza', 'pneumonia', 'acute rhinosinusitis', 'chronic rhinosinusitis', 'bronchiolitis', 'pulmonary neoplasm', 'possible nstemi / stemi', 'sarcoidosis', 'pancreatic neoplasm', 'acute pulmonary edema', 'pericarditis', 'cannot decide'],
     'flipkart': ['positive', 'negative', 'neutral'],
 
 }
