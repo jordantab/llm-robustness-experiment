@@ -24,54 +24,66 @@ def run_evaluation(args):
 
     labels = []
     predictions = []
-    checkpoint_interval = max(10, len(evaluator.dataset) // 10)
-    for i, row in enumerate(tqdm(evaluator.dataset.iterrows(), desc=f"Evaluating {args.benchmark}")):
-        instance = {'Summary': row[1]["Summary"], 'Sentiment': row[1]["Sentiment"]}
-        pred, label = evaluator.evaluate_sample(instance)
-        print("pred, label: ", pred, label)
-        # pred = "positive"
-        # label = "positive"
-        predictions.append(pred)
-        labels.append(label)
-        break
-    # return
+    incomplete_count = 0
+    formatting_count = 0
+    checkpoint_interval = min(3, len(evaluator.dataset) // 10)
+    total_samples = len(evaluator.dataset)
 
-    # for i, instance in enumerate(tqdm(evaluator.dataset, desc=f"Evaluating {args.benchmark}")):
-    #     try:
-    #         pred, label = evaluator.evaluate_sample(instance)
-    #         if pred is not None and label is not None:
-    #             predictions.append(pred)
-    #             labels.append(label)
+    # Create the tqdm progress bar
+    with tqdm(total=total_samples, desc=f"Evaluating {args.benchmark}", unit="sample") as pbar:
+        for i, row in enumerate(evaluator.dataset.iterrows()):
+            try:
+                instance = {'Summary': row[1]["Summary"], 'Sentiment': row[1]["Sentiment"]}
+                pred, label = evaluator.evaluate_sample(instance)
+                print(pred, label)
+                # Failed during AHP process
+                if pred == "incomplete":
+                    incomplete_count += 1
                 
-    #         if (i + 1) % checkpoint_interval == 0:
-    #             metrics = evaluator.calculate_metrics(labels, predictions)
-    #             logging.info(f"Progress: {i+1}/{len(evaluator.dataset)} samples. Current metrics: {metrics}")
-                
-    #     except Exception as e:
-    #         logging.error(f"Error processing instance {i}: {str(e)}")
-    #         continue
+                # Final prediction failed formatting
+                elif pred == "formatting":
+                    formatting_count += 1
+
+                # Successfully made a prediction
+                else:
+                    predictions.append(pred)
+                    labels.append(label)
+
+                # Update progress bar
+                pbar.update(1)
+                # break
+
+                # Checkpoint logging
+                if (i + 1) % checkpoint_interval == 0:
+                    metrics = evaluator.calculate_metrics(labels, predictions)
+                    logging.info(f"Progress: {i+1}/{total_samples} samples. Incomplete AHP count: {incomplete_count}. Formatting error count: {formatting_count}. Current metrics: {metrics}.")
+            except Exception as e:
+                logging.error(f"Error processing instance {i}: {str(e)}")
+                continue
 
     # Calculate final metrics
     final_metrics = evaluator.calculate_metrics(labels, predictions)
-    
+
     # Save results
     results = {
         'model_id': args.model_id,
+        'robustness_type': args.robustness_type,
         'benchmark': args.benchmark,
-        # 'dataset_name': args.dataset_name,
-        # 'num_samples': args.num_samples,
         'metrics': final_metrics,
+        'incomplete_AHP': incomplete_count,
+        "formatting_mistakes": formatting_count,
+        'num_samples': total_samples, 
         'timestamp': datetime.now().strftime('%Y%m%d_%H%M%S')
     }
-    
+
     output_file = os.path.join(
         evaluator.checkpoint_dir,
-        f"results_{args.model_id}_{args.benchmark}.json"
+        f"results_{args.model_id}_{args.robustness_type}_{args.benchmark}.json"
     )
-    
+
     with open(output_file, 'w') as f:
         json.dump(results, f, indent=2)
-    
+
     logging.info(f"Evaluation completed. Results saved to {output_file}")
     return results
 
@@ -83,7 +95,7 @@ def main():
 
     args = parser.parse_args()
     results = run_evaluation(args)
-    # print(f"Final Metrics: {results['metrics']}")
+    print(f"Final Metrics: {results['metrics']}")
 
 if __name__ == "__main__":
     main()

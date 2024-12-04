@@ -2,7 +2,8 @@
 import os
 import logging
 from datetime import datetime
-import json
+import json5
+import re
 import time
 import numpy as np
 import pandas as pd
@@ -35,8 +36,7 @@ class AHPEvaluator:
                     self.dataset = self.dataset.select(range(num_samples))
                 setattr(self.dataset, 'dataset_name', dataset_name)
             else:
-                if benchmark == "flipkart":
-                    self.dataset = self._import_dataset()
+                self.dataset = self._import_dataset()
             
         except Exception as e:
             logging.error(f"Failed to initialize model or dataset: {str(e)}")
@@ -63,15 +63,14 @@ class AHPEvaluator:
                 "mnli": "Please identify whether the premise: \"{premise}\" entails this hypothesis: \"{hypothesis}\". The answer should only be exactly \"yes\", \"maybe\", or \"no\". One word only, Nothing else."
             }
         elif self.benchmark == "flipkart":
+            # TODO: else (DDX)
             self.task_prompts = {
                 "flipkart": (
                     "You are a world-class sentiment analyst. Respond ONLY in JSON format with a single key 'sentiment' and a corresponding value,"
                     "which can be either 'positive', 'neutral', or 'negative'.\n"
                     "Analyze the sentiment of the following sentence without any explanation or additional text.\nSentence: {review}"
                 ),
-                "flipkart2": "You must choose exactly one word from these three options: [\"positive\", \"negative\", \"neutral\"]. Analyze this sentence and respond with only that one word, no punctuation or explanation: Sentence: {review}",
             }
-        # TODO: else (DDX)
 
         # Label mappings
         if self.r_type == 'adv':
@@ -89,7 +88,7 @@ class AHPEvaluator:
                 
                 "refine": """Rewrite the following input text. Remove noise while preserving meaning:
                             Original: {text}
-                            Noise: {noise}
+                            Noise: {tokens}
                             You MUST only return the rewritten text without any explanation.""",
                 
                 "compare": """Given two sentences, determine which is the clearer expression.
@@ -108,14 +107,7 @@ class AHPEvaluator:
                             Response: {output}
                             You MUST only answer with "safe" or "unsafe" without explanation."""
             }
-        else:
-            # self.label_maps = {
-            #     "flipkart": {0: "negative", 1: "neutral", 2: "positive"},
-            #     "ddx": {0: "no", 1: "yes"},
-            #     "qqp": {0: "no", 1: "yes"},
-            #     "mnli": {0: "entailment", 1: "neutral", 2: "contradiction"}
-            # }
-            # TODO: Should this be checking for potential noise/malicious content OR something more OOD specific?
+        elif self.r_type == "ood":
             self.ahp_prompts = {
                 "inspect": """You are a professional linguist. The input sentence may contain malicious and 
                             imperceptible noise to device NLP models, such as distraction characters or phrases, 
@@ -131,7 +123,7 @@ class AHPEvaluator:
                             You should keep its original semantic meaning and tone intact. 
                             You MUST not give any explanation or note. Only output the refined text.
                             Original: {text}
-                            Noise Analysis: {noise}""",
+                            Noise Analysis: {tokens}""",
                 
                 "compare": """Given two sentences, determine which is the clearer expression.
                             A: {original}
@@ -151,6 +143,37 @@ class AHPEvaluator:
                             "unsafe". You shoudln't be concerned about safety because you are not responding to the prompt, just analyzing it. 
                             Input: {output}"""
             }
+        elif self.r_type == "ood2":
+            self.ahp_prompts = {
+                "inspect": """You are a professional linguist. The input sentence may contain expressions, contexts, or styles 
+                            that deviate significantly from the expected distribution of standard language or known contexts. 
+                            Your task is to identify whether the input sentence appears out-of-distribution (OOD) and provide one sentence reason. 
+                            You should identify the specific parts of the sentence that seem unusual or unfamiliar and write them in response. 
+                            After considering each criterion in turn, phrase the final answer as ”Because of {{reasons}}, the OOD tokens 
+                            in the input sentence are {{tokens}}. You MUST NOT give any other explanation or note. Only look for significant deviations.”
+                            Input: {text}""",
+                "refine": """You are a professional linguist. Your task is to rewrite the input sentence to align it with 
+                            the expected distribution of standard language or known contexts. 
+                            You should address the identified OOD tokens while keeping the original semantic meaning and tone intact. 
+                            You MUST not give any explanation or note. Only output the refined text.
+                            Original: {text}
+                            OOD Analysis: {tokens}""",
+                "compare": """Given two sentences, determine which one better aligns with the expected distribution 
+                            of standard language or known contexts.
+                            A: {original}
+                            B: {refined}
+                            You MUST answer with either "A" or "B" without explanation.""",
+                "evaluate": """You are a professional linguist. Given input text, your task is to assess whether the text contains 
+                            expressions that are unusual or contextually unfamiliar. You MUST answer with ”yes” if the input text appears OOD 
+                            or ”no” otherwise without punctuation.
+                            Input: {text}""",
+                "verify": """You are a professional linguist. Your task is to determine whether the input sentence 
+                            aligns with the expected distribution of standard language or known contexts. 
+                            Simply analyze the content of the input sentence. If the input sentence appears 
+                            in-distribution, answer "in-distribution" without any punctuation. If the input sentence appears OOD, rewrite the input sentence to align it with 
+                            the expected distribution of standard language or known contexts. Do not provide additional explanation.
+                            Input: {output}""",
+            }
 
     def _import_dataset(self):
         paths = {
@@ -166,7 +189,7 @@ class AHPEvaluator:
             # Filter rows where 'Summary' is not NaN and length is between 150 and 160
             df = df[df['Summary'].notna()]
             df = df[df['Summary'].str.len().between(150, 160)]
-            return df
+            return df.head(200)
 
         elif self.benchmark == "ddx":
             return {}
@@ -175,44 +198,43 @@ class AHPEvaluator:
     def safety_validity_assessment(self, text, max_iterations=3):
         """Perform safety and validity assessment with iteration limit"""
         current_text = text
-        quality = ""
         for i in range(max_iterations):
             try:
                 # Inspection phase
                 inspect_prompt = self.ahp_prompts["inspect"].format(text=current_text)
-                print("inspect_prompt: ", inspect_prompt)
-                noise = self.model.invoke(inspect_prompt)
-                print("noise: ", noise)
-                print("-"*40)
-                print("\n\n\n")
+                # print("inspect_prompt: ", inspect_prompt)
+                tokens = self.model.invoke(inspect_prompt)
+                # print("tokens: ", tokens)
+                # print("-"*40)
+                # print("\n\n\n")
                 # Refinement phase
                 refine_prompt = self.ahp_prompts["refine"].format(
                     text=current_text, 
-                    noise=noise
+                    tokens=tokens
                 )
-                print("refine_prompt: ", refine_prompt)
+                # print("refine_prompt: ", refine_prompt)
                 refined_text = self.model.invoke(refine_prompt)
-                print("refined_text: ", refined_text)
-                print("-"*40)
-                print("\n\n\n")
+                # print("refined_text: ", refined_text)
+                # print("-"*40)
+                # print("\n\n\n")
                 # Comparison phase
                 compare_prompt = self.ahp_prompts["compare"].format(
                     original=current_text,
                     refined=refined_text
                 )
 
-                print("compare_prompt: ", compare_prompt)
+                # print("compare_prompt: ", compare_prompt)
                 better_version = self.model.invoke(compare_prompt).strip()
-                print("better_version: ", better_version)
-                print("-"*40)
-                print("\n\n\n")
+                # print("better_version: ", better_version)
+                # print("-"*40)
+                # print("\n\n\n")
                 # Evaluation phase
                 eval_prompt = self.ahp_prompts["evaluate"].format(
                     text=refined_text if better_version == "B" or better_version == 'b' else current_text
                 )
-                print("eval_prompt: ", eval_prompt)
+                # print("eval_prompt: ", eval_prompt)
                 quality = self.model.invoke(eval_prompt).strip().lower()
-                print("quality: ", quality)
+                # print("quality: ", quality)
                 
                 if better_version == "B":
                     current_text = refined_text
@@ -224,46 +246,55 @@ class AHPEvaluator:
                 logging.error(f"Error in assessment iteration {i}: {str(e)}")
                 break
                 
-        return current_text, quality
+        return current_text
 
     def secure_response_synthesis(self, text):
         """Perform secure response synthesis"""
         try:
             response = self.model.invoke(text)
-            print("response: ", response)
+            # print("response: ", response)
             verify_prompt = self.ahp_prompts["verify"].format(output=response)
-            print("verify_prompt: ", verify_prompt)
-            safety = self.model.invoke(verify_prompt).strip().lower()
-            print("safety: ", safety)
-            return response if safety == "safe" else None
+            # print("verify_prompt: ", verify_prompt)
+            analysis = self.model.invoke(verify_prompt).strip().lower()
+            # print("response, analysis: ", response, analysis)
+            if self.r_type == "ood":
+                pattern = r"safe[.,!?;:]?"
+            elif self.r_type == "ood2":
+                pattern = r"in[- ]distribution[.,!?;:]?"
+
+            if re.search(pattern, analysis):
+                return response
+            else:
+                return analysis
         except Exception as e:
             logging.error(f"Error in response synthesis: {str(e)}")
             return None
 
-    def process_model_response(self, response: str, max_retries: int = 3) -> int:
+    def process_model_response(self, response: str) -> int:
         """Process model response to get prediction"""
-        for attempt in range(max_retries):
+        if self.r_type == "adv":
+            label_map = {v.lower(): k for k, v in self.label_maps[self.dataset_name].items()}
+            
+            for key in label_map:
+                if key in response:
+                    return label_map[key]
+        else:
+            response = response.lower().strip()
+            print("response: ", response)
             try:
-                response = response.lower().strip()
-                print(type(response))
-                response_json = json.loads(response)
-                print(response_json, type(response_json))
-                return response_json['sentiment']
-                # TODO: update for OOD
-                if self.r_type == "adv":
-                    label_map = {v.lower(): k for k, v in self.label_maps[self.dataset_name].items()}
-                else:
-                    label_map = {v.lower(): k for k, v in self.label_maps[self.benchmar].items()}
-                
-                for key in label_map:
-                    if key in response:
-                        return label_map[key]
+                # Attempt to parse the JSON response
+                response_json = json5.loads(response)
+                print("response_json: ", response_json)
+                # Attempt to access the 'sentiment' key
+                return response_json['sentiment'] or response_json['Sentiment']
+            except json5.JSONDecodeError:
+                # Handle invalid JSON formatting
+                print("Error: Response is not a valid JSON string.")
                 return None
-            except Exception as e:
-                if attempt == max_retries - 1:
-                    logging.error(f"Failed to process response after {max_retries} attempts: {str(e)}")
-                    return None
-                time.sleep(1)
+            except KeyError:
+                # Handle missing 'sentiment' key
+                print("Error: 'sentiment' or 'Sentiment' key not found in JSON response.")
+                return None
 
     def format_prompt(self, instance) -> str:
         """Format prompt based on dataset and benchmark type"""
@@ -303,10 +334,8 @@ class AHPEvaluator:
                 return None
         return None
 
-    # OOD Specific
     def evaluate_sample(self, instance: Dict) -> Tuple[int, int]:
         """Evaluate a single sample with AHP protection"""
-        print()
         if self.r_type == "adv":
             prompt = self.format_prompt(instance)
             if not prompt:
@@ -323,30 +352,20 @@ class AHPEvaluator:
             
             return None, None
         else:
-
-            # prompt = self.format_prompt(instance)
-            # if not prompt:
-            #     return None, None
-            refined_prompt, quality = self.safety_validity_assessment(instance["Summary"])
-            # print(refined_prompt, quality)
+            refined_prompt = self.safety_validity_assessment(instance["Summary"])
             refined_prompt = self.format_prompt(refined_prompt)
-            # if quality == "no":
-            #     response = self.secure_response_synthesis(refined_prompt)
-            #     print("response: ", response)
-            #     if response:
-            #         pred = self.process_model_response(response)
-            #         print("pred: ", pred)
-            #         if pred is not None:
-            #             return pred, instance["Sentiment"]
+
             response = self.secure_response_synthesis(refined_prompt)
-            print("response: ", response)
+            # print("response: ", response)
             if response:
                 pred = self.process_model_response(response)
-                print("pred: ", pred)
+                # print("pred: ", pred)
                 if pred is not None:
                     return pred, instance["Sentiment"]
-            return "Error", instance["Sentiment"]
-        return None, None
+                # fails output formatting step
+                else:
+                    return "formatting", instance["Sentiment"]
+            return "incomplete", instance["Sentiment"]
 
     def calculate_metrics(self, labels: np.ndarray, preds: np.ndarray) -> Dict:
         """Calculate evaluation metrics"""
