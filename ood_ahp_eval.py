@@ -25,30 +25,31 @@ def run_evaluation(args):
     labels = []
     predictions = []
     checkpoint_interval = max(10, len(evaluator.dataset) // 10)
-    
     for i, row in enumerate(tqdm(evaluator.dataset.iterrows(), desc=f"Evaluating {args.benchmark}")):
         instance = {'Summary': row[1]["Summary"], 'Sentiment': row[1]["Sentiment"]}
         pred, label = evaluator.evaluate_sample(instance)
-        # print("pred, label: ", pred, label)
+        print("pred, label: ", pred, label)
+        # pred = "positive"
+        # label = "positive"
+        predictions.append(pred)
+        labels.append(label)
         break
-    return
+    # return
 
-    
-    # TODO: update the samples we are looping through
-    for i, instance in enumerate(tqdm(evaluator.dataset, desc=f"Evaluating {args.benchmark}")):
-        try:
-            pred, label = evaluator.evaluate_sample(instance)
-            if pred is not None and label is not None:
-                predictions.append(pred)
-                labels.append(label)
+    # for i, instance in enumerate(tqdm(evaluator.dataset, desc=f"Evaluating {args.benchmark}")):
+    #     try:
+    #         pred, label = evaluator.evaluate_sample(instance)
+    #         if pred is not None and label is not None:
+    #             predictions.append(pred)
+    #             labels.append(label)
                 
-            if (i + 1) % checkpoint_interval == 0:
-                metrics = evaluator.calculate_metrics(labels, predictions)
-                logging.info(f"Progress: {i+1}/{len(evaluator.dataset)} samples. Current metrics: {metrics}")
+    #         if (i + 1) % checkpoint_interval == 0:
+    #             metrics = evaluator.calculate_metrics(labels, predictions)
+    #             logging.info(f"Progress: {i+1}/{len(evaluator.dataset)} samples. Current metrics: {metrics}")
                 
-        except Exception as e:
-            logging.error(f"Error processing instance {i}: {str(e)}")
-            continue
+    #     except Exception as e:
+    #         logging.error(f"Error processing instance {i}: {str(e)}")
+    #         continue
 
     # Calculate final metrics
     final_metrics = evaluator.calculate_metrics(labels, predictions)
@@ -57,15 +58,15 @@ def run_evaluation(args):
     results = {
         'model_id': args.model_id,
         'benchmark': args.benchmark,
-        'dataset_name': args.dataset_name,
-        'num_samples': args.num_samples,
+        # 'dataset_name': args.dataset_name,
+        # 'num_samples': args.num_samples,
         'metrics': final_metrics,
         'timestamp': datetime.now().strftime('%Y%m%d_%H%M%S')
     }
     
     output_file = os.path.join(
         evaluator.checkpoint_dir,
-        f"results_{args.model_id}_{args.benchmark}_{args.dataset_name}.json"
+        f"results_{args.model_id}_{args.benchmark}.json"
     )
     
     with open(output_file, 'w') as f:
