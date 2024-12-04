@@ -1,3 +1,6 @@
 [submodule "benchmarks/promptbench"]
 	path = benchmarks/promptbench
 	url = https://github.com/april-yyt/promptbench.git
+[submodule "benchmarks/BOSS"]
+	path = benchmarks/BOSS
+	url = https://github.com/april-yyt/OOD_NLP.git

@@ -164,3 +164,10 @@ cython_debug/
 
 .streamlit/
 tokens.py
+.DS_Store
+pb_env
+pb_results
+checkpoints
+logs
+utils
+archive
