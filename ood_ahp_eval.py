@@ -87,7 +87,7 @@ def run_evaluation(args):
 
     output_file = os.path.join(
         evaluator.checkpoint_dir,
-        f"results_{args.model_id}_{args.robustness_type}_{args.benchmark}.json"
+        f"{args.robustness_type}_{args.model_id}_{args.benchmark}.json"
     )
 
     with open(output_file, 'w') as f:
