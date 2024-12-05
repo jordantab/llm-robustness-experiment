@@ -1,0 +1,15 @@
+{
+  "model_id": "mixtral:8x7b",
+  "robustness_type": "ood",
+  "benchmark": "flipkart",
+  "metrics": {
+    "accuracy": 0.8366666666666667,
+    "precision": 0.9137216202270383,
+    "recall": 0.8366666666666667,
+    "f1": 0.8610617650524331
+  },
+  "incomplete_AHP": 0,
+  "formatting_mistakes": 0,
+  "num_samples": 300,
+  "timestamp": "20241205_025218"
+}
