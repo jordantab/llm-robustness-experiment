@@ -1,0 +1,13 @@
+torch                  # For PyTorch, required for model loading and GPU acceleration
+transformers           # For Hugging Face Transformers (AutoTokenizer, AutoModelForCausalLM)
+langchain-ollama      # For OllamaLLM integration
+datasets              # For loading and preprocessing datasets
+scikit-learn          # For accuracy_score and precision_recall_fscore_support
+pandas                # For DataFrame operations
+numpy                 # For numerical operations and array handling
+tqdm                  # For progress tracking during evaluation
+json5                 # For flexible JSON handling
+datetime              # For timestamping and logging
+tiktoken
+protobuf
+blobfile
