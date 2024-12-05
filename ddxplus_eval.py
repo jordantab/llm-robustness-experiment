@@ -80,10 +80,10 @@ def main():
         #     "model" : "llama3.2",
         #     "service": "ollama"
         # },
-        {
-            "model" : "llama2",
-            "service": "ollama-langchain"
-        },
+        # {
+        #     "model" : "llama2",
+        #     "service": "ollama-langchain"
+        # },
         # {
         #     "model" : "llama2",
         #     "service": "ollama"
@@ -92,10 +92,10 @@ def main():
         #     "model" : "mistral",
         #     "service": "ollama"
         # },
-        # {
-        #     "model" : "mixtral",
-        #     "service": "ollama-langchain"
-        # },
+        {
+            "model" : "mixtral",
+            "service": "ollama-langchain"
+        },
         # {
         #     "model" : "mixtral",
         #     "service": "ollama"
@@ -120,16 +120,16 @@ def main():
                             \n Medical History: {dialogue}",
             device=None
         )
-
+        # break
         metrics, run_data = run_ddxplus_experiment(dataloader, inference)
         metric_log.append([llm_model["model"], llm_model["service"], metrics["accuracy"], metrics["precision"], metrics["recall"], metrics["f1-score"]])
     
     # Save to CSV
     df = pd.DataFrame(metric_log)
-    df.to_csv("ddxplus_eval.csv", index=False)
+    df.to_csv(f"./results/ddxplus_eval_{dataloader.task}_{inference.model}_{"context" if inference.context_prompt else ""}.csv", index=False)
 
     df = pd.DataFrame(run_data)
-    df.to_csv("ddxplus_run_data.csv", index=False)
+    df.to_csv(f"./results/ddxplus_run_data_{dataloader.task}_{inference.model}_{"context" if inference.context_prompt else ""}.csv", index=False)
 
 if __name__ == "__main__":
     main()

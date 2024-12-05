@@ -1,3 +1,4 @@
+from tqdm import tqdm
 from tokens import TOKENS
 
 from transformers import pipeline
@@ -60,11 +61,11 @@ class Inference(object):
                 return context
 
         if context_prompt:
-            for disease in self.label_set[:-1]:
+            for disease in tqdm(self.label_set[:-1]):
                 modified_context_prompt = context_prompt.replace("{disease}", disease)
                 disease_description = self.llm.invoke(modified_context_prompt)
                 disease_context = f"{disease}: {disease_description}\n"
-                print(disease_context)
+                # print(disease_context)
                 context += disease_context
 
         # save context to a file
@@ -73,7 +74,7 @@ class Inference(object):
             file.write(context)
         
         # print("--------------------------------")
-        # print("Context: ", context)
+        print("Context: ", context)
         # print("--------------------------------")
         return context
         

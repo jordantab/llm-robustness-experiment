@@ -1,0 +1,49 @@
+spontaneous pneumothorax:  Spontaneous pneumothorax is the sudden collapse of lung tissue due to air leakage into the chest cavity, causing sharp chest pain, coughing, and shortness of breath.
+cluster headache:  Cluster headaches: severe unilateral head pain, often around eye; tearing, nasal congestion, agitation; can be chronic or episodic.
+boerhaave:  Boerhaave Disease: a rare, life-threatening esophageal rupture, causing severe chest pain, vomiting, and rapid heart rate. Requires immediate medical attention.
+spontaneous rib fracture:  Spontaneous rib fractures, often in older women, cause sudden chest pain, worsened by breathing or coughing. May lead to pneumothorax or hemothorax. Minimal trauma can trigger fractures.
+gerd:  GERD is a digestive disorder causing stomach acid to irritate throat, with symptoms like heartburn, chest pain, regurgitation, and difficulty swallowing.
+hiv (initial infection):  HIV: Initial infection may cause flu-like symptoms, such as fever, fatigue, rash, sore throat, swollen lymph nodes, within 2-4 weeks. Symptoms vary widely.
+anemia:  Anemia is a condition with low red blood cells or hemoglobin, causing fatigue, weakness, pale skin, irregular heartbeat, and shortness of breath.
+viral pharyngitis:  Viral pharyngitis is inflammation of the throat, caused by viruses, with symptoms of sore throat, cough, fever, and swollen lymph nodes.
+inguinal hernia:  Inguinal hernia is the protrusion of abdominal tissue through a weakened groin area, causing discomfort, pain, or a visible bulge, which may become more pronounced when coughing, bending, or lifting heavy objects. Symptoms can vary in severity and frequency.
+myasthenia gravis:  Myasthenia gravis is a neurological disorder causing muscle weakness, fatigue, and voluntary muscle dysfunction. Symptoms vary but often include eyelid drooping, double vision, and difficulty speaking, swallowing or breathing.
+whooping cough:  Whooping cough is a highly contagious bacterial infection causing uncontrollable coughing fits, often with a "whoop" sound. Vaccination recommended.
+anaphylaxis:  Anaphylaxis is a severe, life-threatening allergic reaction with symptoms like difficulty breathing, rapid heartbeat, and skin rashes. Swift medical attention required.
+epiglottitis:  Epiglottitis is a severe inflammation of the epiglottis, causing difficulty breathing, swallowing, and speaking. Symptoms: sudden fever, sore throat, muffled voice, drooling.
+guillain-barré syndrome:  Guillain-Barré syndrome is a rare disorder where the immune system attacks nerves, causing muscle weakness, numbness, and sometimes paralysis. Symptoms vary in severity and duration.
+acute laryngitis:  Acute laryngitis is inflammation of the voice box, causing hoarseness, sore throat, cough, and sometimes fever. Lasts usually under 3 weeks.
+croup:  Croup is a childhood respiratory infection causing barky cough, hoarseness, and harsh breathing sounds, often worsening at night.
+psvt:  PSVT, or Primary Sclerosing Cholangitis, is a rare liver disease causing scarring and narrowing of bile ducts. Symptoms: fatigue, itching, jaundice, abdominal pain, and potential liver failure.
+atrial fibrillation:  Atrial fibrillation is an irregular, often rapid heart rate that can cause poor blood flow, leading to symptoms like heart flutters, fatigue, and shortness of breath.
+bronchiectasis:  Bronchiectasis is a lung disease involving abnormal widening of airways, causing chronic cough, phlegm production, and recurrent infections.
+allergic sinusitis:  Allergic sinusitis is inflammation of sinuses due to allergens, causing symptoms like nasal congestion, runny nose, sneezing, and sinus pressure.
+chagas:  Chagas Disease: Infection by "kissing bug," causes heart damage, symptoms include fever, swelling, fatigue, irregular heartbeat. Can be fatal if untreated.
+scombroid food poisoning:  Scombroid poisoning is a foodborne illness from eating spoiled fish, causing symptoms like flushing, headache, rapid heartbeat, and diarrhea. Onset within minutes to hours.
+myocarditis:  Myocarditis is inflammation of the heart muscle, causing chest pain, heart failure signs, and abnormal heart rhythms. Quick medical attention needed.
+larygospasm:  Laryngospasm is a sudden, involuntary closure of the vocal cords, causing breathing difficulty, coughing, and high-pitched noises during inhalation.
+acute dystonic reactions:  Acute dystonic reaction is a drug-induced movement disorder, characterized by sudden muscle spasms & involuntary movements, often affecting the face & neck.
+localized edema:  Localized edema disease is a bacterial infection, mainly affecting aquatic animals. Symptoms: inflammation, fluid-filled lesions, skin sloughing.
+sle:  Sjogren's (SLE) is an autoimmune disease causing dry eyes, mouth, joint pain, fatigue, and possible organ damage. Symptoms vary widely. Stay hydrated, manage symptoms with healthcare provider.
+tuberculosis:  Tuberculosis is a bacterial infection, often affecting lungs; symptoms include cough, chest pain, fever, weight loss, and fatigue. Can be treated with antibiotics.
+unstable angina:  Unstable angina is chest pain due to insufficient blood/oxygen to heart muscle, often sudden, increasing in severity or occurring at rest. It's a medical emergency.
+stable angina:  Stable angina is chest pain or discomfort due to reduced blood flow to the heart muscle, typically during physical exertion or stress. Symptoms: tightness, heaviness, burning, or squeezing in the chest; possible radiation to left arm, neck, jaw, or back; shortness of breath; fatigue; nausea; anxiety.
+ebola:  Ebola is a severe, often fatal virus causing fever, muscle pain, weakness, bleeding and organ failure. Symptoms appear 2-21 days after exposure.
+acute otitis media:  Acute Otitis Media (AOM) is an ear infection with symptoms like ear pain, hearing loss, fever, and difficulty sleeping. It can also cause irritability and tugging at the ear.
+panic attack:  A panic attack is a sudden, intense surge of fear or discomfort with symptoms like accelerated heart rate, trembling, sweating, and difficulty breathing. Lasts several minutes.
+bronchospasm / acute asthma exacerbation:  Bronchospasm/asthma exacerbation: Narrowed airways, difficulty breathing, coughing, wheezing, chest tightness, rapid heartbeat.
+bronchitis:  Bronchitis is an inflammation of the bronchi, causing cough, phlegm, and sometimes difficulty breathing. May also involve fever, fatigue, and chest discomfort.
+acute copd exacerbation / infection:  Acute COPD exacerbation is a sudden worsening of chronic obstructive pulmonary disease, often due to infection, with symptoms like increased cough, shortness of breath, and mucus production.
+pulmonary embolism:  Pulmonary embolism is a blockage, usually a blood clot, in lung arteries, causing difficulty breathing, chest pain, rapid heartbeat, and sometimes coughing up blood.
+urti:  Upper Respiratory Tract Infection (URTI) is a viral or bacterial infection, causing symptoms like cough, sore throat, runny nose, and fatigue.
+influenza:  Influenza, or flu, is a viral respiratory illness with symptoms like fever, cough, sore throat, runny/stuffy nose, muscle/body aches, headaches, fatigue.
+pneumonia:  Pneumonia is an infection causing inflammation in the lungs, leading to cough, chest pain, fever, difficulty breathing, and fatigue.
+acute rhinosinusitis:  Acute rhinosinusitis is inflammation of nasal sinuses, causing facial pain, thick mucus, congestion, cough, and fever for up to 4 weeks. Stay within word count.
+chronic rhinosinusitis:  Chronic Rhinosinusitis is a long-term inflammation of sinuses, causing nasal congestion, discharge, facial pain, and loss of smell. May affect quality of life.
+bronchiolitis:  Bronchiolitis is a respiratory infection, mainly in infants, causing inflammation & congestion in small airways, with symptoms like cough, wheezing, difficulty breathing.
+pulmonary neoplasm:  Pulmonary neoplasm is a lung tumor, often cancerous, causing cough, chest pain, weight loss, and breathlessness. Early detection saves lives.
+possible nstemi / stemi:  NSTEMI/STEMIs are heart conditions causing chest pain, shortness of breath, fatigue, nausea, rapid heartbeat, cold sweats, lightheadedness. Immediate medical attention required.
+sarcoidosis:  Sarcoidosis is a rare inflammatory disease causing granulomas, leading to organ damage; symptoms vary by affected organs, often with no early signs.
+pancreatic neoplasm:  Pancreatic neoplasm is a cancerous or noncancerous growth in the pancreas. Symptoms: jaundice, abdominal pain, weight loss, vomiting.
+acute pulmonary edema:  Acute pulmonary edema is a serious condition causing fluid buildup in lungs, leading to shortness of breath, coughing, and possible pink frothy sputum. Rapid medical attention required.
+pericarditis:  Pericarditis is inflammation of the lining around the heart, causing chest pain, often sharp and stabbing, sometimes with fever or difficulty breathing.
