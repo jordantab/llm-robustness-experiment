@@ -3,14 +3,11 @@ Baseline evaluation of model OOD Robustness using the Flipkart product review da
 """
 import pandas as pd
 from sklearn.metrics import f1_score, accuracy_score, precision_score, recall_score
-from transformers import pipeline
 from langchain_ollama.llms import OllamaLLM
 import json
 import csv
 import os
-import boto3
 from tqdm import tqdm
-from botocore.exceptions import ClientError
 
 
 def import_dataset():
@@ -112,8 +109,7 @@ def run_experiment(df, model, model_id):
                 accuracy, precision, recall, f1 = calculate_metrics(
                     predictions, correct_labels[:len(predictions)])
 
-                tqdm.write(f'\nProgress: {
-                           i + 1}/{num_reviews} reviews processed.')
+                tqdm.write(f'\nProgress: {i + 1}/{num_reviews} reviews processed.')
                 tqdm.write(f'Accuracy: {accuracy:.2f}')
                 tqdm.write(f'Precision: {precision:.2f}')
                 tqdm.write(f'Recall: {recall:.2f}')
@@ -138,7 +134,7 @@ def main():
     df = import_dataset()
     filtered_df = df[df['Summary'].notna()]
     length_filtered_df = filtered_df[filtered_df['Summary'].str.len().between(
-        150, 160)]
+        150, 160)].head(300)
     model_id = "llama2:7b"
     model = OllamaLLM(model=model_id)
     accuracy, precision, recall, f1 = run_experiment(
