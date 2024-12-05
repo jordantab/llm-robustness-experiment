@@ -28,14 +28,24 @@ def run_evaluation(args):
     formatting_count = 0
     checkpoint_interval = min(3, len(evaluator.dataset) // 10)
     total_samples = len(evaluator.dataset)
+    # print(evaluator.dataset)
+    # print(evaluator.dataset['Diagnosis'].value_counts())
+    # return
 
     # Create the tqdm progress bar
     with tqdm(total=total_samples, desc=f"Evaluating {args.benchmark}", unit="sample") as pbar:
         for i, row in enumerate(evaluator.dataset.iterrows()):
             try:
-                instance = {'Summary': row[1]["Summary"], 'Sentiment': row[1]["Sentiment"]}
+                # print(i)
+                if args.benchmark == "flipkart":
+                    instance = {'Summary': row[1]["Summary"], 'Sentiment': row[1]["Sentiment"]}
+                else:
+                    instance = {'Information': row[1]["Information"], "Diagnosis": row[1]["Diagnosis"]}
                 pred, label = evaluator.evaluate_sample(instance)
+                # print("##"*100)
+                # break
                 print(pred, label)
+                # break
                 # Failed during AHP process
                 if pred == "incomplete":
                     incomplete_count += 1
@@ -51,7 +61,6 @@ def run_evaluation(args):
 
                 # Update progress bar
                 pbar.update(1)
-                # break
 
                 # Checkpoint logging
                 if (i + 1) % checkpoint_interval == 0:

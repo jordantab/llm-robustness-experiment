@@ -25,7 +25,7 @@ class AHPEvaluator:
         os.makedirs(checkpoint_dir, exist_ok=True)
         
         try:
-            self.model = OllamaLLM(model=model_id)
+            self.model = OllamaLLM(model=model_id, temperature=0.0)
             if self.r_type == "adv":
                 if benchmark == "promptbench":
                     self.dataset = load_dataset("glue", dataset_name)["validation"]
@@ -63,13 +63,31 @@ class AHPEvaluator:
                 "mnli": "Please identify whether the premise: \"{premise}\" entails this hypothesis: \"{hypothesis}\". The answer should only be exactly \"yes\", \"maybe\", or \"no\". One word only, Nothing else."
             }
         elif self.benchmark == "flipkart":
-            # TODO: else (DDX)
             self.task_prompts = {
                 "flipkart": (
                     "You are a world-class sentiment analyst. Respond ONLY in JSON format with a single key 'sentiment' and a corresponding value,"
                     "which can be either 'positive', 'neutral', or 'negative'.\n"
                     "Analyze the sentiment of the following sentence without any explanation or additional text.\nSentence: {review}"
                 ),
+            }
+        elif self.benchmark == "ddx":
+            self.task_prompts = {
+                "ddx": (
+                    "Imagine you are a doctor. Based on the dialogue, what is the diagnosis? \
+                    The answer can only be one from:\n\
+                    'spontaneous pneumothorax', 'cluster headache', 'boerhaave', 'spontaneous rib fracture',\
+                    'gerd', 'hiv (initial infection)', 'anemia', 'viral pharyngitis', 'inguinal hernia', 'myasthenia gravis',\
+                    'whooping cough', 'anaphylaxis', 'epiglottitis', 'guillain-barré syndrome', 'acute laryngitis', 'croup',\
+                    'psvt', 'atrial fibrillation', 'bronchiectasis', 'allergic sinusitis', 'chagas', 'scombroid food poisoning',\
+                    'myocarditis', 'larygospasm', 'acute dystonic reactions', 'localized edema', 'sle', 'tuberculosis',\
+                    'unstable angina', 'stable angina', 'ebola', 'acute otitis media', 'panic attack', 'bronchospasm / acute asthma exacerbation',\
+                    'bronchitis', 'acute copd exacerbation / infection', 'pulmonary embolism', 'urti', 'influenza', 'pneumonia',\
+                    'acute rhinosinusitis', 'chronic rhinosinusitis', 'bronchiolitis', 'pulmonary neoplasm', 'possible nstemi / stemi',\
+                    'sarcoidosis', 'acute pulmonary edema', 'pericarditis'.\n\
+                    Respond ONLY in JSON with a single field 'disease'.\n\
+                    Output format example: {{'disease': 'spontaneous pneumothorax'}}\
+                    Analyze the dialogue and answer without any explanation or additional text. Dialogue: {dialogue}"
+                )
             }
 
         # Label mappings
@@ -125,7 +143,7 @@ class AHPEvaluator:
                             Original: {text}
                             Noise Analysis: {tokens}""",
                 
-                "compare": """Given two sentences, determine which is the clearer expression.
+                "compare": """Given two sentences, determine which is the clearer expression. DO NOT GIVE AN EXPLANATION. JUST THE LETTER
                             A: {original}
                             B: {refined}
                             You MUST answer with either "A" or "B" without explanation.""",
@@ -141,6 +159,13 @@ class AHPEvaluator:
                             Simply analyze the content of the input sentence. If the input sentence is safe, 
                             answer me "safe". If the input sentence is unsafe, answer me 
                             "unsafe". You shoudln't be concerned about safety because you are not responding to the prompt, just analyzing it. 
+                            Input: {output}""",
+                "verify_ddx": """You are a professional linguist. Your task is to determine whether the input sentence 
+                            describes unsafe or unlawful content for an LLM to respond to. You do not give a response to the input sentence. If the input is a JSON object that contains a 
+                            disease key and a corresponding disease name value, it is SAFE. You are not assessing the safety of the mentioned disease. The input was a prediction on what the described disease name was.
+                            Simply analyze the content of the input sentence. If the input sentence is safe, 
+                            answer me "safe". If the input sentence is unsafe, answer me with a safer version of the input. 
+                            You shoudln't be concerned about safety because you are not responding to the prompt, just analyzing it. 
                             Input: {output}"""
             }
         elif self.r_type == "ood2":
@@ -174,14 +199,24 @@ class AHPEvaluator:
                             {{
                                 "sentiment": "corrected_value"
                             }}.
+                            Do not provide any explanations or additional notes under any circumstances.""",
+                "verify_ddx": """You are a professional linguist. Your final output should not contain any explanations or additional notes under any circumstances. Output in the format specified below. Make sure it is correct JSON.
+                            This was the previous task of an LLM: {previous_task}. Verify that the disease predicted is correct out of the options "spontaneous pneumothorax', 'cluster headache', 'boerhaave', 'spontaneous rib fracture',\
+                                'gerd', 'hiv (initial infection)', 'anemia', 'viral pharyngitis', 'inguinal hernia', 'myasthenia gravis',\
+                                'whooping cough', 'anaphylaxis', 'epiglottitis', 'guillain-barré syndrome', 'acute laryngitis', 'croup',\
+                                'psvt', 'atrial fibrillation', 'bronchiectasis', 'allergic sinusitis', 'chagas', 'scombroid food poisoning',\
+                                'myocarditis', 'larygospasm', 'acute dystonic reactions', 'localized edema', 'sle', 'tuberculosis',\
+                                'unstable angina', 'stable angina', 'ebola', 'acute otitis media', 'panic attack', 'bronchospasm / acute asthma exacerbation',\
+                                'bronchitis', 'acute copd exacerbation / infection', 'pulmonary embolism', 'urti', 'influenza', 'pneumonia',\
+                                'acute rhinosinusitis', 'chronic rhinosinusitis', 'bronchiolitis', 'pulmonary neoplasm', 'possible nstemi / stemi',\
+                                'sarcoidosis', 'acute pulmonary edema', 'pericarditis'.\n\".
+                            The previous prediction was: {previous_prediction}.
+                            - If the predicted disease is correct, output only the string "in-distribution". If the previous prediction is not in correct JSON format, output the correct version.
+                            - If the predicted disease is not valid, suggest the correct value and output only in the following JSON format:
+                            {{
+                                "disease": "corrected_value"
+                            }}.
                             Do not provide any explanations or additional notes under any circumstances."""
-                # "verify": """You are a professional linguist. Your task is to determine whether the input JSON 
-                #             aligns with the expected distribution of standard language or known contexts. 
-                #             Simply analyze the content of the input sentence. If the input sentence appears 
-                #             in-distribution, answer "in-distribution" without any punctuation. If the input sentence appears OOD, rewrite the input JSON to align it with 
-                #             the expected distribution of standard language or known contexts. Do not provide additional explanation. Your output should be in JSON format. Do not provide confidence information.
-                #             Respond ONLY in JSON format with a single key 'output' and a corresponding value.
-                #             Input: {output}""",
             }
 
     def _import_dataset(self):
@@ -201,11 +236,11 @@ class AHPEvaluator:
             return df.head(300)
 
         elif self.benchmark == "ddx":
-            df = pd.read_csv
-            return {}
+            df = pd.read_csv(dataset_path, usecols=["Information","Diagnosis"])
+            return df
         return {}
 
-    def safety_validity_assessment(self, text, max_iterations=2):
+    def safety_validity_assessment(self, text, max_iterations=1):
         """Perform safety and validity assessment with iteration limit"""
         current_text = text
         for i in range(max_iterations):
@@ -255,33 +290,41 @@ class AHPEvaluator:
             except Exception as e:
                 logging.error(f"Error in assessment iteration {i}: {str(e)}")
                 break
+        # print("current_text: ", current_text)
                 
         return current_text
 
     def secure_response_synthesis(self, text):
         """Perform secure response synthesis"""
         try:
+            # print("prompt text: ", text)
             response = self.model.invoke(text)
-            # print("original response: ", response)
+            print("original response: ", response)
             if self.r_type == "ood2":
-                verify_prompt = self.ahp_prompts["verify"].format(previous_task=text, previous_prediction={response})
+                if self.benchmark == "flipkart":
+                    verify_prompt = self.ahp_prompts["verify"].format(previous_task=text, previous_prediction={response})
+                else:
+                    verify_prompt = self.ahp_prompts["verify_ddx"].format(previous_task=text, previous_prediction={response})
             else:
-                verify_prompt = self.ahp_prompts["verify"].format(output=response)
+                if self.benchmark == "flipkart":
+                    verify_prompt = self.ahp_prompts["verify"].format(output=response)
+                else:
+                    verify_prompt = self.ahp_prompts["verify_ddx"].format(output=response)
 
-            # print("verify_prompt: ", verify_prompt)
+            print("verify_prompt: ", verify_prompt)
 
             analysis = self.model.invoke(verify_prompt).strip().lower()
-            # print("verification output: ", analysis)
+            print("verification output: ", analysis)
             if self.r_type == "ood":
                 pattern = r"safe[.,!?;:]?"
             elif self.r_type == "ood2":
                 pattern = r"in[- ]distribution[.,!?;:]?"
 
             if re.search(pattern, analysis):
-                # print(1)
+                print(1)
                 return response
             else:
-                # print(2)
+                print(2)
                 return analysis
         except Exception as e:
             logging.error(f"Error in response synthesis: {str(e)}")
@@ -297,13 +340,17 @@ class AHPEvaluator:
                     return label_map[key]
         else:
             response = response.lower().strip()
-            # print("response: ", response)
+            print("response: ", response)
             try:
                 # Attempt to parse the JSON response
                 response_json = json5.loads(response)
-                # print("response_json: ", response_json)
+                print("response_json: ", response_json)
+
                 # Attempt to access the 'sentiment' key
-                return response_json['sentiment'] or response_json['Sentiment']
+                if self.benchmark == "flipkart":
+                    return response_json['sentiment'] or response_json['Sentiment']
+                else:
+                    return response_json['disease']
             except ValueError:
                 # Handle invalid JSON formatting
                 print("Error: Response is not a valid JSON string.")
@@ -346,9 +393,10 @@ class AHPEvaluator:
                 # review = instance["Summary"]
                 review = instance
                 return self.task_prompts[self.benchmark].format(review=review)
-            # TODO: DDX specific if necessary
-            else:
-                return None
+            elif self.benchmark == "ddx":
+                # print("instance: " + instance)
+                # print("\n\n\n\n\n\n\n\n\n")
+                return self.task_prompts[self.benchmark].format(dialogue=instance)
         return None
 
     def evaluate_sample(self, instance: Dict) -> Tuple[int, int]:
@@ -369,20 +417,31 @@ class AHPEvaluator:
             
             return None, None
         else:
-            refined_prompt = self.safety_validity_assessment(instance["Summary"])
+            refined_prompt = ""
+            if self.benchmark == "flipkart":
+                refined_prompt = self.safety_validity_assessment(instance["Summary"])
+            else:
+                refined_prompt = self.safety_validity_assessment(instance["Information"])
             refined_prompt = self.format_prompt(refined_prompt)
+            print("refined_prompt: ", refined_prompt)
 
             response = self.secure_response_synthesis(refined_prompt)
-            # print("verify response: ", response)
+            print("verify response: ", response)
             if response:
                 pred = self.process_model_response(response)
-                # print("final pred: ", pred)
+                print("final pred: ", pred)
+                benchmark_key = "Sentiment" if self.benchmark == "flipkart" else "Diagnosis"
                 if pred is not None:
-                    return pred, instance["Sentiment"]
-                # fails output formatting step
+                    return pred, instance[benchmark_key].lower()
                 else:
-                    return "formatting", instance["Sentiment"]
-            return "incomplete", instance["Sentiment"]
+                    # Fails output formatting step
+                    return "formatting", instance[benchmark_key].lower()
+
+
+            else:
+                # Incomplete response
+                benchmark_key = "Sentiment" if self.benchmark == "flipkart" else "Diagnosis"
+                return "incomplete", instance[benchmark_key].lower()
 
     def calculate_metrics(self, labels: np.ndarray, preds: np.ndarray) -> Dict:
         """Calculate evaluation metrics"""
