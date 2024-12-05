@@ -1,13 +1,11 @@
 #!/bin/bash
 
-python flipkart_eval.py
-python ood_ahp_eval.py --model_id llama2:7b --robustness_type ood --benchmark flipkart
-python ood_ahp_eval.py --model_id llama2:7b --robustness_type ood2 --benchmark flipkart
 python ood_ahp_eval.py --model_id mixtral:8x7b --robustness_type ood --benchmark flipkart
 python ood_ahp_eval.py --model_id mixtral:8x7b --robustness_type ood2 --benchmark flipkart
-
-python ood_ahp_eval.py --model_id llama2:7b --robustness_type ood --benchmark ddx
-python ood_ahp_eval.py --model_id llama2:7b --robustness_type ood2 --benchmark ddx
-
 python ood_ahp_eval.py --model_id mixtral:8x7b --robustness_type ood --benchmark ddx
 python ood_ahp_eval.py --model_id mixtral:8x7b --robustness_type ood2 --benchmark ddx
+
+# python ood_ahp_eval.py --model_id llama2:7b --robustness_type ood --benchmark flipkart
+# python ood_ahp_eval.py --model_id llama2:7b --robustness_type ood2 --benchmark flipkart
+# python ood_ahp_eval.py --model_id llama2:7b --robustness_type ood --benchmark ddx
+# python ood_ahp_eval.py --model_id llama2:7b --robustness_type ood2 --benchmark ddx
