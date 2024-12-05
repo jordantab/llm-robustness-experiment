@@ -126,10 +126,10 @@ def main():
     
     # Save to CSV
     df = pd.DataFrame(metric_log)
-    df.to_csv(f"./results/ddxplus_eval_{dataloader.task}_{inference.model}_{"context" if inference.context_prompt else ""}.csv", index=False)
+    df.to_csv(f"../results/ddxplus_eval_{dataloader.task}_{inference.model}_{"context" if inference.context_prompt else ""}.csv", index=False)
 
     df = pd.DataFrame(run_data)
-    df.to_csv(f"./results/ddxplus_run_data_{dataloader.task}_{inference.model}_{"context" if inference.context_prompt else ""}.csv", index=False)
+    df.to_csv(f"../results/ddxplus_run_data_{dataloader.task}_{inference.model}_{"context" if inference.context_prompt else ""}.csv", index=False)
 
 if __name__ == "__main__":
     main()
