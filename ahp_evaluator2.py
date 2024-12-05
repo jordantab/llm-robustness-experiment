@@ -180,8 +180,8 @@ class AHPEvaluator:
         paths = {
             "flipkart": "benchmarks/flipkart-sentiment.csv",
             "ddx": "benchmarks/ddxplus-hao.csv",
-            "promptbench": "benchmarks/promptattack.csv",
-            "advglue++": "benchmarks/advglueplusplus/formatted_prompts.csv"
+            "promptbench": "benchmarks/promptattack_reduced.csv",
+            "advglue++": "benchmarks/advglueplusplus/reduced_prompts.csv"
         }
         dataset_path = paths[self.benchmark]
 
@@ -211,7 +211,7 @@ class AHPEvaluator:
 
         elif self.benchmark == "promptbench":
             dataset_path = paths["promptbench"]
-            df = pd.read_csv(dataset_path, usecols=['combined_prompt', 'label', 'attack_name'])
+            df = pd.read_csv(dataset_path)
             
             # # Randomly sample rows from the DataFrame
             # if self.num_samples:
@@ -221,7 +221,7 @@ class AHPEvaluator:
         
         return {}
 
-    def safety_validity_assessment(self, text, max_iterations=2):
+    def safety_validity_assessment(self, text, max_iterations=5):
         """Perform safety and validity assessment with iteration limit"""
         current_text = text
         for i in range(max_iterations):

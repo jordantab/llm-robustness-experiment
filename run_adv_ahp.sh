@@ -1,10 +1,12 @@
 #!/bin/bash
 
 # Define the models you want to test
-models=("llama2:7b" "mixtral:8x7b")  # Replace with your actual model IDs
+models=("llama2")  # Replace with your actual model IDs
+# models=("mixtral:8x7b" "llama2:7b") 
 
 # Define the robustness types
 robustness_types=("adv")
+num_samples=100
 
 # Loop over each model
 for model in "${models[@]}"; do
@@ -20,10 +22,11 @@ for model in "${models[@]}"; do
   for robustness_type in "${robustness_types[@]}"; do
     if [ "$robustness_type" == "adv" ]; then
       # For 'adv' robustness type, use these benchmarks and datasets
-      benchmarks=("advglue++" "promptbench")
+      benchmarks=("promptbench" "advglue++")
       for benchmark in "${benchmarks[@]}"; do
         echo "Running evaluation for Model: $model, Benchmark: $benchmark, Robustness Type: $robustness_type"
         python adv_ahp_eval.py --model_id "$model" --benchmark "$benchmark" --robustness_type "$robustness_type" --num_samples "$num_samples"
+        # CUDA_VISIBLE_DEVICES=0 python adv_ahp_eval.py --model_id "$model" --benchmark "$benchmark" --robustness_type "$robustness_type" --num_samples "$num_samples"
       done
     elif [ "$robustness_type" == "ood" ]; then
       # For 'OOD' robustness type, use the 'flipkart' benchmark
