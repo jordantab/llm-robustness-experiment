@@ -15,10 +15,13 @@ def load_dataset_for_benchmark(benchmark):
         return extracted_data
     elif benchmark == "flipkart":
         path = './benchmarks/flipkart-sentiment.csv'
-        data = pd.read_csv(path)
+        df = pd.read_csv(path)
+        filtered_df = df[df['Summary'].notna()]
+        length_filtered_df = filtered_df[filtered_df['Summary'].str.len().between(
+            150, 160)]
 
         # Extract the `Summary` and `Sentiment` columns
-        extracted_data = data[["Summary", "Sentiment"]]
+        extracted_data = length_filtered_df[["Summary", "Sentiment"]]
         return extracted_data
     else: 
         print("Not a valid benchmark")
@@ -121,4 +124,6 @@ def main():
 
 
 if __name__ == "__main__":
+    df = load_dataset_for_benchmark("flipkart")
+    print(len(df))
     main()
