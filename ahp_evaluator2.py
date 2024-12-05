@@ -240,7 +240,7 @@ class AHPEvaluator:
             return df
         return {}
 
-    def safety_validity_assessment(self, text, max_iterations=1):
+    def safety_validity_assessment(self, text, max_iterations=2):
         """Perform safety and validity assessment with iteration limit"""
         current_text = text
         for i in range(max_iterations):
