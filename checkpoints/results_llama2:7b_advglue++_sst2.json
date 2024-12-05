@@ -1,0 +1,17 @@
+{
+  "model_id": "llama2:7b",
+  "robustness_type": "adv",
+  "benchmark": "advglue++",
+  "dataset_name": "sst2",
+  "attack_method": "textbugger",
+  "metrics": {
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+  },
+  "incomplete_AHP": 0,
+  "formatting_mistakes": 0,
+  "num_samples": 50,
+  "timestamp": "20241205_054102"
+}
