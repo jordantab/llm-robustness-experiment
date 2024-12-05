@@ -23,6 +23,7 @@ def run_ddxplus_experiment(dataloader: DataDDXPlus, inference: Inference):
     predictions = []
     ground_truth = []
     for idx in tqdm(range(data_len)):
+        # for i in range(5):
         information, correct_label, all_possible_labels = dataloader.get_content_by_idx(idx)
         prediction = inference.predict(information, prompt)
         # print(f"Prediction - {prediction} | Ground Truth - {correct_label}")
@@ -79,10 +80,10 @@ def main():
         #     "model" : "llama3.2",
         #     "service": "ollama"
         # },
-        # {
-        #     "model" : "llama2",
-        #     "service": "ollama-langchain"
-        # },
+        {
+            "model" : "llama2",
+            "service": "ollama-langchain"
+        },
         # {
         #     "model" : "llama2",
         #     "service": "ollama"
@@ -91,10 +92,10 @@ def main():
         #     "model" : "mistral",
         #     "service": "ollama"
         # },
-        {
-            "model" : "mixtral",
-            "service": "ollama-langchain"
-        },
+        # {
+        #     "model" : "mixtral",
+        #     "service": "ollama-langchain"
+        # },
         # {
         #     "model" : "mixtral",
         #     "service": "ollama"
@@ -112,11 +113,11 @@ def main():
             service=llm_model["service"],
             model=llm_model["model"],
             label_set=dataloader.get_label(),
-            # context_prompt="Give me a short description of {disease} disease and its symptoms. Answer in ONLY 20 words and keep it concise. Don't include any other information.",
-            # rephrase_prompt="Rephrase the following structured medical history into a concise,\
-            #                 medically relevant paragraph that includes all the provided information without omitting any details.\
-            #                 Maintain a professional and clinical tone:\
-            #                 \n Medical History: {dialogue}",
+            context_prompt="Give me a short description of {disease} disease and its symptoms. Answer in ONLY 20 words and keep it concise. Don't include any other information.",
+            rephrase_prompt="Rephrase the following structured medical history into a concise,\
+                            medically relevant paragraph that includes all the provided information without omitting any details.\
+                            Maintain a professional and clinical tone.\
+                            \n Medical History: {dialogue}",
             device=None
         )
 

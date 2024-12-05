@@ -41,7 +41,7 @@ class Inference(object):
             self.openai_client = openai.OpenAI(api_key=TOKENS['openai_api_key']) 
 
         if self.service == 'ollama-langchain':
-            self.llm = OllamaLLM(model=self.model, num_ctx=8192)
+            self.llm = OllamaLLM(model=self.model, num_ctx=8192*2, temperature=0.0)
             print("Context Length: ", self.llm.num_ctx)
 
         self.context = self.get_context(self.context_prompt)
