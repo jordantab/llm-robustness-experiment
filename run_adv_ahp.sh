@@ -1,41 +1,36 @@
 #!/bin/bash
 
-# Define models and benchmarks
-MODELS=("mixtral" "llama2")
-BENCHMARKS=("promptbench" "advglue++")
-DATASETS=("sst2" "qnli" "qqp" "mnli")
+# Define the models you want to test
+models=("llama2:7b" "mixtral:8x7b")  # Replace with your actual model IDs
 
-# Create a logs directory if it doesn't exist
-mkdir -p logs
+# Define the robustness types
+robustness_types=("adv")
 
-# Get current timestamp for log file
-TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
-LOG_FILE="logs/evaluation_${TIMESTAMP}.log"
+# Loop over each model
+for model in "${models[@]}"; do
 
-echo "Starting evaluation at $(date)" | tee -a "$LOG_FILE"
+  # Set num_samples based on the model
+  if [[ "$model" == "llama2:7b" ]]; then
+    num_samples=1000
+  elif [[ "$model" == "mixtral:8x7b" ]]; then
+    num_samples=500
+  fi
 
-# Loop through all combinations
-for model in "${MODELS[@]}"; do
-    for benchmark in "${BENCHMARKS[@]}"; do
-        for dataset in "${DATASETS[@]}"; do
-            echo "Running evaluation for:" | tee -a "$LOG_FILE"
-            echo "- Model: $model" | tee -a "$LOG_FILE"
-            echo "- Benchmark: $benchmark" | tee -a "$LOG_FILE"
-            echo "- Dataset: $dataset" | tee -a "$LOG_FILE"
-            
-            # Run the evaluation script
-            python adv_ahp_eval.py \
-                --model_id "${model}:7b" \
-                --benchmark "$benchmark" \
-                --dataset_name "$dataset" 2>&1 | tee -a "$LOG_FILE"
-            
-            # Add separator for readability
-            echo "----------------------------------------" | tee -a "$LOG_FILE"
-            
-            # Optional: Add small delay between runs to prevent potential rate limiting
-            sleep 2
-        done
-    done
+  # Loop over each robustness type
+  for robustness_type in "${robustness_types[@]}"; do
+    if [ "$robustness_type" == "adv" ]; then
+      # For 'adv' robustness type, use these benchmarks and datasets
+      benchmarks=("advglue++" "promptbench")
+      for benchmark in "${benchmarks[@]}"; do
+        echo "Running evaluation for Model: $model, Benchmark: $benchmark, Robustness Type: $robustness_type"
+        python adv_ahp_eval.py --model_id "$model" --benchmark "$benchmark" --robustness_type "$robustness_type" --num_samples "$num_samples"
+      done
+    elif [ "$robustness_type" == "ood" ]; then
+      # For 'OOD' robustness type, use the 'flipkart' benchmark
+      benchmark="flipkart"
+      dataset="flipkart"
+      echo "Running evaluation for Model: $model, Benchmark: $benchmark, Dataset: $dataset, Robustness Type: $robustness_type"
+      python ood_ahp_eval.py --model_id "$model" --benchmark "$benchmark" --dataset_name "$dataset" --robustness_type "$robustness_type"
+    fi
+  done
 done
-
-echo "Evaluation completed at $(date)" | tee -a "$LOG_FILE"

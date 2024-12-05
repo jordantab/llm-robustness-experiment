@@ -113,18 +113,22 @@ def evaluate(model_id, task, datasets_map, task_to_keys, task_to_prompts, num_sa
         if task == 'sst2':
             sentence = instance[cols[0]]
             original_sentence = instance['original_sentence']
+            
+            if isICR == True:
+                # Rewrite the perturbed sentence with ICR
+                rewritten_sentence = create_rewriting_prompt(examples_per_attack, sentence, model_id)
+                rewritten_original_sentence = create_rewriting_prompt(examples_per_attack, original_sentence, model_id)
 
-            # Rewrite the perturbed sentence with ICR
-            rewritten_sentence = create_rewriting_prompt(examples_per_attack, sentence, model_id)
-            rewritten_original_sentence = create_rewriting_prompt(examples_per_attack, original_sentence, model_id)
-
-            prompt = task_to_prompts[task] + rewritten_sentence
-            original_prompt = task_to_prompts[task] + rewritten_original_sentence
-
+                prompt = task_to_prompts[task] + rewritten_sentence
+                original_prompt = task_to_prompts[task] + rewritten_original_sentence
+            else: 
+                prompt = task_to_prompts[task] + sentence
+                original_prompt = task_to_prompts[task] + original_sentence
+            
             response = model.invoke(prompt)
             original_response = model.invoke(original_prompt)
             raw_responses.append(response)
-            print(original_response, response)
+            # print(original_response, response)
             # Parse sentiment from response
             sentiment = parse_sentiment(response)
             original_sentiment = parse_sentiment(original_response)
@@ -154,13 +158,13 @@ def evaluate(model_id, task, datasets_map, task_to_keys, task_to_prompts, num_sa
         if task == "qnli":
             sentence = instance[col_sen]
             question = instance[col_ques]
-            if instance[col_org_ques] is not None: 
+            if instance[col_org_ques] != '': 
                 original_question = instance[col_org_ques]
                 if isICR == True:
                     question, sentence = create_multiinput_rewriting_prompt(examples_per_attack, question, sentence, model_id)
                 prompt = f"Does the sentence \"{sentence}\" answer the question \"{question}\"? The answer should only be exactly \"yes\" or \"no\". One word only, Nothing else."
                 original_prompt = f"Does the sentence \"{sentence}\" answer the question \"{original_question}\"? The answer should only be exactly \"yes\" or \"no\". One word only, Nothing else."
-            elif instance[col_org_sentence] is not None: 
+            elif instance[col_org_sentence] != '': 
                 original_sentence = instance[col_org_sentence]
                 if isICR == True:
                     question, sentence = create_multiinput_rewriting_prompt(examples_per_attack, question, sentence, model_id)
@@ -174,29 +178,33 @@ def evaluate(model_id, task, datasets_map, task_to_keys, task_to_prompts, num_sa
             original_response = original_response.lower().strip()
             # print(response, original_response, labels[i])
             if 'yes' in response:
-                preds.append(1)
-            elif 'no' in response:
                 preds.append(0)
+            elif 'no' in response:
+                preds.append(1)
             else: 
                 print("did not get exact answer error; default to 0")
-                preds.append(0)
+                preds.append(1)
 
             if 'yes' in original_response:
-                original_preds.append(1)
-            elif 'no' in original_response:
                 original_preds.append(0)
+            elif 'no' in original_response:
+                original_preds.append(1)
             else: 
                 print("did not get exact answer error; default to 0")
-                original_preds.append(0)
+                original_preds.append(1)
         
         if task == "qqp":
             q1 = instance[col_ques1]
             q2 = instance[col_ques2]
             if instance[col_org_ques1] != '':
                 original_question = instance[col_org_ques1]
+                if isICR == True:
+                    q1, q2 = create_multiinput_rewriting_prompt(examples_per_attack, q1, q2, model_id)
                 original_prompt = f"Please identify whether Question1: \"{q2}\" has the same meaning as Question2: \"{original_question}\". The answer should only be exactly \"yes\" or \"no\". One word only, Nothing else."
             elif instance[col_org_ques2] != '':
                 original_question = instance[col_org_ques2]
+                if isICR == True:
+                    q1, q2 = create_multiinput_rewriting_prompt(examples_per_attack, q1, q2, model_id)
                 original_prompt = f"Please identify whether Question1: \"{q1}\" has the same meaning as Question2: \"{original_question}\". The answer should only be exactly \"yes\" or \"no\". One word only, Nothing else."
 
                 
@@ -229,39 +237,43 @@ def evaluate(model_id, task, datasets_map, task_to_keys, task_to_prompts, num_sa
             hypo = instance[col_hypo]
             if instance[col_org_premise] != '':
                 original_premise = instance[col_org_premise]
+                if isICR == True:
+                    premise, hypo = create_multiinput_rewriting_prompt(examples_per_attack, premise, hypo, model_id)
                 original_prompt = f"Please identify whether the premise: \"{original_premise}\" entails this hypothesis: \"{hypo}\". The answer should only be exactly \"yes\", \"maybe\", or \"no\". One word only, Nothing else."
             elif instance[col_org_hypo] != '':
                 original_hypo = instance[col_org_hypo]
+                if isICR == True:
+                    premise, hypo = create_multiinput_rewriting_prompt(examples_per_attack, premise, hypo, model_id)
                 original_prompt = f"Please identify whether the premise: \"{premise}\" entails this hypothesis: \"{original_hypo}\". The answer should only be exactly \"yes\", \"maybe\", or \"no\". One word only, Nothing else."
 
                 
 
-            prompt = f"Please identify whether the premise: \"{premise}\" entails this hypothesis: \"{hypo}\". The answer should only be exactly \"yes\", \"maybe\", or \"no\". One word only, Nothing else."
+            prompt = f"Please identify whether the premise: \"{premise}\" entails this hypothesis: \"{hypo}\". The answer should only be exactly \"entailment\", \"neutral\", or \"contradiction\". One word only, Nothing else."
             response = model.invoke(prompt)
             original_response = model.invoke(original_prompt)
 
             response = response.lower().strip()
             original_response = original_response.lower().strip()
             # print(response, original_response, labels[i])
-            if 'yes' in response:
+            if 'entailment' in response:
                 preds.append(0)
-            elif 'no' in response:
+            elif 'contradiction' in response:
                 preds.append(2)
-            elif 'maybe' in response:
+            elif 'neutral' in response:
                 preds.append(1)
             else: 
                 print("did not get exact answer error; default to 0")
                 preds.append(0)
 
-            if 'yes' in original_response:
-                original_preds.append(0)
-            elif 'no' in original_response:
-                original_preds.append(2)
-            elif 'maybe' in original_response:
-                original_preds.append(1)
+            if 'entailment' in response:
+                preds.append(0)
+            elif 'contradiction' in response:
+                preds.append(2)
+            elif 'neutral' in response:
+                preds.append(1)
             else: 
                 print("did not get exact answer error; default to 0")
-                original_preds.append(0)
+                preds.append(0)
             
         processed +=1
     
