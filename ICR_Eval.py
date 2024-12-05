@@ -7,7 +7,7 @@ import argparse
 
 def load_dataset_for_benchmark(benchmark): 
     if benchmark == "promptbench":
-        path = './benchmarks/promptattack.csv'
+        path = './benchmarks/promptattack_reduced.csv'
         data = pd.read_csv(path)
 
         # Extract the `combined_prompt` and `label` columns
@@ -19,7 +19,7 @@ def load_dataset_for_benchmark(benchmark):
         filtered_df = df[df['Summary'].notna()]
         length_filtered_df = filtered_df[filtered_df['Summary'].str.len().between(
             150, 160)]
-
+        length_filtered_df = length_filtered_df[:300]
         # Extract the `Summary` and `Sentiment` columns
         extracted_data = length_filtered_df[["Summary", "Sentiment"]]
         return extracted_data
@@ -30,6 +30,9 @@ def evaluate_with_ICR(benchmark, model_id):
     model = OllamaLLM(model=model_id)
     
     if benchmark == "promptbench":
+        output_file = f"./predictions/{model_id}_predictions_{benchmark}_ICR.csv"
+        if not os.path.exists(output_file):
+            res.to_csv(output_file, index=False, mode='w')  # Write headers
         data = load_dataset_for_benchmark(benchmark)
         columns = ["idx", "prompt", "pred", "true_label"]
         res = pd.DataFrame(columns=columns)
@@ -48,6 +51,15 @@ def evaluate_with_ICR(benchmark, model_id):
                 pred = 0
             new_row = {"idx": instance["idx"], "prompt": combined_prompt_ICR, "pred": pred, "true_label": instance["label"]}
             res = pd.concat([res, pd.DataFrame([new_row])], ignore_index=True)
+
+            if (i + 1) % 10 == 0:
+                print(f"Saving intermediate results to {output_file}")
+                res.to_csv(output_file, index=False, mode='a', header=False)  # Append without headers
+                res = pd.DataFrame(columns=columns)  # Clear the in-memory DataFrame
+        
+        if not res.empty:
+            print(f"Saving final results to {output_file}")
+            res.to_csv(output_file, index=False, mode='a', header=False)
         
         return res
     
@@ -55,11 +67,12 @@ def evaluate_with_ICR(benchmark, model_id):
         data = load_dataset_for_benchmark(benchmark)
         columns = ["summary_icr", "pred", "true_label"]
         res = pd.DataFrame(columns=columns)
-        for i in range(len(data)): 
+        for i in range(285,len(data)): 
             instance = data.iloc[i]
             summary = instance["Summary"] 
             summary_ICR = create_rewriting_prompt_OOD(None, summary, model_id)
-            # print(summary_ICR)
+            # print(summary)
+            # print(summary_ICR,"\n")
             prompt = (
                 "You are a world-class sentiment analyst. Respond ONLY in JSON format with a single field 'sentiment', "
                 "which can be either 'positive', 'neutral', or 'negative'.\n"
@@ -73,6 +86,7 @@ def evaluate_with_ICR(benchmark, model_id):
             response_json = json.loads(response)
             sentiment = response_json['sentiment']
             sentiment = sentiment.strip().lower()
+            print(sentiment)
             new_row = {"summary_icr": summary_ICR, "pred": sentiment, "true_label": instance["Sentiment"]}
             res = pd.concat([res, pd.DataFrame([new_row])], ignore_index=True)
             if i % 20 == 0:

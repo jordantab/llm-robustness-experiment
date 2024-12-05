@@ -213,10 +213,11 @@ def create_rewriting_prompt_OOD(examples, ood_sentence, model_id):
         parsed_data = json.loads(res)
     except json.JSONDecodeError:
         # Fix common issues like missing closing brackets
+        print(res_fixed)
         res_fixed = res.strip() + "}"
         parsed_data = json.loads(res_fixed)
     # print(res)
-
+    print(parsed_data)
     # Accessing specific inputs
     input_1 = parsed_data["New Sentence"]
     return input_1
