@@ -169,3 +169,6 @@ pb_results
 logs
 utils
 archive
+checkpoints
+__pycache__
+idl
