@@ -167,12 +167,21 @@ class AHPEvaluator:
                             expressions that are unusual or contextually unfamiliar. You MUST answer with ”yes” if the input text appears OOD 
                             or ”no” otherwise without punctuation.
                             Input: {text}""",
-                "verify": """You are a professional linguist. Your task is to determine whether the input sentence 
-                            aligns with the expected distribution of standard language or known contexts. 
-                            Simply analyze the content of the input sentence. If the input sentence appears 
-                            in-distribution, answer "in-distribution" without any punctuation. If the input sentence appears OOD, rewrite the input sentence to align it with 
-                            the expected distribution of standard language or known contexts. Do not provide additional explanation.
-                            Input: {output}""",
+                "verify": """You are a professional linguist. This was the previous task of an LLM: {previous_task}. Verify that the sentiment predicted is correct out of the options "positive, negative, neutral".
+                            The previous prediction was: {previous_prediction}.
+                            - If the predicted sentiment is correct, output only the string "in-distribution".
+                            - If the predicted sentiment is not valid, suggest the correct value and output only in the following JSON format:
+                            {{
+                                "sentiment": "corrected_value"
+                            }}.
+                            Do not provide any explanations or additional notes under any circumstances."""
+                # "verify": """You are a professional linguist. Your task is to determine whether the input JSON 
+                #             aligns with the expected distribution of standard language or known contexts. 
+                #             Simply analyze the content of the input sentence. If the input sentence appears 
+                #             in-distribution, answer "in-distribution" without any punctuation. If the input sentence appears OOD, rewrite the input JSON to align it with 
+                #             the expected distribution of standard language or known contexts. Do not provide additional explanation. Your output should be in JSON format. Do not provide confidence information.
+                #             Respond ONLY in JSON format with a single key 'output' and a corresponding value.
+                #             Input: {output}""",
             }
 
     def _import_dataset(self):
@@ -189,13 +198,14 @@ class AHPEvaluator:
             # Filter rows where 'Summary' is not NaN and length is between 150 and 160
             df = df[df['Summary'].notna()]
             df = df[df['Summary'].str.len().between(150, 160)]
-            return df.head(200)
+            return df.head(300)
 
         elif self.benchmark == "ddx":
+            df = pd.read_csv
             return {}
         return {}
 
-    def safety_validity_assessment(self, text, max_iterations=3):
+    def safety_validity_assessment(self, text, max_iterations=2):
         """Perform safety and validity assessment with iteration limit"""
         current_text = text
         for i in range(max_iterations):
@@ -252,19 +262,26 @@ class AHPEvaluator:
         """Perform secure response synthesis"""
         try:
             response = self.model.invoke(text)
-            # print("response: ", response)
-            verify_prompt = self.ahp_prompts["verify"].format(output=response)
+            # print("original response: ", response)
+            if self.r_type == "ood2":
+                verify_prompt = self.ahp_prompts["verify"].format(previous_task=text, previous_prediction={response})
+            else:
+                verify_prompt = self.ahp_prompts["verify"].format(output=response)
+
             # print("verify_prompt: ", verify_prompt)
+
             analysis = self.model.invoke(verify_prompt).strip().lower()
-            # print("response, analysis: ", response, analysis)
+            # print("verification output: ", analysis)
             if self.r_type == "ood":
                 pattern = r"safe[.,!?;:]?"
             elif self.r_type == "ood2":
                 pattern = r"in[- ]distribution[.,!?;:]?"
 
             if re.search(pattern, analysis):
+                # print(1)
                 return response
             else:
+                # print(2)
                 return analysis
         except Exception as e:
             logging.error(f"Error in response synthesis: {str(e)}")
@@ -280,14 +297,14 @@ class AHPEvaluator:
                     return label_map[key]
         else:
             response = response.lower().strip()
-            print("response: ", response)
+            # print("response: ", response)
             try:
                 # Attempt to parse the JSON response
                 response_json = json5.loads(response)
-                print("response_json: ", response_json)
+                # print("response_json: ", response_json)
                 # Attempt to access the 'sentiment' key
                 return response_json['sentiment'] or response_json['Sentiment']
-            except json5.JSONDecodeError:
+            except ValueError:
                 # Handle invalid JSON formatting
                 print("Error: Response is not a valid JSON string.")
                 return None
@@ -356,10 +373,10 @@ class AHPEvaluator:
             refined_prompt = self.format_prompt(refined_prompt)
 
             response = self.secure_response_synthesis(refined_prompt)
-            # print("response: ", response)
+            # print("verify response: ", response)
             if response:
                 pred = self.process_model_response(response)
-                # print("pred: ", pred)
+                # print("final pred: ", pred)
                 if pred is not None:
                     return pred, instance["Sentiment"]
                 # fails output formatting step
