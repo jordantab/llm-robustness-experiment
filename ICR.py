@@ -24,7 +24,7 @@ def create_rewriting_prompt(examples_per_attack, perturbed_sentence, model_id):
     Returns:
     - prompt: str
     """
-    prompt = "Your task is to paraphrase the sentence while keeping semantic meaning. The sentence may be purturbed which means you will need generate their original cleaner form.\n\n"
+    prompt = "Your task is to paraphrase the sentence while keeping semantic meaning. The sentence may be purturbed which means you will need generate their original cleaner form. If there are vulgar words, make them nicer. \n\n"
     prompt += "Below are some examples:\n\n"
 
     for attack_type, examples in examples_per_attack.items():
@@ -148,7 +148,7 @@ def create_rewriting_prompt_OOD(examples, ood_sentence, model_id):
             prompt += f"Cleaned Sentence: {clean_ex}\n\n"
 
     prompt += "Now, given the following sentence, please provide the paraphrased output. Give ONLY THE SENTENCE and nothing else.\n\n"
-    prompt += f"Given Sentence: {perturbed_sentence}\n\n"
+    prompt += f"Given Sentence: {ood_sentence}\n\n"
     prompt += (
     "Provide the response in valid JSON format, ensuring there are no syntax errors. "
     "Make sure to include both opening and closing braces. "
@@ -164,7 +164,7 @@ def create_rewriting_prompt_OOD(examples, ood_sentence, model_id):
         # Fix common issues like missing closing brackets
         res_fixed = res.strip() + "}"
         parsed_data = json.loads(res_fixed)
-    print(res)
+    # print(res)
 
     # Accessing specific inputs
     input_1 = parsed_data["New Sentence"]
