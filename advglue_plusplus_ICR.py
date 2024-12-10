@@ -7,8 +7,7 @@
 import numpy as np
 from typing import List, Tuple, Dict, Union
 from langchain_ollama.llms import OllamaLLM
-from datasets import load_dataset
-from huggingface_hub import login
+# from huggingface_hub import login
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 import os
 from datetime import datetime
@@ -16,8 +15,9 @@ import pandas as pd
 import re
 from ICR import *
 import argparse
+import json
 
-login("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")
+# login("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")
 
 def calculate_asr(original_predictions: Union[List[int], np.ndarray],
                  adversarial_predictions: Union[List[int], np.ndarray],
@@ -69,33 +69,37 @@ def parse_sentiment(response: str) -> int:
         0 for negative, 1 for positive
     """
     # Convert to lowercase and remove extra whitespace
-    response = response.lower().strip()
+    try:
+        parsed_data = json.loads(response)
+    except json.JSONDecodeError:
+        parsed_data = json.loads("{\"sentiment\": \"Error\"}")
     
+    response = parsed_data["sentiment"]
     # Fallback: check if 'positive' or 'negative' appears anywhere in response
-    if 'positive' in response:
+    if response == "positive":
         return 'positive'
-    elif 'negative' in response:
+    elif response == "negative":
         return 'negative'
     
     # If no clear sentiment is found, return None to flag for investigation
     return None
 
-def evaluate(model_id, task, dataset, task_to_keys, task_to_prompts, isICR=False):
+def evaluate(model_id, dataset,task_to_prompts, isICR=False):
     model = OllamaLLM(model=model_id)
-    if task == 'sst2':
-        cols = task_to_keys[task]
-    elif task == "qnli":
-        col_ques, col_sen = task_to_keys[task]
-        col_org_ques = 'original_question'
-        col_org_sentence = "original_sentence"
-    elif task == "qqp":
-        col_ques1, col_ques2 = task_to_keys[task]
-        col_org_ques1 = 'original_question1'
-        col_org_ques2 = 'original_question2'
-    elif task == "mnli":
-        col_premise, col_hypo = task_to_keys[task]
-        col_org_premise = 'original_premise'
-        col_org_hypo = 'original_hypothesis'
+    # if task == 'sst2':
+    #     cols = task_to_keys[task]
+    # elif task == "qnli":
+    #     col_ques, col_sen = task_to_keys[task]
+    #     col_org_ques = 'original_question'
+    #     col_org_sentence = "original_sentence"
+    # elif task == "qqp":
+    #     col_ques1, col_ques2 = task_to_keys[task]
+    #     col_org_ques1 = 'original_question1'
+    #     col_org_ques2 = 'original_question2'
+    # elif task == "mnli":
+    #     col_premise, col_hypo = task_to_keys[task]
+    #     col_org_premise = 'original_premise'
+    #     col_org_hypo = 'original_hypothesis'
 
     processed = 0
     labels = dataset['label']
@@ -105,16 +109,18 @@ def evaluate(model_id, task, dataset, task_to_keys, task_to_prompts, isICR=False
     raw_responses = []  
     skipped = 0  
     for i in range(len(dataset)):
+        instance = dataset.iloc[i]
+        task = instance["dataset"]
         if task == 'sst2':
             instance = dataset.iloc[i]
-            sentence = instance[cols[0]]
+            sentence = instance["sentence"]
             
             if isICR == True:
                 # Rewrite the perturbed sentence with ICR
                 rewritten_sentence = create_rewriting_prompt_plusplus(examples_per_attack, sentence, model_id)
                 print(sentence)
                 print(rewritten_sentence)
-                prompt = task_to_prompts[task] + rewritten_sentence
+                prompt = task_to_prompts[task] + rewritten_sentence + "Give me response in json format with one key \"sentiment\". Only the json object, nothing else."
             else: 
                 print(sentence)
                 prompt = task_to_prompts[task] + sentence
@@ -131,7 +137,10 @@ def evaluate(model_id, task, dataset, task_to_keys, task_to_prompts, isICR=False
                 # if sentiment == 0:
                 #     print("NEGSATIVE")
                 #     print(labels[i])
-                preds.append(sentiment)
+                if sentiment == 'positive':
+                    preds.append(1)
+                elif sentiment == 'negative':
+                    preds.append(0)
             else:
                 print(f"Warning: Could not parse sentiment from response: {response}")
                 # print(rewritten_sentence)
@@ -140,8 +149,8 @@ def evaluate(model_id, task, dataset, task_to_keys, task_to_prompts, isICR=False
         
         if task == "qnli":
             instance = dataset.iloc[i]
-            sentence = instance[col_sen]
-            question = instance[col_ques]
+            sentence = instance["sentence"]
+            question = instance["question"]
             # if instance[col_org_ques] != '': 
             #     original_question = instance[col_org_ques]
             if isICR == True:
@@ -166,9 +175,9 @@ def evaluate(model_id, task, dataset, task_to_keys, task_to_prompts, isICR=False
             # original_response = original_response.lower().strip()
             
             if 'yes' in response:
-                preds.append('yes')
+                preds.append(0)
             elif 'no' in response:
-                preds.append('no')
+                preds.append(1)
             else: 
                 print("did not get exact answer error; default to 0")
                 preds.append('Error')
@@ -183,8 +192,8 @@ def evaluate(model_id, task, dataset, task_to_keys, task_to_prompts, isICR=False
         
         if task == "qqp":
             instance = dataset.iloc[i]
-            q1 = instance[col_ques1]
-            q2 = instance[col_ques2]
+            q1 = instance["question1"]
+            q2 = instance["question2"]
             # if instance[col_org_ques1] != '':
             #     original_question = instance[col_org_ques1]
             if isICR == True:
@@ -211,9 +220,9 @@ def evaluate(model_id, task, dataset, task_to_keys, task_to_prompts, isICR=False
             # original_response = original_response.lower().strip()
             
             if 'not_equivalent' in response or 'not equivalent' in response:
-                preds.append('no')
+                preds.append(0)
             elif 'equivalent' in response:
-                preds.append('yes')
+                preds.append(1)
             else: 
                 print("did not get exact answer error; default to 0")
                 preds.append('Error')
@@ -231,8 +240,8 @@ def evaluate(model_id, task, dataset, task_to_keys, task_to_prompts, isICR=False
         
         if task == "mnli":
             instance = dataset.iloc[i]
-            premise_old = instance[col_premise]
-            hypo_old = instance[col_hypo]
+            premise_old = instance["premise"]
+            hypo_old = instance["hypothesis"]
             # if instance[col_org_premise] != '':
             #     original_premise = instance[col_org_premise]
             if isICR == True:
@@ -250,8 +259,8 @@ def evaluate(model_id, task, dataset, task_to_keys, task_to_prompts, isICR=False
 
                 
 
-            prompt = f"You are an expert linguist. Analyze whether the following two sentences are \"neutral\", \"contradiction\", or \"entailment\"? Before answering \"entailment\", think whether it might be \"neutral\" instead? The answer should only be exactly either \"entailment\", \"neutral\", or \"contradiction\". One word only, Nothing else."
-            prompt += f"Sentence 1: {premise}. Sentence 2: {hypo}"
+            prompt = f"You are an expert linguist. Analyze whether the premise entails the hypothesis. Before answering \"entailment\", think whether it might be \"neutral\" instead? The answer should only be exactly one word either \"entailment\", \"neutral\", or \"contradiction\". One word only, Nothing else."
+            prompt += f"Premise: {premise}. Hypothesis: {hypo}"
             response = model.invoke(prompt)
             # original_response = model.invoke(original_prompt)
 
@@ -259,13 +268,13 @@ def evaluate(model_id, task, dataset, task_to_keys, task_to_prompts, isICR=False
             # original_response = original_response.lower().strip()
             # print(response, original_response, labels[i])
             if 'entailment' in response:
-                preds.append('entailment')
+                preds.append(0)
             elif 'contradiction' in response:
-                preds.append('contradiction')
+                preds.append(2)
             elif 'neutral' in response:
-                preds.append('neutral')
+                preds.append(1)
             else: 
-                print("did not get exact answer error; default to 0")
+                print("did not get exact answer error;")
                 preds.append('Error')
             print(response, preds[i], labels[i])
 
@@ -359,20 +368,20 @@ def main():
         help="The ID of the model to be used."
     )
 
-    parser.add_argument(
-        "--task", 
-        type=str, 
-        required=True, 
-        help="The task to be performed by the model."
-    )
+    # parser.add_argument(
+    #     "--task", 
+    #     type=str, 
+    #     required=True, 
+    #     help="The task to be performed by the model."
+    # )
 
     args = parser.parse_args()
     model_id = args.model
-    task = args.task
+    # task = args.task
 
-    print(model_id, task)
+    print(model_id)
 
-    ds = pd.read_csv(f"./benchmarks/advglueplusplus/advglueplusplus_{task}.csv")
+    ds = pd.read_csv(f"./benchmarks/final_advplusplus.csv")
 
     # tasks = ['sst2', 'qqp', 'mnli', 'qnli', 'rte']
     # datasets_map = {task:ds[task] for task in tasks}
@@ -380,14 +389,14 @@ def main():
     # # Display some sample data
     # print(datasets_map[tasks[0]].shape)
 
-    task_to_keys = {
-        "mnli": ("premise", "hypothesis"),
-        "mnli-mm": ("premise", "hypothesis"),
-        "qnli": ("question", "sentence"),
-        "qqp": ("question1", "question2"),
-        "rte": ("sentence1", "sentence2"),
-        "sst2": ("sentence", None),
-    }
+    # task_to_keys = {
+    #     "mnli": ("premise", "hypothesis"),
+    #     "mnli-mm": ("premise", "hypothesis"),
+    #     "qnli": ("question", "sentence"),
+    #     "qqp": ("question1", "question2"),
+    #     "rte": ("sentence1", "sentence2"),
+    #     "sst2": ("sentence", None),
+    # }
 
     task_to_prompts = {
         "mnli": "unused",
@@ -398,51 +407,51 @@ def main():
         "sst2": "You must choose exactly one word from these two options: [\"positive\", \"negative\"]. Analyze this sentence and respond with only that one word, no punctuation or explanation: Sentence: ",
     }
 
-    if task == "qnli":
-        aux_col = ["sentence", "question"]
-    elif task == "mnli":
-        aux_col = ["hypothesis", "premise"]
-    elif task == "qqp":
-        aux_col = ["question2", "question1"]
-    elif task == "sst2":
-        aux_col = ["sentence"]
+    # if task == "qnli":
+    #     aux_col = ["sentence", "question"]
+    # elif task == "mnli":
+    #     aux_col = ["hypothesis", "premise"]
+    # elif task == "qqp":
+    #     aux_col = ["question2", "question1"]
+    # elif task == "sst2":
+    #     aux_col = ["sentence"]
 
     # Group by attack type and select 60 instances from each group
-    attack_types = ["semattack", "textbugger", "textfooler", "sememepso", "bertattack"]
-    final_data = []
-    for attack in attack_types: 
-        filtered = ds[ds["method"] == attack].head(20)
+    # attack_types = ["semattack", "textbugger", "textfooler", "sememepso", "bertattack"]
+    # final_data = []
+    # for attack in attack_types: 
+    #     filtered = ds[ds["method"] == attack].head(20)
 
-        # Filter the dataset to include only the required columns
-        columns_to_include = ["index", "label"] + aux_col + ["method"]
-        filtered_data = filtered[columns_to_include]
+    #     # Filter the dataset to include only the required columns
+    #     columns_to_include = ["index", "label"] + aux_col + ["method"]
+    #     filtered_data = filtered[columns_to_include]
 
-        final_data.append(filtered_data)
+    #     final_data.append(filtered_data)
     
-    final_data = pd.concat(final_data, ignore_index=True)
+    # final_data = pd.concat(final_data, ignore_index=True)
     
-    labels, preds = evaluate(model_id,task,final_data,task_to_keys,task_to_prompts,isICR=True)
+    labels, preds = evaluate(model_id,ds, task_to_prompts,isICR=True)
     print(labels, preds)
 
     columns = ["index","pred","label","method"]
     res = pd.DataFrame(columns=columns)
-    for i in range(len(final_data)):
+    for i in range(len(ds)):
         pred = preds[i]
         label = labels[i]
-        method = final_data.iloc[i]["method"]  # Assuming `final_data` contains a 'method' field
+        method = ds.iloc[i]["method"]  # Assuming `final_data` contains a 'method' field
 
         # Append the data to the DataFrame
         res = pd.concat(
             [
                 res,
-                pd.DataFrame([{"index": final_data.iloc[i]["index"], "pred": pred, "label": label, "method": method}])
+                pd.DataFrame([{"index": ds.iloc[i]["index"], "pred": pred, "label": label, "method": method}])
             ],
             ignore_index=True
         )
 
     # Print or save the resulting DataFrame
     print(res)
-    res.to_csv(f"llama27b_predictions_advplusplus_{task}.csv", index=False)
+    res.to_csv(f"{model_id}_predictions_advplusplus_ICR.csv", index=False)
 
     
     # metrics = calculate_metrics(labels=labels, preds=preds)
