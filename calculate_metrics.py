@@ -6,11 +6,11 @@ import json
 from typing import Dict
 
 # Set the file path and other configurations here
-FILE_PATH = "checkpoints/detailed_results_adv_llama2_advglue++.csv"  # Path to the detailed results CSV file
-OUTPUT_CSV = "results/ahp/adv_advglue++_llama2_metrics_by_attack.csv"  # File to save the aggregated metrics in CSV format
-MODEL_NAME = "llama2"  # Model name
-BENCHMARK = "advglue++"  # Benchmark name
-GROUP_BY = "method"  # Column to group by: 'dataset' or 'attack_name'
+FILE_PATH = "checkpoints-llama2-13b/detailed_results_adv_llama2:13b_promptbench.csv"  # Path to the detailed results CSV file
+OUTPUT_CSV = "results/ahp/adv_pb_llama2:13b_metrics.csv"  # File to save the aggregated metrics in CSV format
+MODEL_NAME = "llama2:13b"  # Model name
+BENCHMARK = "promptbench"  # Benchmark name
+GROUP_BY = "attack_name"  # Column to group by: 'dataset' or 'attack_name'
 
 def calculate_grouped_metrics(data: pd.DataFrame, group_by: str) -> pd.DataFrame:
     """

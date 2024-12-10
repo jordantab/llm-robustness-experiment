@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the models you want to test
-models=("llama2")  # Replace with your actual model IDs
+models=("llama2:13b")  # Replace with your actual model IDs
 # models=("mixtral:8x7b" "llama2:7b") 
 
 # Define the robustness types

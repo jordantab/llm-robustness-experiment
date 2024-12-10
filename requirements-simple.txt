@@ -11,3 +11,6 @@ datetime              # For timestamping and logging
 tiktoken
 protobuf
 blobfile
+promptbench
+lru-dict
+textattack
