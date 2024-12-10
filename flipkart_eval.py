@@ -135,7 +135,7 @@ def main():
     filtered_df = df[df['Summary'].notna()]
     length_filtered_df = filtered_df[filtered_df['Summary'].str.len().between(
         150, 160)].head(300)
-    model_id = "llama2:7b"
+    model_id = "llama2:13b"
     model = OllamaLLM(model=model_id)
     accuracy, precision, recall, f1 = run_experiment(
         length_filtered_df, model, model_id)
