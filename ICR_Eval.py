@@ -67,7 +67,7 @@ def evaluate_with_ICR(benchmark, model_id):
         data = load_dataset_for_benchmark(benchmark)
         columns = ["summary_icr", "pred", "true_label"]
         res = pd.DataFrame(columns=columns)
-        for i in range(285,len(data)): 
+        for i in range(len(data)): 
             instance = data.iloc[i]
             summary = instance["Summary"] 
             summary_ICR = create_rewriting_prompt_OOD(None, summary, model_id)
