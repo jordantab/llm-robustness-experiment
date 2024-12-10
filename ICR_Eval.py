@@ -1,5 +1,4 @@
 from ICR import * 
-from huggingface_hub import login 
 from langchain_ollama.llms import OllamaLLM
 import pandas as pd
 import json
@@ -19,7 +18,7 @@ def load_dataset_for_benchmark(benchmark):
         filtered_df = df[df['Summary'].notna()]
         length_filtered_df = filtered_df[filtered_df['Summary'].str.len().between(
             150, 160)]
-
+        length_filtered_df = length_filtered_df[:300]
         # Extract the `Summary` and `Sentiment` columns
         extracted_data = length_filtered_df[["Summary", "Sentiment"]]
         return extracted_data
@@ -101,9 +100,11 @@ def evaluate_with_ICR(benchmark, model_id):
             response = model.invoke(prompt)
 
             response = response.replace("'", '"')
+            print(response)
             response_json = json.loads(response)
             sentiment = response_json['sentiment']
             sentiment = sentiment.strip().lower()
+            print(sentiment)
             new_row = {"summary_icr": summary_ICR, "pred": sentiment, "true_label": instance["Sentiment"]}
             res = pd.concat([res, pd.DataFrame([new_row])], ignore_index=True)
             if i % 20 == 0:

@@ -1,8 +1,6 @@
 import numpy as np
 from typing import List, Tuple, Dict, Union
 from langchain_ollama.llms import OllamaLLM
-from datasets import load_dataset
-from huggingface_hub import login
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 import os
 from datetime import datetime
@@ -38,7 +36,7 @@ def create_rewriting_prompt_plusplus(examples_per_attack, perturbed_sentence, mo
     prompt += (
     "Provide the response in valid JSON format, ensuring there are no syntax errors. "
     "Make sure to include both opening and closing braces. "
-    "Only use one key: \"New Sentence\"."
+    "Only use one key: \"NewSentence\"."
     )
 
     model = OllamaLLM(model=model_id)
@@ -53,14 +51,14 @@ def create_rewriting_prompt_plusplus(examples_per_attack, perturbed_sentence, mo
             parsed_data = json.loads(res_fixed)
         except:
             print(res_fixed)
-            defalt = json.dumps({"New Sentence": perturbed_sentence})
+            defalt = json.dumps({"NewSentence": perturbed_sentence})
             parsed_data = json.loads(defalt)
     # print(res)
 
     # Accessing specific inputs
-    input_1 = parsed_data["New Sentence"]
+    input_1 = parsed_data["NewSentence"]
     return input_1
-
+    
 def create_rewriting_prompt(examples_per_attack, perturbed_sentence, model_id):
     """
     Create a prompt for in-context learning to rewrite perturbed sentences to cleaner ones.
@@ -90,7 +88,7 @@ def create_rewriting_prompt(examples_per_attack, perturbed_sentence, model_id):
     prompt += (
     "Provide the response in valid JSON format, ensuring there are no syntax errors. "
     "Make sure to include both opening and closing braces. "
-    "Only use one key: \"New Sentence\"."
+    "Only use one key: \"NewSentence\"."
     )
 
     model = OllamaLLM(model=model_id, temperature=0.0)
@@ -105,7 +103,7 @@ def create_rewriting_prompt(examples_per_attack, perturbed_sentence, model_id):
     # print(res)
 
     # Accessing specific inputs
-    input_1 = parsed_data["New Sentence"]
+    input_1 = parsed_data["NewSentence"]
     return input_1
 
 def create_multiinput_rewriting_prompt(examples_per_attack, input1, input2, model_id):
@@ -202,24 +200,26 @@ def create_rewriting_prompt_OOD(examples, ood_sentence, model_id):
     prompt += "Now, given the following sentence, please provide the paraphrased output. Give ONLY THE SENTENCE and nothing else.\n\n"
     prompt += f"Given Sentence: {ood_sentence}\n\n"
     prompt += (
-    "Provide the response in valid JSON format, ensuring there are no syntax errors. "
+    "Provide the response in valid JSON format, ensuring there are no syntax errors. Output ONLY the JSON. Nothing Else. Do not say \"Here's the paraphrased sentence in JSON format:\" "
     "Make sure to include both opening and closing braces. "
-    "Only use one key: \"New Sentence\"."
+    "Only use one key: \"NewSentence\"."
     )
 
     model = OllamaLLM(model=model_id)
     res = model.invoke(prompt)
+    print(res)
     # Ensure the response is valid JSON
     try:
         parsed_data = json.loads(res)
     except json.JSONDecodeError:
         # Fix common issues like missing closing brackets
         res_fixed = res.strip() + "}"
+        print(res_fixed)
         parsed_data = json.loads(res_fixed)
     # print(res)
 
     # Accessing specific inputs
-    input_1 = parsed_data["New Sentence"]
+    input_1 = parsed_data["NewSentence"]
     return input_1
 # # The perturbed sentence that needs to be cleaned
 # perturbed_sentence = "less than one monthmoter automatically burnno replacement gurantee"
