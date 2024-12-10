@@ -1,0 +1,15 @@
+{
+  "model_id": "llama2:13b",
+  "robustness_type": "ood2",
+  "benchmark": "ddx",
+  "metrics": {
+    "accuracy": 0.21794871794871795,
+    "precision": 0.2992165242165242,
+    "recall": 0.21794871794871795,
+    "f1": 0.22440443717039463
+  },
+  "incomplete_AHP": 0,
+  "formatting_mistakes": 22,
+  "num_samples": 100,
+  "timestamp": "20241210_104947"
+}
