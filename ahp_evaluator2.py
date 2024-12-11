@@ -9,7 +9,7 @@ import numpy as np
 import pandas as pd
 from typing import Dict, List, Union, Tuple
 from langchain_ollama.llms import OllamaLLM
-from datasets import load_dataset
+# from datasets import load_dataset
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 
 class AHPEvaluator:
