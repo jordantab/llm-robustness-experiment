@@ -333,7 +333,7 @@ def save_results(metrics: Dict, model_id: str, task: str, num_samples: int,
     df_new = pd.DataFrame([result_dict])
     
     # Define file path
-    csv_path = os.path.join(output_dir, 'evaluation_results.csv')
+    csv_path = os.path.join(output_dir, f'advglue++_{task}_evaluation_results.csv')
     
     # If file exists, append to it; otherwise create new file
     if os.path.exists(csv_path):

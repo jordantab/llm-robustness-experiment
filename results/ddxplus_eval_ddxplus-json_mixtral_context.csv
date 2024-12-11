@@ -1,3 +1,0 @@
-0,1,2,3,4,5
-model name,model service,accuracy,precision,recall,f1-score
-mixtral,ollama-langchain,0.41,0.45132539682539685,0.41,0.3977611832611833

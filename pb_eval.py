@@ -26,7 +26,7 @@ logging.basicConfig(
 )
 
 class PromptRobustnessEvaluator:
-    def __init__(self, model_id: str, dataset_name: str = "sst2", num_samples: int = None, checkpoint_dir: str = "checkpoints"):
+    def __init__(self, model_id: str, dataset_name: str = "sst2", num_samples: int = None, checkpoint_dir: str = "checkpoints_baseline"):
         """
         Initialize evaluator with enhanced error handling and checkpoint support
         """
@@ -161,6 +161,25 @@ class PromptRobustnessEvaluator:
             }
         }
         
+        # reduced_attack_config = {
+        #     "textbugger": {
+        #         "max_candidates": 3,  # Increase candidates
+        #         "min_sentence_cos_sim": 0.6,  # Slightly lower similarity constraint
+        #     },
+        #     "deepwordbug": {
+        #         "levenshtein_edit_distance": 50,  # Increase allowed edit distance
+        #     },
+        #     "bertattack": {
+        #         "max_candidates": 3,  # More candidate replacements
+        #         "max_word_perturbed_percent": 0.8, # Allow more words to be changed
+        #         "min_sentence_cos_sim": 0.5,  # Much lower semantic similarity requirement
+        #     },
+        #     "checklist": {
+        #         "max_candidates": 5,  # More candidates for sentence-level transformations
+        #     }
+        # }
+
+        
         def eval_func(prompt, dataset, model):
             preds = []
             labels = []
@@ -257,11 +276,11 @@ class PromptRobustnessEvaluator:
         selected_attacks = [
             # 'textbugger',    # Character-level
             # 'deepwordbug',   # Character-level  
-            'textfooler',    # Word-level
-            'bertattack',    # Word-level
-            'checklist',     # Sentence-level
-            'stresstest',    # Sentence-level
-            # 'semantic'       # Semantic-level
+            # 'textfooler',    # Word-level
+            # 'bertattack',    # Word-level
+            # 'checklist',     # Sentence-level
+            # 'stresstest',    # Sentence-level
+            'semantic'       # Semantic-level
         ]
         
         # Protected words that must not be modified
@@ -372,9 +391,9 @@ class PromptRobustnessEvaluator:
 
 def main():
     # Configuration
-    models = ["llama2", "mixtral"]
+    models = ["llama2:13b"]
     datasets = ["sst2"]
-    num_samples = 100
+    num_samples = 50
     
     for model_id in models:
         for dataset_name in datasets:

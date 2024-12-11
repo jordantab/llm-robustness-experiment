@@ -1,0 +1,512 @@
+File: /Users/aprilyang/Desktop/CMU/24fall/11785/project/llm-robustness-experiment/pb_results/results/adv_attack_mixtral_sst2_checklist.json
+{
+  "model_id": "mixtral",
+  "dataset": "sst2",
+  "attack_name": "checklist",
+  "attack_index": 3,
+  "total_attacks": 4,
+  "result": {
+    "original prompt": "Analyze the sentiment of this text and respond with 'positive' or 'negative': {content}",
+    "original score": 0.93,
+    "attacked prompt": "Analyze the sentiment of this text and respond with 'positive' or 'negative': {content 5XeflW1ZJc}",
+    "attacked score": 0.0,
+    "PDR": 1.0
+  },
+  "protected_words": [
+    "content",
+    "question",
+    "negative",
+    "negative'",
+    "positive",
+    "positive'",
+    "sentence"
+  ],
+  "attack_config": {
+    "max_candidates": 2
+  },
+  "timestamp": "20241026_041206"
+}
+--------------------------------------------------------------------------------
+File: /Users/aprilyang/Desktop/CMU/24fall/11785/project/llm-robustness-experiment/pb_results/results/adv_attack_llama2_sst2_bertattack.json
+{
+  "model_id": "llama2",
+  "dataset": "sst2",
+  "attack_name": "bertattack",
+  "attack_index": 2,
+  "total_attacks": 4,
+  "result": {
+    "original prompt": "Analyze the sentiment of this text and respond with 'positive' or 'negative': {content}",
+    "original score": 0.8979591836734694,
+    "attacked prompt": "from the performance of this text and respond with 'positive' or 'negative': {content}",
+    "attacked score": 0.5918367346938775,
+    "PDR": 0.34090909090909094
+  },
+  "protected_words": [
+    "content",
+    "question",
+    "negative",
+    "negative'",
+    "positive",
+    "positive'",
+    "sentence"
+  ],
+  "attack_config": {
+    "max_candidates": 10,
+    "max_word_perturbed_percent": 0.5,
+    "min_sentence_cos_sim": 0.8
+  },
+  "timestamp": "20241025_200812"
+}
+--------------------------------------------------------------------------------
+File: /Users/aprilyang/Desktop/CMU/24fall/11785/project/llm-robustness-experiment/pb_results/results/adv_attack_llama2_sst2_checklist.json
+{
+  "model_id": "llama2",
+  "dataset": "sst2",
+  "attack_name": "checklist",
+  "attack_index": 3,
+  "total_attacks": 4,
+  "result": {
+    "original prompt": "Analyze the sentiment of this text and respond with 'positive' or 'negative': {content}",
+    "original score": 0.8673469387755102,
+    "attacked prompt": "Analyze the sentiment of this text and respond with 'positive' or 'negative': {content 5XeflW1ZJc}",
+    "attacked score": 0.0,
+    "PDR": 1.0
+  },
+  "protected_words": [
+    "content",
+    "question",
+    "negative",
+    "negative'",
+    "positive",
+    "positive'",
+    "sentence"
+  ],
+  "attack_config": {
+    "max_candidates": 2
+  },
+  "timestamp": "20241025_201045"
+}
+--------------------------------------------------------------------------------
+File: /Users/aprilyang/Desktop/CMU/24fall/11785/project/llm-robustness-experiment/pb_results/results/adv_attack_llama2_sst2_stresstest.json
+{
+  "model_id": "llama2",
+  "dataset": "sst2",
+  "attack_name": "stresstest",
+  "attack_index": 4,
+  "total_attacks": 4,
+  "result": {
+    "original prompt": "Analyze the sentiment of this text and respond with 'positive' or 'negative': {content}",
+    "original score": 0.8775510204081632,
+    "attacked prompt": "Analyze the sentiment of this text and respond with 'positive' or 'negative': {content  and false is not true }",
+    "attacked score": 0.0,
+    "PDR": 1.0
+  },
+  "protected_words": [
+    "content",
+    "question",
+    "negative",
+    "negative'",
+    "positive",
+    "positive'",
+    "sentence"
+  ],
+  "attack_config": {},
+  "timestamp": "20241025_201317"
+}
+--------------------------------------------------------------------------------
+File: /Users/aprilyang/Desktop/CMU/24fall/11785/project/llm-robustness-experiment/pb_results/results/adv_attack_llama2_sst2_textbugger.json
+{
+  "model_id": "llama2",
+  "dataset": "sst2",
+  "attack_name": "textbugger",
+  "attack_index": 1,
+  "total_attacks": 2,
+  "result": {
+    "original prompt": "Analyze the sentiment of this text and respond with 'positive' or 'negative': {content}",
+    "original score": 0.8775510204081632,
+    "attacked prompt": "Analyzing the s\u0435ntiment of this tex\ud835\ude9d and respond with 'positive' or 'negative': {content}",
+    "attacked score": 0.7708333333333334,
+    "PDR": 0.12160852713178288
+  },
+  "protected_words": [
+    "question",
+    "negative",
+    "{content}",
+    "content",
+    "sentence",
+    "negative'",
+    "positive'",
+    "positive",
+    "content'"
+  ],
+  "attack_config": {
+    "max_candidates": 3,
+    "min_sentence_cos_sim": 0.8
+  },
+  "timestamp": "20241027_075837"
+}
+--------------------------------------------------------------------------------
+File: /Users/aprilyang/Desktop/CMU/24fall/11785/project/llm-robustness-experiment/pb_results/results/adv_attacks_final_mixtral_sst2.json
+{
+  "model_id": "mixtral",
+  "dataset": "sst2",
+  "all_attack_results": {
+    "textbugger": {
+      "original prompt": "Analyze the sentiment of this text and respond with 'positive' or 'negative': {content}",
+      "original score": 0.91,
+      "attacked prompt": "Ana\u217cyze the feeling of this text and answer with 'positive' or 'negative': {content}",
+      "attacked score": 0.8,
+      "PDR": 0.12087912087912087
+    },
+    "deepwordbug": {
+      "original prompt": "Analyze the sentiment of this text and respond with 'positive' or 'negative': {content}",
+      "original score": 0.87,
+      "attacked prompt": "Analzye the sentiment of this texR and espond with 'positive' or 'negative': {content}",
+      "attacked score": 0.86,
+      "PDR": 0.011494252873563229
+    }
+  },
+  "timestamp": "20241027_130812"
+}
+--------------------------------------------------------------------------------
+File: /Users/aprilyang/Desktop/CMU/24fall/11785/project/llm-robustness-experiment/pb_results/results/adv_attack_mixtral_sst2_deepwordbug.json
+{
+  "model_id": "mixtral",
+  "dataset": "sst2",
+  "attack_name": "deepwordbug",
+  "attack_index": 2,
+  "total_attacks": 2,
+  "result": {
+    "original prompt": "Analyze the sentiment of this text and respond with 'positive' or 'negative': {content}",
+    "original score": 0.87,
+    "attacked prompt": "Analzye the sentiment of this texR and espond with 'positive' or 'negative': {content}",
+    "attacked score": 0.86,
+    "PDR": 0.011494252873563229
+  },
+  "protected_words": [
+    "question",
+    "negative",
+    "{content}",
+    "content",
+    "sentence",
+    "negative'",
+    "positive'",
+    "positive",
+    "content'"
+  ],
+  "attack_config": {
+    "levenshtein_edit_distance": 20
+  },
+  "timestamp": "20241027_130812"
+}
+--------------------------------------------------------------------------------
+File: /Users/aprilyang/Desktop/CMU/24fall/11785/project/llm-robustness-experiment/pb_results/results/adv_attack_mixtral_sst2_bertattack.json
+{
+  "model_id": "mixtral",
+  "dataset": "sst2",
+  "attack_name": "bertattack",
+  "attack_index": 2,
+  "total_attacks": 4,
+  "result": {
+    "original prompt": "Analyze the sentiment of this text and respond with 'positive' or 'negative': {content}",
+    "original score": 0.89,
+    "attacked prompt": "analyze the emotions of this text and query with 'positive' or 'negative': {content}",
+    "attacked score": 0.63,
+    "PDR": 0.29213483146067415
+  },
+  "protected_words": [
+    "content",
+    "question",
+    "negative",
+    "negative'",
+    "positive",
+    "positive'",
+    "sentence"
+  ],
+  "attack_config": {
+    "max_candidates": 10,
+    "max_word_perturbed_percent": 0.5,
+    "min_sentence_cos_sim": 0.8
+  },
+  "timestamp": "20241026_040849"
+}
+--------------------------------------------------------------------------------
+File: /Users/aprilyang/Desktop/CMU/24fall/11785/project/llm-robustness-experiment/pb_results/results/adv_attack_llama2_sst2_deepwordbug.json
+{
+  "model_id": "llama2",
+  "dataset": "sst2",
+  "attack_name": "deepwordbug",
+  "attack_index": 2,
+  "total_attacks": 2,
+  "result": {
+    "original prompt": "Analyze the sentiment of this text and respond with 'positive' or 'negative': {content}",
+    "original score": 0.8787878787878788,
+    "attacked prompt": "Analdyze the sentimetn of this etxt and Yespond with 'positive' or 'negative': {content}",
+    "attacked score": 0.6804123711340206,
+    "PDR": 0.2257376466405972
+  },
+  "protected_words": [
+    "question",
+    "negative",
+    "{content}",
+    "content",
+    "sentence",
+    "negative'",
+    "positive'",
+    "positive",
+    "content'"
+  ],
+  "attack_config": {
+    "levenshtein_edit_distance": 20
+  },
+  "timestamp": "20241027_090046"
+}
+--------------------------------------------------------------------------------
+File: /Users/aprilyang/Desktop/CMU/24fall/11785/project/llm-robustness-experiment/pb_results/results/adv_attack_mixtral_sst2_semantic.json
+{
+  "model_id": "mixtral",
+  "dataset": "sst2",
+  "attack_name": "semantic",
+  "attack_index": 1,
+  "total_attacks": 1,
+  "result": {
+    "Answer whether the statement is 'positive' or 'negative' based on sentiment analysis. ": 0.53,
+    "As an emotion analysis tool, determine whether the emotion in the text is 'positive' or 'negative'. ": 0.48,
+    "Categorize the statement as 'positive' or 'negative', based on its emotional bent. ": 0.48,
+    "Please use sentiment analysis to classify the text as 'positive' or 'negative'. ": 0.47474747474747475,
+    "Please determine whether the emotion of the sentence is 'positive' or 'negative' and categorize it. ": 0.48,
+    "Using sentiment analysis, classify the text as 'positive' or 'negative'. ": 0.4895833333333333,
+    "Please answer whether the emotion of the sentence is 'positive' or 'negative' and categorize it. ": 0.48,
+    "Categorize the statement as 'positive' or 'negative' based on sentiment analysis. ": 0.57,
+    "Please judge this text as 'positive' or 'negative' according to the criteria of sentiment analysis. ": 0.47368421052631576,
+    "Please classify this sentence as 'positive' or 'negative' according to the principles of emotion analysis. ": 0.45,
+    "As a sentiment analysis tool, please answer with 'positive' or 'negative' to classify this statement. ": 0.48,
+    "Determine whether this phrase is 'positive' or 'negative' as a sentiment classification tool. ": 0.47,
+    "Identify the tone of this statement by choosing between 'positive' and 'negative' as a sentiment analysis tool. ": 0.49,
+    "Use sentiment analysis to classify this statement as 'positive' or 'negative'. ": 0.48,
+    "As a sentiment classification tool, please determine whether this statement is 'positive' or 'negative'. ": 0.5,
+    "Classify this sentence as 'positive' or 'negative' using sentiment analysis. ": 0.48,
+    "Choose between 'positive' or 'negative' to classify this statement as a sentiment analysis tool. ": 0.48,
+    "Identify the sentiment expressed in this statement by selecting 'positive' or 'negative' as a sentiment classification tool. ": 0.48,
+    "Determine whether this phrase is 'positive' or 'negative' using sentiment analysis as a classification tool. ": 0.48,
+    "Under emotional analysis, answer 'positive' or 'negative' to classify this statement. ": 0.48,
+    "Does this statement express a 'positive' or 'negative' reaction? ": 0.46,
+    "Is that a 'positive' or a 'negative' phrase? ": 0.48,
+    "What is the classification between 'positive' and 'negative'? ": 0.48,
+    "Does this sentence express 'positive' or 'negative' feelings? ": 0.5050505050505051,
+    "In the context of textual analysis, what classification is this phrase between 'positive' and 'negative'? ": 0.48,
+    "Could this be classified as 'positive' or 'negative'? ": 0.48,
+    "In the context of emotional analysis, what classification is this statement between 'positive' and 'negative'? ": 0.53,
+    "Can this be classified as 'positive' or 'negative'? ": 0.47,
+    "Under the classification of emotions, is this sentence 'positive' or 'negative'? ": 0.48,
+    "As a feeling analysis tool, classify this statement as 'positive' or 'negative'. ": 0.47959183673469385,
+    "Determine whether this statement has a 'positive' or 'negative' connotation. ": 0.53,
+    "Indicate whether the following statement is 'positive' or 'negative'. ": 0.47,
+    "Evaluate whether this text has a 'positive' or 'negative' emotional charge. ": 0.46,
+    "According to your sentiment analysis, would you say this comment is 'positive' or 'negative'? ": 0.48,
+    "In the context of sentiment analysis, label this sentence as 'positive' or 'negative'. ": 0.51,
+    "Rate the following statement as 'positive' or 'negative', according to your sentiment analysis. ": 0.5050505050505051,
+    "How would you classify this text in terms of its emotional tone? 'positive' or 'negative'? ": 0.48484848484848486,
+    "As a tool for sentiment analysis, would you say this statement is 'positive' or 'negative'? ": 0.46153846153846156,
+    "Classify this statement as 'positive' or 'negative', please. ": 0.52,
+    "Treat this sentence as an emotion analysis tool and categorize it as 'positive' and 'negative'. ": 0.48,
+    "Use this article as a sentiment analysis tool to classify 'positive' and 'negative'. ": 0.48,
+    "Use this sentence as an emotion analysis tool to determine whether it is 'positive' or 'negative'. ": 0.51,
+    "Use this sentence as an emotion analysis tool to classify 'positive' and 'negative'. ": 0.48,
+    "Use this sentence as a sentiment analysis tool and classify it as 'positive' or 'negative'. ": 0.49,
+    "To classify this sentence as 'positive' or 'negative', evaluate it as a sentiment analysis tool. ": 0.48,
+    "Treat this sentence as an emotion analysis tool to determine whether it is 'positive' or 'negative'. ": 0.48,
+    "Use this sentence as a sentiment analysis tool to classify 'positive' and 'negative'. ": 0.51,
+    "Analyze this sentence as an emotion analysis tool to classify whether it is 'positive' or 'negative'. ": 0.47474747474747475,
+    "Use this sentence as an emotional analysis tool to determine whether it is 'positive' or 'negative'. ": 0.48,
+    "As an emotional analysis tool, respond with 'positive' or 'negative' to classify these sentences. ": 0.48,
+    "Classify this sentence as 'positive' if you regard it as positive, 'negative' if you regard it as negative. ": 0.48484848484848486,
+    "Please rate the emotion of this sentence and classify it as 'positive' or 'negative'. ": 0.48,
+    "Classify this sentence as 'positive' if you perceive it positively and 'negative' if you perceive it negatively. ": 0.47474747474747475,
+    "If this is a sentence delivered using a positive expression, classify it as 'positive' and if this is a sentence delivered using a negative expression, classify it as 'negative'. ": 0.47959183673469385,
+    "Respond with 'positive' or 'negative' by categorizing whether the sentence is positive or negative. ": 0.55,
+    "Please analyze the emotion in this sentence and classify it as 'positive' or 'negative'. ": 0.48,
+    "Classify this sentence as 'positive' if it contains a positive meaning, 'negative' if it contains a negative meaning. ": 0.5189873417721519,
+    "Classify this sentence as 'positive' if it contains positive content, 'negative' if it contains negative content. ": 0.48,
+    "Classify what you're trying to convey in this sentence as 'positive' if it's positive, and 'negative' if it's negative. ": 0.49
+  },
+  "protected_words": [
+    "negative",
+    "content'",
+    "negative'",
+    "question",
+    "sentence",
+    "{content}",
+    "positive'",
+    "content",
+    "positive"
+  ],
+  "attack_config": {},
+  "timestamp": "20241027_052832"
+}
+--------------------------------------------------------------------------------
+File: /Users/aprilyang/Desktop/CMU/24fall/11785/project/llm-robustness-experiment/pb_results/results/adv_attack_mixtral_sst2_textbugger.json
+{
+  "model_id": "mixtral",
+  "dataset": "sst2",
+  "attack_name": "textbugger",
+  "attack_index": 1,
+  "total_attacks": 2,
+  "result": {
+    "original prompt": "Analyze the sentiment of this text and respond with 'positive' or 'negative': {content}",
+    "original score": 0.91,
+    "attacked prompt": "Ana\u217cyze the feeling of this text and answer with 'positive' or 'negative': {content}",
+    "attacked score": 0.8,
+    "PDR": 0.12087912087912087
+  },
+  "protected_words": [
+    "question",
+    "negative",
+    "{content}",
+    "content",
+    "sentence",
+    "negative'",
+    "positive'",
+    "positive",
+    "content'"
+  ],
+  "attack_config": {
+    "max_candidates": 3,
+    "min_sentence_cos_sim": 0.8
+  },
+  "timestamp": "20241027_115928"
+}
+--------------------------------------------------------------------------------
+File: /Users/aprilyang/Desktop/CMU/24fall/11785/project/llm-robustness-experiment/pb_results/results/adv_attack_llama2_sst2_semantic.json
+{
+  "model_id": "llama2",
+  "dataset": "sst2",
+  "attack_name": "semantic",
+  "attack_index": 1,
+  "total_attacks": 1,
+  "result": {
+    "Answer whether the statement is 'positive' or 'negative' based on sentiment analysis. ": 0.4727272727272727,
+    "As an emotion analysis tool, determine whether the emotion in the text is 'positive' or 'negative'. ": 0.4931506849315068,
+    "Categorize the statement as 'positive' or 'negative', based on its emotional bent. ": 0.5208333333333334,
+    "Please use sentiment analysis to classify the text as 'positive' or 'negative'. ": 0.48214285714285715,
+    "Please determine whether the emotion of the sentence is 'positive' or 'negative' and categorize it. ": 0.4666666666666667,
+    "Using sentiment analysis, classify the text as 'positive' or 'negative'. ": 0.4891304347826087,
+    "Please answer whether the emotion of the sentence is 'positive' or 'negative' and categorize it. ": 0.5,
+    "Categorize the statement as 'positive' or 'negative' based on sentiment analysis. ": 0.4634146341463415,
+    "Please judge this text as 'positive' or 'negative' according to the criteria of sentiment analysis. ": 0.5081967213114754,
+    "Please classify this sentence as 'positive' or 'negative' according to the principles of emotion analysis. ": 0.48484848484848486,
+    "As a sentiment analysis tool, please answer with 'positive' or 'negative' to classify this statement. ": 0.5416666666666666,
+    "Determine whether this phrase is 'positive' or 'negative' as a sentiment classification tool. ": 0.4823529411764706,
+    "Identify the tone of this statement by choosing between 'positive' and 'negative' as a sentiment analysis tool. ": 0.42857142857142855,
+    "Use sentiment analysis to classify this statement as 'positive' or 'negative'. ": 0.4666666666666667,
+    "As a sentiment classification tool, please determine whether this statement is 'positive' or 'negative'. ": 0.5344827586206896,
+    "Classify this sentence as 'positive' or 'negative' using sentiment analysis. ": 0.5,
+    "Choose between 'positive' or 'negative' to classify this statement as a sentiment analysis tool. ": 0.45918367346938777,
+    "Identify the sentiment expressed in this statement by selecting 'positive' or 'negative' as a sentiment classification tool. ": 0.4157303370786517,
+    "Determine whether this phrase is 'positive' or 'negative' using sentiment analysis as a classification tool. ": 0.46,
+    "Under emotional analysis, answer 'positive' or 'negative' to classify this statement. ": 0.4473684210526316,
+    "Does this statement express a 'positive' or 'negative' reaction? ": 0.49473684210526314,
+    "Is that a 'positive' or a 'negative' phrase? ": 0.40217391304347827,
+    "What is the classification between 'positive' and 'negative'? ": 0.5102040816326531,
+    "Does this sentence express 'positive' or 'negative' feelings? ": 0.4666666666666667,
+    "In the context of textual analysis, what classification is this phrase between 'positive' and 'negative'? ": 0.4791666666666667,
+    "Could this be classified as 'positive' or 'negative'? ": 0.49122807017543857,
+    "In the context of emotional analysis, what classification is this statement between 'positive' and 'negative'? ": 0.48,
+    "Can this be classified as 'positive' or 'negative'? ": 0.4722222222222222,
+    "Under the classification of emotions, is this sentence 'positive' or 'negative'? ": 0.4742268041237113,
+    "As a feeling analysis tool, classify this statement as 'positive' or 'negative'. ": 0.5952380952380952,
+    "Determine whether this statement has a 'positive' or 'negative' connotation. ": 0.5473684210526316,
+    "Indicate whether the following statement is 'positive' or 'negative'. ": 0.5473684210526316,
+    "Evaluate whether this text has a 'positive' or 'negative' emotional charge. ": 0.4883720930232558,
+    "According to your sentiment analysis, would you say this comment is 'positive' or 'negative'? ": 0.43103448275862066,
+    "In the context of sentiment analysis, label this sentence as 'positive' or 'negative'. ": 0.4819277108433735,
+    "Rate the following statement as 'positive' or 'negative', according to your sentiment analysis. ": 0.4827586206896552,
+    "How would you classify this text in terms of its emotional tone? 'positive' or 'negative'? ": 0.5070422535211268,
+    "As a tool for sentiment analysis, would you say this statement is 'positive' or 'negative'? ": 0.44047619047619047,
+    "Classify this statement as 'positive' or 'negative', please. ": 0.5681818181818182,
+    "Treat this sentence as an emotion analysis tool and categorize it as 'positive' and 'negative'. ": 0.47674418604651164,
+    "Use this article as a sentiment analysis tool to classify 'positive' and 'negative'. ": 0.47560975609756095,
+    "Use this sentence as an emotion analysis tool to determine whether it is 'positive' or 'negative'. ": 0.547945205479452,
+    "Use this sentence as an emotion analysis tool to classify 'positive' and 'negative'. ": 0.4606741573033708,
+    "Use this sentence as a sentiment analysis tool and classify it as 'positive' or 'negative'. ": 0.4230769230769231,
+    "To classify this sentence as 'positive' or 'negative', evaluate it as a sentiment analysis tool. ": 0.5,
+    "Treat this sentence as an emotion analysis tool to determine whether it is 'positive' or 'negative'. ": 0.4533333333333333,
+    "Use this sentence as a sentiment analysis tool to classify 'positive' and 'negative'. ": 0.47619047619047616,
+    "Analyze this sentence as an emotion analysis tool to classify whether it is 'positive' or 'negative'. ": 0.4772727272727273,
+    "Use this sentence as an emotional analysis tool to determine whether it is 'positive' or 'negative'. ": 0.4520547945205479,
+    "As an emotional analysis tool, respond with 'positive' or 'negative' to classify these sentences. ": 0.4782608695652174,
+    "Classify this sentence as 'positive' if you regard it as positive, 'negative' if you regard it as negative. ": 0.39080459770114945,
+    "Please rate the emotion of this sentence and classify it as 'positive' or 'negative'. ": 0.42028985507246375,
+    "Classify this sentence as 'positive' if you perceive it positively and 'negative' if you perceive it negatively. ": 0.5333333333333333,
+    "If this is a sentence delivered using a positive expression, classify it as 'positive' and if this is a sentence delivered using a negative expression, classify it as 'negative'. ": 0.43103448275862066,
+    "Respond with 'positive' or 'negative' by categorizing whether the sentence is positive or negative. ": 0.4166666666666667,
+    "Please analyze the emotion in this sentence and classify it as 'positive' or 'negative'. ": 0.5135135135135135,
+    "Classify this sentence as 'positive' if it contains a positive meaning, 'negative' if it contains a negative meaning. ": 0.4675324675324675,
+    "Classify this sentence as 'positive' if it contains positive content, 'negative' if it contains negative content. ": 0.5714285714285714,
+    "Classify what you're trying to convey in this sentence as 'positive' if it's positive, and 'negative' if it's negative. ": 0.4782608695652174
+  },
+  "protected_words": [
+    "negative",
+    "content'",
+    "negative'",
+    "question",
+    "sentence",
+    "{content}",
+    "positive'",
+    "content",
+    "positive"
+  ],
+  "attack_config": {},
+  "timestamp": "20241027_013023"
+}
+--------------------------------------------------------------------------------
+File: /Users/aprilyang/Desktop/CMU/24fall/11785/project/llm-robustness-experiment/pb_results/results/adv_attack_mixtral_sst2_stresstest.json
+{
+  "model_id": "mixtral",
+  "dataset": "sst2",
+  "attack_name": "stresstest",
+  "attack_index": 4,
+  "total_attacks": 4,
+  "result": {
+    "original prompt": "Analyze the sentiment of this text and respond with 'positive' or 'negative': {content}",
+    "original score": 0.94,
+    "attacked prompt": "Analyze the sentiment of this text and respond with 'positive' or 'negative': {content  and false is not true }",
+    "attacked score": 0.0,
+    "PDR": 1.0
+  },
+  "protected_words": [
+    "content",
+    "question",
+    "negative",
+    "negative'",
+    "positive",
+    "positive'",
+    "sentence"
+  ],
+  "attack_config": {},
+  "timestamp": "20241026_041521"
+}
+--------------------------------------------------------------------------------
+File: /Users/aprilyang/Desktop/CMU/24fall/11785/project/llm-robustness-experiment/pb_results/results/adv_attacks_final_llama2_sst2.json
+{
+  "model_id": "llama2",
+  "dataset": "sst2",
+  "all_attack_results": {
+    "textbugger": {
+      "original prompt": "Analyze the sentiment of this text and respond with 'positive' or 'negative': {content}",
+      "original score": 0.8775510204081632,
+      "attacked prompt": "Analyzing the s\u0435ntiment of this tex\ud835\ude9d and respond with 'positive' or 'negative': {content}",
+      "attacked score": 0.7708333333333334,
+      "PDR": 0.12160852713178288
+    },
+    "deepwordbug": {
+      "original prompt": "Analyze the sentiment of this text and respond with 'positive' or 'negative': {content}",
+      "original score": 0.8787878787878788,
+      "attacked prompt": "Analdyze the sentimetn of this etxt and Yespond with 'positive' or 'negative': {content}",
+      "attacked score": 0.6804123711340206,
+      "PDR": 0.2257376466405972
+    }
+  },
+  "timestamp": "20241027_090046"
+}
+--------------------------------------------------------------------------------

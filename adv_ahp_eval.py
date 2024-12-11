@@ -5,6 +5,7 @@ import json
 import os
 from ahp_evaluator2 import AHPEvaluator
 from tqdm import tqdm
+import pandas as pd
 
 logging.basicConfig(
     level=logging.INFO,
@@ -16,9 +17,10 @@ logging.basicConfig(
 )
 
 def run_evaluation(args):
+    robustness_type = "baseline" if args.baseline else args.robustness_type
     evaluator = AHPEvaluator(
         model_id=args.model_id,
-        robustness_type="adv",
+        robustness_type=robustness_type,
         benchmark=args.benchmark,
         dataset_name=None,
         num_samples=args.num_samples
@@ -29,12 +31,15 @@ def run_evaluation(args):
     predictions = []
     incomplete_count = 0
     formatting_count = 0
-    checkpoint_interval = max(10, len(evaluator.dataset) // 10)
+    # checkpoint_interval = max(10, len(evaluator.dataset) // 10)
+    checkpoint_interval = 3
     total_samples = len(evaluator.dataset)
     
     for i, instance in enumerate(tqdm(evaluator.dataset, desc=f"Evaluating {args.benchmark}")):
         try:
-            dataset_name = instance.get("dataset", "unknown")  # Extract dataset name dynamically
+            print(instance)
+            dataset_name = instance.get("dataset", "sst2")  # Extract dataset name dynamically
+            
             evaluator.dataset_name = dataset_name
             
             pred, label, attack_method = evaluator.evaluate_sample(instance)
@@ -56,10 +61,38 @@ def run_evaluation(args):
                     "attack_name": instance.get("attack_name")
                 })
                 
-            # break
+            # Save results and metrics every 3 samples
             if (i + 1) % checkpoint_interval == 0:
                 metrics = evaluator.calculate_metrics(labels, predictions)
-                logging.info(f"Progress: {i+1}/{len(evaluator.dataset)} samples. Current metrics: {metrics}")
+                
+                # Save detailed results to a CSV file
+                results_df = pd.DataFrame(results_list)
+                results_csv_path = os.path.join(
+                    evaluator.checkpoint_dir,
+                    f"detailed_results_adv_{args.model_id}_{args.benchmark}_checkpoint.csv"
+                )
+                results_df.to_csv(results_csv_path, index=False)
+                
+                # Save metrics to JSON file
+                checkpoint_metrics = {
+                    'model_id': args.model_id,
+                    'robustness_type': args.robustness_type,
+                    'benchmark': args.benchmark,
+                    'metrics': metrics,
+                    'incomplete_AHP': incomplete_count,
+                    "formatting_mistakes": formatting_count,
+                    'num_samples': len(results_list),
+                    'timestamp': datetime.now().strftime('%Y%m%d_%H%M%S')
+                }
+                checkpoint_file = os.path.join(
+                    evaluator.checkpoint_dir,
+                    f"checkpoint_results_adv_{args.model_id}_{args.benchmark}.json"
+                )
+                with open(checkpoint_file, 'w') as f:
+                    json.dump(checkpoint_metrics, f, indent=2)
+                
+                logging.info(f"Checkpoint saved at {i+1} samples. Metrics: {metrics}")
+                
         except Exception as e:
             logging.error(f"Error processing instance {i}: {str(e)}")
             continue
@@ -71,7 +104,7 @@ def run_evaluation(args):
     results_df = pd.DataFrame(results_list)
     results_csv_path = os.path.join(
         evaluator.checkpoint_dir,
-        f"detailed_results_{args.model_id}_{args.benchmark}.csv"
+        f"detailed_results_adv_{args.model_id}_{args.benchmark}.csv"
     )
     results_df.to_csv(results_csv_path, index=False)
     
@@ -89,7 +122,7 @@ def run_evaluation(args):
     
     output_file = os.path.join(
         evaluator.checkpoint_dir,
-        f"results_{args.model_id}_{args.benchmark}_{args.dataset_name}.json"
+        f"results_adv_{args.model_id}_{args.benchmark}.json"
     )
     
     with open(output_file, 'w') as f:
@@ -98,6 +131,7 @@ def run_evaluation(args):
     logging.info(f"Evaluation completed. Results saved to {output_file}")
     logging.info(f"Detailed results saved to {results_csv_path}")
     return results
+    
 
 def main():
     parser = argparse.ArgumentParser(description='Run AHP evaluation')
@@ -107,6 +141,7 @@ def main():
     # parser.add_argument('--dataset_name', type=str, default='sst2', 
                     #    help='Dataset name (default: sst2)')
     parser.add_argument('--robustness_type', type=str, required=True, help="Adv or OOD", default="adv")
+    parser.add_argument('--baseline', action='store_true', help='Run baseline mode without AHP')
     parser.add_argument('--num_samples', type=int, default=50, 
                        help='Number of samples to evaluate')
     

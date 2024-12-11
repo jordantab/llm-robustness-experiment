@@ -1,3 +1,0 @@
-0,1,2,3,4,5
-model name,model service,accuracy,precision,recall,f1-score
-llama2,ollama-langchain,0.16,0.31068627450980396,0.16,0.18035338345864665
