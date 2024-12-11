@@ -1,0 +1,480 @@
+dataset,attack_name,prompt
+sst2,textbugger,Analyze the sentiment of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,the sentiment of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentiment of this and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentiment of this text and with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the ambience of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the emotion of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the feeling of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the mood of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the s entiment of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentiemnt of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentient of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentimen𝚝 of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentimeոt of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentimеnt of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentiｍent of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentіment of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sen𝚝iment of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the seոtiment of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sеntiment of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the vibe of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the ѕentiment of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analy ze the sеntiment of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyse the sеntiment of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analysing the sеntiment of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analysis the sеntiment of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyzes the sеntiment of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyzing the sеntiment of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyzе the sеntiment of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyᴢe the sеntiment of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analуze the sеntiment of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Anayze the sеntiment of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Anaⅼyze the sеntiment of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Anlayze the sеntiment of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Anɑlyze the sеntiment of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Aոalyze the sеntiment of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyzing the sеntiment of this texts and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyzing the sеntiment of this tex𝚝 and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyzing the sеntiment of this te×t and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyzing the sеntiment of this txet and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyzing the sеntiment of this txt and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyzing the sеntiment of this tеxt and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyzing the sеntiment of this wording and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyzing the sеntiment of this writings and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyzing the sеntiment of this 𝚝ext and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentiment of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,the sentiment of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the of this text and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentiment of this and respond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentiment of this text and with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentiment of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentiment of this text and answering with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentiment of this text and cater with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentiment of this text and replying with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentiment of this text and respod with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentiment of this text and responding with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentiment of this text and responԁ with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentiment of this text and respoոd with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentiment of this text and respоnd with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentiment of this text and resрond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentiment of this text and reѕpond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentiment of this text and rsepond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentiment of this text and rеspond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentiment of this text and ⲅespond with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the ambience of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the emotion of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the feeling of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the mood of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentime nt of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentimen𝚝 of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentimeոt of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentimеnt of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentiｍent of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentmient of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sentіment of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sen𝚝iment of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the setiment of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the seոtiment of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the sеntiment of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the vibe of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Analyze the ѕentiment of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Analyse the feeling of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Analysing the feeling of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Analysis the feeling of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Analyzes the feeling of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Analyzing the feeling of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Analyzе the feeling of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Analyᴢe the feeling of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Analуze the feeling of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Anaylze the feeling of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Anayze the feeling of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Anaⅼyze the feeling of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Anɑlyze the feeling of this text and answer with 'positive' or 'negative': {content}
+sst2,textbugger,Aոalyze the feeling of this text and answer with 'positive' or 'negative': {content}
+sst2,semantic,Answer whether the statement is 'positive' or 'negative' based on sentiment analysis. 
+sst2,semantic,"As an emotion analysis tool, determine whether the emotion in the text is 'positive' or 'negative'. "
+sst2,semantic,"Categorize the statement as 'positive' or 'negative', based on its emotional bent. "
+sst2,semantic,Please use sentiment analysis to classify the text as 'positive' or 'negative'. 
+sst2,semantic,Please determine whether the emotion of the sentence is 'positive' or 'negative' and categorize it. 
+sst2,semantic,"Using sentiment analysis, classify the text as 'positive' or 'negative'. "
+sst2,semantic,Please answer whether the emotion of the sentence is 'positive' or 'negative' and categorize it. 
+sst2,semantic,Categorize the statement as 'positive' or 'negative' based on sentiment analysis. 
+sst2,semantic,Please judge this text as 'positive' or 'negative' according to the criteria of sentiment analysis. 
+sst2,semantic,Please classify this sentence as 'positive' or 'negative' according to the principles of emotion analysis. 
+sst2,semantic,"As a sentiment analysis tool, please answer with 'positive' or 'negative' to classify this statement. "
+sst2,semantic,Determine whether this phrase is 'positive' or 'negative' as a sentiment classification tool. 
+sst2,semantic,Identify the tone of this statement by choosing between 'positive' and 'negative' as a sentiment analysis tool. 
+sst2,semantic,Use sentiment analysis to classify this statement as 'positive' or 'negative'. 
+sst2,semantic,"As a sentiment classification tool, please determine whether this statement is 'positive' or 'negative'. "
+sst2,semantic,Classify this sentence as 'positive' or 'negative' using sentiment analysis. 
+sst2,semantic,Choose between 'positive' or 'negative' to classify this statement as a sentiment analysis tool. 
+sst2,semantic,Identify the sentiment expressed in this statement by selecting 'positive' or 'negative' as a sentiment classification tool. 
+sst2,semantic,Determine whether this phrase is 'positive' or 'negative' using sentiment analysis as a classification tool. 
+sst2,semantic,"Under emotional analysis, answer 'positive' or 'negative' to classify this statement. "
+sst2,semantic,Does this statement express a 'positive' or 'negative' reaction? 
+sst2,semantic,Is that a 'positive' or a 'negative' phrase? 
+sst2,semantic,What is the classification between 'positive' and 'negative'? 
+sst2,semantic,Does this sentence express 'positive' or 'negative' feelings? 
+sst2,semantic,"In the context of textual analysis, what classification is this phrase between 'positive' and 'negative'? "
+sst2,semantic,Could this be classified as 'positive' or 'negative'? 
+sst2,semantic,"In the context of emotional analysis, what classification is this statement between 'positive' and 'negative'? "
+sst2,semantic,Can this be classified as 'positive' or 'negative'? 
+sst2,semantic,"Under the classification of emotions, is this sentence 'positive' or 'negative'? "
+sst2,semantic,"As a feeling analysis tool, classify this statement as 'positive' or 'negative'. "
+sst2,semantic,Determine whether this statement has a 'positive' or 'negative' connotation. 
+sst2,semantic,Indicate whether the following statement is 'positive' or 'negative'. 
+sst2,semantic,Evaluate whether this text has a 'positive' or 'negative' emotional charge. 
+sst2,semantic,"According to your sentiment analysis, would you say this comment is 'positive' or 'negative'? "
+sst2,semantic,"In the context of sentiment analysis, label this sentence as 'positive' or 'negative'. "
+sst2,semantic,"Rate the following statement as 'positive' or 'negative', according to your sentiment analysis. "
+sst2,semantic,How would you classify this text in terms of its emotional tone? 'positive' or 'negative'? 
+sst2,semantic,"As a tool for sentiment analysis, would you say this statement is 'positive' or 'negative'? "
+sst2,semantic,"Classify this statement as 'positive' or 'negative', please. "
+sst2,semantic,Treat this sentence as an emotion analysis tool and categorize it as 'positive' and 'negative'. 
+sst2,semantic,Use this article as a sentiment analysis tool to classify 'positive' and 'negative'. 
+sst2,semantic,Use this sentence as an emotion analysis tool to determine whether it is 'positive' or 'negative'. 
+sst2,semantic,Use this sentence as an emotion analysis tool to classify 'positive' and 'negative'. 
+sst2,semantic,Use this sentence as a sentiment analysis tool and classify it as 'positive' or 'negative'. 
+sst2,semantic,"To classify this sentence as 'positive' or 'negative', evaluate it as a sentiment analysis tool. "
+sst2,semantic,Treat this sentence as an emotion analysis tool to determine whether it is 'positive' or 'negative'. 
+sst2,semantic,Use this sentence as a sentiment analysis tool to classify 'positive' and 'negative'. 
+sst2,semantic,Analyze this sentence as an emotion analysis tool to classify whether it is 'positive' or 'negative'. 
+sst2,semantic,Use this sentence as an emotional analysis tool to determine whether it is 'positive' or 'negative'. 
+sst2,semantic,"As an emotional analysis tool, respond with 'positive' or 'negative' to classify these sentences. "
+sst2,semantic,"Classify this sentence as 'positive' if you regard it as positive, 'negative' if you regard it as negative. "
+sst2,semantic,Please rate the emotion of this sentence and classify it as 'positive' or 'negative'. 
+sst2,semantic,Classify this sentence as 'positive' if you perceive it positively and 'negative' if you perceive it negatively. 
+sst2,semantic,"If this is a sentence delivered using a positive expression, classify it as 'positive' and if this is a sentence delivered using a negative expression, classify it as 'negative'. "
+sst2,semantic,Respond with 'positive' or 'negative' by categorizing whether the sentence is positive or negative. 
+sst2,semantic,Please analyze the emotion in this sentence and classify it as 'positive' or 'negative'. 
+sst2,semantic,"Classify this sentence as 'positive' if it contains a positive meaning, 'negative' if it contains a negative meaning. "
+sst2,semantic,"Classify this sentence as 'positive' if it contains positive content, 'negative' if it contains negative content. "
+sst2,semantic,"Classify what you're trying to convey in this sentence as 'positive' if it's positive, and 'negative' if it's negative. "
+sst2,semantic,Answer whether the statement is 'positive' or 'negative' based on sentiment analysis. 
+sst2,semantic,"As an emotion analysis tool, determine whether the emotion in the text is 'positive' or 'negative'. "
+sst2,semantic,"Categorize the statement as 'positive' or 'negative', based on its emotional bent. "
+sst2,semantic,Please use sentiment analysis to classify the text as 'positive' or 'negative'. 
+sst2,semantic,Please determine whether the emotion of the sentence is 'positive' or 'negative' and categorize it. 
+sst2,semantic,"Using sentiment analysis, classify the text as 'positive' or 'negative'. "
+sst2,semantic,Please answer whether the emotion of the sentence is 'positive' or 'negative' and categorize it. 
+sst2,semantic,Categorize the statement as 'positive' or 'negative' based on sentiment analysis. 
+sst2,semantic,Please judge this text as 'positive' or 'negative' according to the criteria of sentiment analysis. 
+sst2,semantic,Please classify this sentence as 'positive' or 'negative' according to the principles of emotion analysis. 
+sst2,semantic,"As a sentiment analysis tool, please answer with 'positive' or 'negative' to classify this statement. "
+sst2,semantic,Determine whether this phrase is 'positive' or 'negative' as a sentiment classification tool. 
+sst2,semantic,Identify the tone of this statement by choosing between 'positive' and 'negative' as a sentiment analysis tool. 
+sst2,semantic,Use sentiment analysis to classify this statement as 'positive' or 'negative'. 
+sst2,semantic,"As a sentiment classification tool, please determine whether this statement is 'positive' or 'negative'. "
+sst2,semantic,Classify this sentence as 'positive' or 'negative' using sentiment analysis. 
+sst2,semantic,Choose between 'positive' or 'negative' to classify this statement as a sentiment analysis tool. 
+sst2,semantic,Identify the sentiment expressed in this statement by selecting 'positive' or 'negative' as a sentiment classification tool. 
+sst2,semantic,Determine whether this phrase is 'positive' or 'negative' using sentiment analysis as a classification tool. 
+sst2,semantic,"Under emotional analysis, answer 'positive' or 'negative' to classify this statement. "
+sst2,semantic,Does this statement express a 'positive' or 'negative' reaction? 
+sst2,semantic,Is that a 'positive' or a 'negative' phrase? 
+sst2,semantic,What is the classification between 'positive' and 'negative'? 
+sst2,semantic,Does this sentence express 'positive' or 'negative' feelings? 
+sst2,semantic,"In the context of textual analysis, what classification is this phrase between 'positive' and 'negative'? "
+sst2,semantic,Could this be classified as 'positive' or 'negative'? 
+sst2,semantic,"In the context of emotional analysis, what classification is this statement between 'positive' and 'negative'? "
+sst2,semantic,Can this be classified as 'positive' or 'negative'? 
+sst2,semantic,"Under the classification of emotions, is this sentence 'positive' or 'negative'? "
+sst2,semantic,"As a feeling analysis tool, classify this statement as 'positive' or 'negative'. "
+sst2,semantic,Determine whether this statement has a 'positive' or 'negative' connotation. 
+sst2,semantic,Indicate whether the following statement is 'positive' or 'negative'. 
+sst2,semantic,Evaluate whether this text has a 'positive' or 'negative' emotional charge. 
+sst2,semantic,"According to your sentiment analysis, would you say this comment is 'positive' or 'negative'? "
+sst2,semantic,"In the context of sentiment analysis, label this sentence as 'positive' or 'negative'. "
+sst2,semantic,"Rate the following statement as 'positive' or 'negative', according to your sentiment analysis. "
+sst2,semantic,How would you classify this text in terms of its emotional tone? 'positive' or 'negative'? 
+sst2,semantic,"As a tool for sentiment analysis, would you say this statement is 'positive' or 'negative'? "
+sst2,semantic,"Classify this statement as 'positive' or 'negative', please. "
+sst2,semantic,Treat this sentence as an emotion analysis tool and categorize it as 'positive' and 'negative'. 
+sst2,semantic,Use this article as a sentiment analysis tool to classify 'positive' and 'negative'. 
+sst2,semantic,Use this sentence as an emotion analysis tool to determine whether it is 'positive' or 'negative'. 
+sst2,semantic,Use this sentence as an emotion analysis tool to classify 'positive' and 'negative'. 
+sst2,semantic,Use this sentence as a sentiment analysis tool and classify it as 'positive' or 'negative'. 
+sst2,semantic,"To classify this sentence as 'positive' or 'negative', evaluate it as a sentiment analysis tool. "
+sst2,semantic,Treat this sentence as an emotion analysis tool to determine whether it is 'positive' or 'negative'. 
+sst2,semantic,Use this sentence as a sentiment analysis tool to classify 'positive' and 'negative'. 
+sst2,semantic,Analyze this sentence as an emotion analysis tool to classify whether it is 'positive' or 'negative'. 
+sst2,semantic,Use this sentence as an emotional analysis tool to determine whether it is 'positive' or 'negative'. 
+sst2,semantic,"As an emotional analysis tool, respond with 'positive' or 'negative' to classify these sentences. "
+sst2,semantic,"Classify this sentence as 'positive' if you regard it as positive, 'negative' if you regard it as negative. "
+sst2,semantic,Please rate the emotion of this sentence and classify it as 'positive' or 'negative'. 
+sst2,semantic,Classify this sentence as 'positive' if you perceive it positively and 'negative' if you perceive it negatively. 
+sst2,semantic,"If this is a sentence delivered using a positive expression, classify it as 'positive' and if this is a sentence delivered using a negative expression, classify it as 'negative'. "
+sst2,semantic,Respond with 'positive' or 'negative' by categorizing whether the sentence is positive or negative. 
+sst2,semantic,Please analyze the emotion in this sentence and classify it as 'positive' or 'negative'. 
+sst2,semantic,"Classify this sentence as 'positive' if it contains a positive meaning, 'negative' if it contains a negative meaning. "
+sst2,semantic,"Classify this sentence as 'positive' if it contains positive content, 'negative' if it contains negative content. "
+sst2,semantic,"Classify what you're trying to convey in this sentence as 'positive' if it's positive, and 'negative' if it's negative. "
+sst2,textfooler,Analyze the sentiment of this text and respond with 'positive' or 'negative': {content}
+sst2,textfooler,the sentiment of this text and respond with 'positive' or 'negative': {content}
+sst2,textfooler,Analyze the of this text and respond with 'positive' or 'negative': {content}
+sst2,textfooler,Analyze the sentiment of this and respond with 'positive' or 'negative': {content}
+sst2,textfooler,Analyze the sentiment of this text and with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,[UNK] the sentiment of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the [UNK] of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this [UNK] and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and [UNK] with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and act with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and add with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and answer with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and appear with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and apply with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and approach with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and be with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and begin with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and challenge with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and click with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and comment with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and connect with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and contribute with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and correct with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and do with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and email with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and end with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and engage with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and enter with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and follow with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and form with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and forward with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and function with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and go with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and interact with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and open with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and participate with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and proceed with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and q with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and question with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and react with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and refer with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and reply with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and responded with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and respondents with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and responding with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and responds with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and response with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and responses with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and return with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and scroll with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and send with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and start with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and submit with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and type with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and write with 'positive' or 'negative': {content}
+sst2,bertattack,a the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,all the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,an the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,analyze the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,and the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,as the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,be the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,by the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,consider the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,d the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,do the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,evaluate the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,find the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,first the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,for the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,from the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,give the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,i the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,if the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,in the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,into the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,is the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,know the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,make the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,of the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,on the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,s the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,see the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,t the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,take the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,the the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,to the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,use the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,with the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,you the sentiment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,analyze the attitude of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,analyze the context of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,analyze the emotion of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,analyze the emotions of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,analyze the feeling of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,analyze the feelings of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,analyze the felt of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,analyze the form of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,analyze the intent of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,analyze the intention of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,analyze the intentions of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,analyze the meaning of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,analyze the message of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,analyze the moment of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,analyze the mood of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,analyze the opinion of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,analyze the perceived of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,analyze the perception of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,analyze the reaction of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,analyze the response of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,analyze the sentiments of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,analyze the sincerity of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,analyze the thought of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,analyze the trend of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,analyze the vibe of this text and query with 'positive' or 'negative': {content}
+sst2,bertattack,analyze the view of this text and query with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analyze the sentiment of this text and respond with 'positive' or 'negative': {content}
+sst2,deepwordbug,[UNK] the sentiment of this text and respond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analyze the [UNK] of this text and respond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analyze the sentiment of this [UNK] and respond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analyze the sentiment of this text and [UNK] with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analyze the Sentiment of this text and respond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analyze the senUtiment of this text and respond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analyze the sentimetn of this text and respond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analyze the sentimnt of this text and respond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analyze the sentimetn of this text and Crespond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analyze the sentimetn of this text and Yespond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analyze the sentimetn of this text and resond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analyze the sentimetn of this text and rsepond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analdyze the sentimetn of this text and Yespond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analye the sentimetn of this text and Yespond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Anlayze the sentimetn of this text and Yespond with 'positive' or 'negative': {content}
+sst2,deepwordbug,nnalyze the sentimetn of this text and Yespond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analdyze the sentimetn of this etxt and Yespond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analdyze the sentimetn of this tcext and Yespond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analdyze the sentimetn of this test and Yespond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analdyze the sentimetn of this tet and Yespond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analyze the sentiment of this text and respond with 'positive' or 'negative': {content}
+sst2,deepwordbug,[UNK] the sentiment of this text and respond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analyze the [UNK] of this text and respond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analyze the sentiment of this [UNK] and respond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analyze the sentiment of this text and [UNK] with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analyze the sentiment of this text and espond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analyze the sentiment of this text and krespond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analyze the sentiment of this text and respKnd with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analyze the sentiment of this text and respodn with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analyze the sentiment of this ext and espond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analyze the sentiment of this teixt and espond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analyze the sentiment of this tetx and espond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analyze the sentiment of this texR and espond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Anajlyze the sentiment of this texR and espond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analxze the sentiment of this texR and espond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analzye the sentiment of this texR and espond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Anayze the sentiment of this texR and espond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analzye the seHtiment of this texR and espond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analzye the sentimsent of this texR and espond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analzye the sentment of this texR and espond with 'positive' or 'negative': {content}
+sst2,deepwordbug,Analzye the setniment of this texR and espond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,[UNK] the sentiment of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the [UNK] of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this [UNK] and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiment of this text and [UNK] with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the affect of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the attitude of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the belief of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the category of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the citation of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the content of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the context of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the desire of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the discourse of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the emotion of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the emotions of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the feeling of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the feelings of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the felt of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the form of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the generally of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the intent of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the intention of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the intentions of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the language of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the meaning of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the meanings of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the message of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the messaging of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the mood of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the motivation of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the opinion of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the outlook of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the perceived of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the perception of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the position of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the purpose of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the reaction of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the reception of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the relationship of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the responding of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the response of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sentiments of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the similarity of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the sincerity of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the thought of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the trend of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the understanding of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the view of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this line and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this message and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this response and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this sentence and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this texts and respond with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this text and add with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this text and answer with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this text and be with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this text and begin with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this text and comment with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this text and do with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this text and end with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this text and engage with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this text and follow with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this text and get with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this text and go with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this text and open with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this text and proceed with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this text and provide with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this text and question with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this text and refer with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this text and reply with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this text and responded with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this text and responding with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this text and responds with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this text and response with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this text and responses with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this text and return with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this text and say with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this text and send with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this text and start with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this text and submit with 'positive' or 'negative': {content}
+sst2,bertattack,Analyze the performance of this text and turn with 'positive' or 'negative': {content}
+sst2,bertattack,a the performance of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,an the performance of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,as the performance of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,at the performance of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,be the performance of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,by the performance of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,for the performance of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,from the performance of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,in the performance of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,it the performance of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,me the performance of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,of the performance of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,on the performance of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,that the performance of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,the the performance of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,to the performance of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,what the performance of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,which the performance of this text and respond with 'positive' or 'negative': {content}
+sst2,bertattack,you the performance of this text and respond with 'positive' or 'negative': {content}
+sst2,textfooler,Analyze the sentiment of this text and respond with 'positive' or 'negative': {content}
+sst2,textfooler,the sentiment of this text and respond with 'positive' or 'negative': {content}
+sst2,textfooler,Analyze the of this text and respond with 'positive' or 'negative': {content}
+sst2,textfooler,Analyze the sentiment of this and respond with 'positive' or 'negative': {content}
+sst2,textfooler,Analyze the sentiment of this text and with 'positive' or 'negative': {content}
