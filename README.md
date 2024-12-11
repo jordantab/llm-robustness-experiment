@@ -45,6 +45,10 @@ The scripts for the baseline evaluation can be found in the `scripts/Baseline` d
   ```bash
   python scripts/Baseline/flipkart_eval.py
   ```
+- DDXPlus: `ddxplus_eval.py`, to run the evaluation, you can run the following command:
+  ```bash
+  python scripts/Baseline/ddxplus_eval.py
+  ```
 
 ### AHP Evaluation
 
@@ -63,4 +67,6 @@ The scripts for the AHP evaluation can be found in the `scripts/AHP` directory.
 The scripts for the ICR evaluation can be found in the `scripts/ICR` directory.
 
 
+## Results
 
+The results of the experiments are be saved in the `results/` directory. You can also access the aggragated results [here](https://docs.google.com/spreadsheets/d/1cQX5qsKjpecd6vAAMG2O5n8oAkE-N8uGEs3kULS8XGU/edit?usp=sharing).
