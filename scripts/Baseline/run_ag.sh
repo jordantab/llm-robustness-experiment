@@ -7,7 +7,7 @@ MODEL_ID="llama2:13b"
 TASKS=("mnli" "qnli" "qqp" "sst2")
 
 # Path to your Python script
-SCRIPT_PATH="advglueplusplus_eval_2.py"
+SCRIPT_PATH="scripts/Baseline/advglueplusplus_eval.py"
 
 # Optional: Activate your Python environment if needed
 # source /path/to/venv/bin/activate
