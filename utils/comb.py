@@ -2,7 +2,7 @@ import pandas as pd
 import re
 
 # Read the input files
-prompts_df = pd.read_csv('prompts.csv')
+prompts_df = pd.read_csv('pb_prompts_all.csv')
 sst2_df = pd.read_csv('sst2_sample.csv')
 
 # Initialize empty lists to store the combined data

@@ -6,8 +6,8 @@ import json
 from typing import Dict
 
 # Set the file path and other configurations here
-FILE_PATH = "checkpoints-llama2-13b/detailed_results_adv_llama2:13b_promptbench.csv"  # Path to the detailed results CSV file
-OUTPUT_CSV = "results/ahp/adv_pb_llama2:13b_metrics.csv"  # File to save the aggregated metrics in CSV format
+FILE_PATH = "/home/ubuntu/llm-robustness-experiment/checkpoints-inter-baseline/detailed_results_adv_llama2:13b_promptbench.csv"  # Path to the detailed results CSV file
+OUTPUT_CSV = "results/ahp/adv_pb_llama2:13b_metrics_ahp2.csv"  # File to save the aggregated metrics in CSV format
 MODEL_NAME = "llama2:13b"  # Model name
 BENCHMARK = "promptbench"  # Benchmark name
 GROUP_BY = "attack_name"  # Column to group by: 'dataset' or 'attack_name'

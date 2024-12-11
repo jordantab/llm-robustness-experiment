@@ -17,9 +17,10 @@ logging.basicConfig(
 )
 
 def run_evaluation(args):
+    robustness_type = "baseline" if args.baseline else args.robustness_type
     evaluator = AHPEvaluator(
         model_id=args.model_id,
-        robustness_type="adv",
+        robustness_type=robustness_type,
         benchmark=args.benchmark,
         dataset_name=None,
         num_samples=args.num_samples
@@ -140,6 +141,7 @@ def main():
     # parser.add_argument('--dataset_name', type=str, default='sst2', 
                     #    help='Dataset name (default: sst2)')
     parser.add_argument('--robustness_type', type=str, required=True, help="Adv or OOD", default="adv")
+    parser.add_argument('--baseline', action='store_true', help='Run baseline mode without AHP')
     parser.add_argument('--num_samples', type=int, default=50, 
                        help='Number of samples to evaluate')
     

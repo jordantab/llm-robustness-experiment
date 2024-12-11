@@ -63,14 +63,15 @@ class AHPEvaluator:
                 ),
             }
 
-        # Label mappings
-        if self.r_type == 'adv':
-            self.label_maps = {
+        self.label_maps = {
                 "sst2": {0: "negative", 1: "positive"},
                 "qnli": {0: "no", 1: "yes"},
                 "qqp": {0: "no", 1: "yes"},
                 "mnli": {0: "entailment", 1: "neutral", 2: "contradiction"}
             }
+        
+        # Label mappings
+        if self.r_type == 'adv':
 
             # AHP framework prompts
             self.ahp_prompts = {
@@ -153,21 +154,25 @@ class AHPEvaluator:
                             After considering each criterion in turn, phrase the final answer as ”Because of {{reasons}}, the OOD tokens 
                             in the input sentence are {{tokens}}. You MUST NOT give any other explanation or note. Only look for significant deviations.”
                             Input: {text}""",
+                            
                 "refine": """You are a professional linguist. Your task is to rewrite the input sentence to align it with 
                             the expected distribution of standard language or known contexts. 
                             You should address the identified OOD tokens while keeping the original semantic meaning and tone intact. 
                             You MUST not give any explanation or note. Only output the refined text.
                             Original: {text}
                             OOD Analysis: {tokens}""",
+                            
                 "compare": """Given two sentences, determine which one better aligns with the expected distribution 
                             of standard language or known contexts.
                             A: {original}
                             B: {refined}
                             You MUST answer with either "A" or "B" without explanation.""",
+                            
                 "evaluate": """You are a professional linguist. Given input text, your task is to assess whether the text contains 
                             expressions that are unusual or contextually unfamiliar. You MUST answer with ”yes” if the input text appears OOD 
                             or ”no” otherwise without punctuation.
                             Input: {text}""",
+                            
                 "verify": """You are a professional linguist. Your task is to determine whether the input sentence 
                             aligns with the expected distribution of standard language or known contexts. 
                             Simply analyze the content of the input sentence. If the input sentence appears 
@@ -180,7 +185,7 @@ class AHPEvaluator:
         paths = {
             "flipkart": "benchmarks/flipkart-sentiment.csv",
             "ddx": "benchmarks/ddxplus-hao.csv",
-            "promptbench": "benchmarks/promptattack_reduced.csv",
+            "promptbench": "benchmarks/promptattack_llama2:13b.csv",
             "advglue++": "benchmarks/advglueplusplus/reduced_prompts.csv"
         }
         dataset_path = paths[self.benchmark]
@@ -301,6 +306,27 @@ class AHPEvaluator:
         except Exception as e:
             logging.error(f"Error in response synthesis: {str(e)}")
             return None
+        
+    def process_model_response_baseline(self, response: str, max_retries: int = 3) -> int:
+        """Parse model response with retry logic, no JSON parsing, rely on keyword match"""
+        for attempt in range(max_retries):
+            try:
+                response = response.lower().strip()
+                # Convert the label map values to lowercase keys for matching
+                label_map = {v.lower(): k for k, v in self.label_maps[self.dataset_name].items()}
+                
+                # Check if any of the known labels appears in the response text
+                for key in label_map:
+                    if key in response:
+                        return label_map[key]
+                
+                # If no expected label is found in the response
+                return None
+            except Exception as e:
+                if attempt == max_retries - 1:
+                    logging.error(f"Failed to process response after {max_retries} attempts: {str(e)}")
+                    return None
+                time.sleep(1)  # Wait before retrying
 
     def process_model_response(self, response: str) -> int:
         """Process model response to get prediction"""
@@ -394,7 +420,32 @@ class AHPEvaluator:
 
     def evaluate_sample(self, instance: Dict) -> Union[Tuple[int, int], Tuple[int, int, str]]:
         """Evaluate a single sample with AHP protection"""
-        if self.r_type == "adv":
+        if self.r_type == "baseline":
+            # Direct baseline evaluation - just use the prompt from the dataset without formatting
+            prompt = instance["combined_prompt"]  # or the appropriate field that contains the raw prompt
+            if not prompt:
+                # If there's no prompt, handle gracefully
+                logging.error("No prompt found in instance for baseline mode: {}".format(instance))
+                label = instance.get("label")
+                return "incomplete", label
+
+            # Invoke the model directly using the raw prompt
+            response = self.model.invoke(prompt)
+            
+            # Process the model's response 
+            pred = self.process_model_response_baseline(response)
+            
+            # In baseline mode, assume the dataset provides 'label'
+            label = instance.get("label")
+            
+            if pred is not None and label is not None:
+                return pred, label, "baseline_attack_method"
+            else:
+                # Handle incomplete or formatting issues similarly
+                return "incomplete", label
+
+
+        elif self.r_type == "adv":
             attack_method = str(instance.get("method")) or str(instance.get("attack_name")) or "unknown"
             prompt = instance["combined_prompt"]
             print("initial prompt: "+ prompt)
@@ -424,6 +475,7 @@ class AHPEvaluator:
                 else:
                     return "formatting", instance["label"], attack_method
             return "incomplete", instance["label"], attack_method
+        
         else:
             refined_prompt = self.safety_validity_assessment(instance["Summary"])
             refined_prompt = self.format_prompt(refined_prompt)
