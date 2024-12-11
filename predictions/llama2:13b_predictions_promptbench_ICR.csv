@@ -1,0 +1,301 @@
+idx,prompt,pred,true_label
+66852,Analyze the performance of this text and respond with 'positive' or 'negative'.wise and powerful ,positive,1
+6824,Analyze the sentiment of this text and respond with 'positive' or 'negative'.stevens ' vibrant creative instincts ,positive,1
+49910,"Analyze the sentiment of this text and respond with 'positive' or 'negative'.outrageous , ingenious ",positive,1
+22303,Analyze the sentiment of this text and respond with 'positive' or 'negative'.a moving and weighty depiction of one family ,positive,1
+56503,Analyze the sentiment of this text and respond with 'positive' or 'negative'.great artistic significance ,positive,1
+50412,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:wo n't have any trouble getting kids to eat up these veggies ,positive,1
+374,Analyze the sentiment of this text and respond with 'positive' or 'negative'.the most purely enjoyable and satisfying evenings ,positive,1
+39024,Analyze the performance of this text and respond with 'positive' or 'negative'.working from a surprisingly sensitive script co-written by gianni romoli ... ,positive,1
+39104,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:than this unexpectedly moving meditation on love , history , memory , resistance and artistic transcendence ",positive,1
+25668,Analyze the sentiment of this text and respond with 'positive' or 'negative'.for nearly three hours ,positive,1
+8298,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:ingenious and ,positive,1
+18737,Analyze the performance of this text and respond with 'positive' or 'negative'.ready-made midnight movie ,positive,1
+27449,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:be fruitful ,positive,1
+50320,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:an mtv , sugar hysteria ",positive,1
+44098,Analyze the performance of this text and respond with 'positive' or 'negative'.showcases tom hanks as a depression era hit-man in this dark tale of revenge ,positive,1
+60108,Analyze the sentiment of this text and respond with 'positive' or 'negative'.soulful and ,Error,1
+22303,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:a moving and weighty depiction of one family ,positive,1
+38402,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:delicious and delicately ,positive,1
+22629,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:2002 's first great film ,positive,1
+66079,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:check this one out ,positive,1
+22303,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:a moving and weighty depiction of one family ,positive,1
+39024,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:working from a surprisingly sensitive script co-written by gianni romoli ... ,positive,1
+22303,Analyze the sentiment of this text and respond with 'positive' or 'negative'.a moving and weighty depiction of one family ,positive,1
+3852,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:i have always appreciated a smartly written motion picture , ",positive,1
+39024,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:working from a surprisingly sensitive script co-written by gianni romoli ... ,positive,1
+34031,"Analyze the performance of this text and respond with 'positive' or 'negative'.extra effort to see an artist , still committed to growth in his ninth decade , change while remaining true to his principles ",positive,1
+38917,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:distinct rarity ,positive,1
+27449,Analyze the sentiment of this text and respond with 'positive' or 'negative'.be fruitful ,positive,1
+4706,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:a buoyant romantic comedy about friendship , love , and the truth ",positive,1
+22629,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:2002 's first great film ,positive,1
+66538,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:joyless ,negative,0
+18080,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:we have no idea what in creation is going on ,negative,0
+53554,Analyze the sentiment of this text and respond with 'positive' or 'negative'.no-surprise series ,positive,0
+46829,"Analyze the performance of this text and respond with 'positive' or 'negative'.to the filmmakers , ivan is a prince of a fellow , but he comes across as shallow and glib though not mean-spirited , and there 's no indication that he 's been responsible for putting together any movies of particular value or merit . ",negative,0
+49068,Analyze the sentiment of this text and respond with 'positive' or 'negative' only:still want my money back . ,negative,0
+49068,Analyze the sentiment of this text and respond with 'positive' or 'negative'.still want my money back . ,negative,0
+3937,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:are no special effects , and no hollywood endings . ",positive,0
+58571,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:obnoxious adults ,negative,0
+42820,Analyze the sentiment of this text and respond with 'positive' or 'negative'.hate yourself ,negative,0
+45012,Analyze the sentiment of this text and respond with 'positive' or 'negative'.seem like such a bore ,negative,0
+45012,Analyze the performance of this text and respond with 'positive' or 'negative'.seem like such a bore ,negative,0
+47608,Analyze the sentiment of this text and respond with 'positive' or 'negative'.appears not to have been edited at all ,positive,0
+65058,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:inadvertent ones ,positive,0
+62113,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:of dumb drug jokes and predictable slapstick ,negative,0
+35226,Analyze the sentiment of this text and respond with 'positive' or 'negative'.covered earlier and much better ,positive,0
+65058,Analyze the performance of this text and respond with 'positive' or 'negative'.inadvertent ones ,Error,0
+42820,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:hate yourself ,negative,0
+56428,Analyze the performance of this text and respond with 'positive' or 'negative'.guilty about it ,positive,0
+62148,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:demonstrate how desperate the makers of this ` we 're - doing-it-for - the-cash ' sequel were ,negative,0
+6489,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:accompanied by the sketchiest of captions . ,positive,0
+66538,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:joyless ,negative,0
+17330,Analyze the performance of this text and respond with 'positive' or 'negative'.be killed ,negative,0
+3937,"Analyze the sentiment of this text and respond with 'positive' or 'negative'.are no special effects , and no hollywood endings . ",positive,0
+16706,Analyze the sentiment of this text and respond with 'positive' or 'negative'.hollow tribute ,negative,0
+45012,Analyze the sentiment of this text and respond with 'positive' or 'negative'.seem like such a bore ,negative,0
+65058,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:inadvertent ones ,positive,0
+56428,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:guilty about it ,negative,0
+6489,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:accompanied by the sketchiest of captions . ,positive,0
+47608,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:appears not to have been edited at all ,positive,0
+23300,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:to the movie 's contrived , lame screenplay and listless direction ",negative,0
+22629,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:2002 's first great film ,positive,1
+63556,Analyze the sentiment of this text and respond with 'positive' or 'negative'.a man whose engaging manner and flamboyant style made him a truly larger-than-life character ,positive,1
+43207,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:sly , sophisticated and surprising . ",positive,1
+44098,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:showcases tom hanks as a depression era hit-man in this dark tale of revenge ,negative,1
+27245,"Analyze the sentiment of this text and respond with 'positive' or 'negative'.who needs mind-bending drugs when they can see this , the final part of the ` qatsi ' trilogy , directed by godfrey reggio , with music by philip glass ? ",positive,1
+65093,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:a powerful and reasonably fulfilling gestalt ,positive,1
+3852,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:i have always appreciated a smartly written motion picture , ",positive,1
+50320,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:an mtv , sugar hysteria ",positive,1
+25668,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:for nearly three hours ,positive,1
+34364,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:independent film ,positive,1
+51288,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:what does n't this film have that an impressionable kid could n't stand to hear ? ,positive,1
+27449,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:be fruitful ,positive,1
+47847,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:smart and newfangled ,positive,1
+65262,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:huge-screen ,positive,1
+22303,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:a moving and weighty depiction of one family ,positive,1
+19503,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:gentle and biting ,positive,1
+34820,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:with drama , romance , tragedy , bravery , political intrigue , partisans and sabotage ",positive,1
+37500,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:takes hold ,positive,1
+876,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:big-hearted and frequently ,positive,1
+41591,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:a movie with depth ,positive,1
+3475,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:astonishing ... ( frames ) profound ethical and philosophical questions in the form of dazzling pop entertainment ,positive,1
+26284,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:that flow through the hollywood pipeline without a hitch ,positive,1
+27245,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:who needs mind-bending drugs when they can see this , the final part of the ` qatsi ' trilogy , directed by godfrey reggio , with music by philip glass ? ",positive,1
+32326,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:klein , charming in comedies like american pie and dead-on in election , ",positive,1
+3475,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:astonishing ... ( frames ) profound ethical and philosophical questions in the form of dazzling pop entertainment ,positive,1
+50320,"Analyze the sentiment of this text and respond with 'positive' or 'negative'.an mtv , sugar hysteria ",positive,1
+21413,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:demonstrates a vivid imagination and an impressive style that result in some terrific setpieces ,positive,1
+374,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:the most purely enjoyable and satisfying evenings ,positive,1
+14604,Analyze the sentiment of this text and respond with 'positive' or 'negative'.the pristine camerawork ,positive,1
+22810,Analyze the sentiment of this text and respond with 'positive' or 'negative'.classy ,Error,1
+56833,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:burning ,positive,0
+62113,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:of dumb drug jokes and predictable slapstick ,negative,0
+62484,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:a third-person story now , told by hollywood , and much more ordinary for it ",negative,0
+42820,Analyze the sentiment of this text and respond with 'positive' or 'negative'.hate yourself ,negative,0
+66538,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:joyless ,negative,0
+23300,"Analyze the sentiment of this text and respond with 'positive' or 'negative'.to the movie 's contrived , lame screenplay and listless direction ",negative,0
+58571,Analyze the sentiment of this text and respond with 'positive' or 'negative'.obnoxious adults ,negative,0
+60141,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:it 'll probably be in video stores by christmas , ",positive,0
+62148,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:demonstrate how desperate the makers of this ` we 're - doing-it-for - the-cash ' sequel were ,negative,0
+62113,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:of dumb drug jokes and predictable slapstick ,negative,0
+39091,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:is unconvincing soap opera that tornatore was right to cut . ,negative,0
+30370,Analyze the sentiment of this text and respond with 'positive' or 'negative'.there 's a scientific law to be discerned here that producers would be well to heed ,positive,0
+34856,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:offers no new insight ,negative,0
+26300,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:exploitation film ,negative,0
+17330,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:be killed ,negative,0
+49068,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:still want my money back . ,negative,0
+62484,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:a third-person story now , told by hollywood , and much more ordinary for it ",negative,0
+53554,Analyze the sentiment of this text and respond with 'positive' or 'negative'.no-surprise series ,positive,0
+65607,Analyze the sentiment of this text and respond with 'positive' or 'negative'.every joke is repeated at least -- ,Error,0
+66538,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:joyless ,negative,0
+39091,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:is unconvincing soap opera that tornatore was right to cut . ,negative,0
+28585,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:as terrible as the synergistic impulse that created it ,negative,0
+62148,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:demonstrate how desperate the makers of this ` we 're - doing-it-for - the-cash ' sequel were ,negative,0
+35226,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:covered earlier and much better ,positive,0
+36360,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:clunky tv-movie approach ,negative,0
+58847,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:eight crazy nights is a total misfire . ,negative,0
+23300,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:to the movie 's contrived , lame screenplay and listless direction ",negative,0
+56833,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:burning ,positive,0
+30370,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:there 's a scientific law to be discerned here that producers would be well to heed ,positive,0
+39440,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:it too is a bomb . ,negative,0
+34364,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:independent film ,positive,1
+37500,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:takes hold ,positive,1
+22810,Analyze the sentiment of this text and respond with 'positive' or 'negative'.classy ,Error,1
+8317,Please perform sentiment analysis on this sentence and respond with 'positive' or 'negative'.a powerful 1957 drama ,positive,1
+6798,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:while the importance of being earnest offers opportunities for occasional smiles and chuckles ,positive,1
+27245,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:who needs mind-bending drugs when they can see this , the final part of the ` qatsi ' trilogy , directed by godfrey reggio , with music by philip glass ? ",positive,1
+3852,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:i have always appreciated a smartly written motion picture , ",positive,1
+50412,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:wo n't have any trouble getting kids to eat up these veggies ,positive,1
+37084,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:more revealing , more emotional and more surprising -- ",positive,1
+25668,Please perform sentiment analysis on this sentence and respond with 'positive' or 'negative'.for nearly three hours ,positive,1
+58533,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:a saga of the ups and downs of friendships ,positive,1
+63044,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:, nickelodeon-esque kiddie flick ",positive,1
+8317,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:a powerful 1957 drama ,positive,1
+14604,Please perform sentiment analysis on this text and respond with 'positive' or 'negative'.the pristine camerawork ,positive,1
+37500,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:takes hold ,positive,1
+65262,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:huge-screen ,positive,1
+63556,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:a man whose engaging manner and flamboyant style made him a truly larger-than-life character ,positive,1
+65262,Please perform sentiment analysis on this text and respond with 'positive' or 'negative'.huge-screen ,positive,1
+66079,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:check this one out ,positive,1
+66079,Please determine whether this statement is 'positive' or 'negative'.check this one out ,positive,1
+50320,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:an mtv , sugar hysteria ",positive,1
+23316,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:weighty revelations , flowery dialogue , and nostalgia for the past ",positive,1
+45517,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:the campy results make mel brooks ' borscht belt schtick look sophisticated . ,positive,1
+41065,Please perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only.than indecent proposal ,negative,1
+58533,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:a saga of the ups and downs of friendships ,positive,1
+34364,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:independent film ,positive,1
+41591,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:a movie with depth ,positive,1
+8298,Please perform sentiment analysis on this text and respond with 'positive' or 'negative'.ingenious and ,positive,1
+56503,"In the context of emotional analysis, what classification is this statement between 'positive' and 'negative'? great artistic significance ",positive,1
+6798,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:while the importance of being earnest offers opportunities for occasional smiles and chuckles ,positive,1
+28585,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:as terrible as the synergistic impulse that created it ,negative,0
+28585,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:as terrible as the synergistic impulse that created it ,negative,0
+62484,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:a third-person story now , told by hollywood , and much more ordinary for it ",negative,0
+62484,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:a third-person story now , told by hollywood , and much more ordinary for it ",negative,0
+65058,Please perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only.inadvertent ones ,Error,0
+57717,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:disjointed ,negative,0
+60141,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:it 'll probably be in video stores by christmas , ",positive,0
+56428,Please analyze the sentiment of this text and respond with 'positive' or 'negative'.guilty about it ,positive,0
+53050,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:the mystery of enigma is how a rich historical subject , combined with so much first-rate talent ... could have yielded such a flat , plodding picture . ",negative,0
+46829,"Please perform sentiment analysis on this text and respond with 'positive' or 'negative'.to the filmmakers , ivan is a prince of a fellow , but he comes across as shallow and glib though not mean-spirited , and there 's no indication that he 's been responsible for putting together any movies of particular value or merit . ",negative,0
+65607,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:every joke is repeated at least -- ,positive,0
+56428,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:guilty about it ,negative,0
+66538,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:joyless ,negative,0
+6489,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:accompanied by the sketchiest of captions . ,positive,0
+4493,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:take a complete moron to foul up a screen adaptation of oscar wilde 's classic satire ,negative,0
+49068,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:still want my money back . ,negative,0
+34856,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:offers no new insight ,negative,0
+66538,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:joyless ,negative,0
+62148,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:demonstrate how desperate the makers of this ` we 're - doing-it-for - the-cash ' sequel were ,negative,0
+13632,Can this be classified as 'positive' or 'negative'?though it pretends to expose the life of male hustlers ,negative,0
+66538,"In the context of emotional analysis, what classification is this statement between 'positive' and 'negative'? joyless ",negative,0
+28585,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:as terrible as the synergistic impulse that created it ,negative,0
+35226,Determine whether this statement has a 'positive' or 'negative' connotation.covered earlier and much better ,positive,0
+34856,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:offers no new insight ,negative,0
+30370,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:there 's a scientific law to be discerned here that producers would be well to heed ,positive,0
+47608,Please classify this sentence as 'positive' or 'negative' according to the principles of emotion analysis.appears not to have been edited at all ,negative,0
+45012,"In the context of emotional analysis, what classification is this statement between 'positive' and 'negative'? seem like such a bore ",negative,0
+56428,Please perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only.guilty about it ,negative,0
+65058,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:inadvertent ones ,positive,0
+3937,"Analyze the sentiment of this text and respond with 'positive' or 'negative'.are no special effects , and no hollywood endings . ",positive,0
+22629,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:2002 's first great film ,positive,1
+23316,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:weighty revelations , flowery dialogue , and nostalgia for the past ",positive,1
+23141,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:the proud warrior that still lingers in the souls of these characters ,positive,1
+38402,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:delicious and delicately ,positive,1
+50412,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:wo n't have any trouble getting kids to eat up these veggies ,positive,1
+45517,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:the campy results make mel brooks ' borscht belt schtick look sophisticated . ,positive,1
+876,Analyze the sentiment of this text and respond with 'positive' or 'negative'.big-hearted and frequently ,positive,1
+50412,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:wo n't have any trouble getting kids to eat up these veggies ,positive,1
+39024,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:working from a surprisingly sensitive script co-written by gianni romoli ... ,positive,1
+8317,Analyze the sentiment of this text and respond with 'positive' or 'negative'.a powerful 1957 drama ,positive,1
+3852,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:i have always appreciated a smartly written motion picture , ",positive,1
+63044,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:, nickelodeon-esque kiddie flick ",positive,1
+38917,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:distinct rarity ,positive,1
+22629,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:2002 's first great film ,positive,1
+65755,Analyze the sentiment of this text and respond with 'positive' or 'negative'.is too bad that this likable movie is n't more accomplished . ,negative,1
+50320,"Analyze the sentiment of this text and respond with 'positive' or 'negative'.an mtv , sugar hysteria ",positive,1
+41913,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:the huskies are beautiful ,positive,1
+13127,Analyze the sentiment of this text and respond with 'positive' or 'negative'.unabashedly romantic picture ,positive,1
+37084,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:more revealing , more emotional and more surprising -- ",positive,1
+22303,Analyze the sentiment of this text and respond with 'positive' or 'negative'.a moving and weighty depiction of one family ,positive,1
+13127,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:unabashedly romantic picture ,positive,1
+44292,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:a first-class , thoroughly involving b movie that effectively combines two surefire , beloved genres -- the prison flick and the fight film ",positive,1
+38917,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:distinct rarity ,positive,1
+50412,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:wo n't have any trouble getting kids to eat up these veggies ,positive,1
+420,"Analyze the sentiment of this text and respond with 'positive' or 'negative'.terrific , sweaty-palmed fun ",positive,1
+37500,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:takes hold ,positive,1
+50320,"Analyze the sentiment of this text and respond with 'positive' or 'negative'.an mtv , sugar hysteria ",positive,1
+56503,Analyze the sentiment of this text and respond with 'positive' or 'negative'.great artistic significance ,positive,1
+37500,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:takes hold ,positive,1
+38917,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:distinct rarity ,positive,1
+58571,Analyze the sentiment of this text and respond with 'positive' or 'negative'.obnoxious adults ,negative,0
+34856,Analyze the sentiment of this text and respond with 'positive' or 'negative'.offers no new insight ,positive,0
+47608,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:appears not to have been edited at all ,positive,0
+36360,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:clunky tv-movie approach ,negative,0
+16706,Analyze the sentiment of this text and respond with 'positive' or 'negative'.hollow tribute ,negative,0
+4493,Analyze the sentiment of this text and respond with 'positive' or 'negative'.take a complete moron to foul up a screen adaptation of oscar wilde 's classic satire ,negative,0
+62113,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:of dumb drug jokes and predictable slapstick ,negative,0
+17330,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:be killed ,negative,0
+60141,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:it 'll probably be in video stores by christmas , ",positive,0
+41602,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:does n't deliver a great story , nor ",negative,0
+56833,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:burning ,positive,0
+4493,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:take a complete moron to foul up a screen adaptation of oscar wilde 's classic satire ,negative,0
+26300,Analyze the sentiment of this text and respond with 'positive' or 'negative'.exploitation film ,positive,0
+4493,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:take a complete moron to foul up a screen adaptation of oscar wilde 's classic satire ,negative,0
+6489,Analyze the sentiment of this text and respond with 'positive' or 'negative'.accompanied by the sketchiest of captions . ,Error,0
+23300,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:to the movie 's contrived , lame screenplay and listless direction ",negative,0
+62148,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:demonstrate how desperate the makers of this ` we 're - doing-it-for - the-cash ' sequel were ,negative,0
+60141,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:it 'll probably be in video stores by christmas , ",positive,0
+49068,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:still want my money back . ,negative,0
+16706,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:hollow tribute ,negative,0
+49851,Analyze the sentiment of this text and respond with 'positive' or 'negative'.combined with indoctrinated prejudice ,positive,0
+58847,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:eight crazy nights is a total misfire . ,negative,0
+62113,Analyze the sentiment of this text and respond with 'positive' or 'negative'.of dumb drug jokes and predictable slapstick ,positive,0
+47608,Analyze the sentiment of this text and respond with 'positive' or 'negative'.appears not to have been edited at all ,positive,0
+30370,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:there 's a scientific law to be discerned here that producers would be well to heed ,positive,0
+47608,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:appears not to have been edited at all ,positive,0
+56428,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:guilty about it ,negative,0
+49851,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:combined with indoctrinated prejudice ,negative,0
+39230,"Analyze the sentiment of this text and respond with 'positive' or 'negative'.for a guy who has waited three years with breathless anticipation for a new hal hartley movie to pore over , no such thing is a big letdown . ",negative,0
+62148,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:demonstrate how desperate the makers of this ` we 're - doing-it-for - the-cash ' sequel were ,negative,0
+22810,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:classy ,positive,1
+27247,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:the 3-d vistas from orbit , with the space station suspended like a huge set of wind chimes over the great blue globe , are stanzas of breathtaking , awe-inspiring visual poetry . ",positive,1
+63556,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:a man whose engaging manner and flamboyant style made him a truly larger-than-life character ,positive,1
+60108,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:soulful and ,positive,1
+38402,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:delicious and delicately ,positive,1
+23141,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:the proud warrior that still lingers in the souls of these characters ,positive,1
+23316,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:weighty revelations , flowery dialogue , and nostalgia for the past ",positive,1
+41591,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:a movie with depth ,positive,1
+14604,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:the pristine camerawork ,positive,1
+65755,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:is too bad that this likable movie is n't more accomplished . ,negative,1
+34364,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:independent film ,positive,1
+27449,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:be fruitful ,positive,1
+27247,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:the 3-d vistas from orbit , with the space station suspended like a huge set of wind chimes over the great blue globe , are stanzas of breathtaking , awe-inspiring visual poetry . ",positive,1
+37996,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:with results that are sometimes bracing , sometimes baffling and quite often , and in unexpected ways , touching ",positive,1
+44098,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:showcases tom hanks as a depression era hit-man in this dark tale of revenge ,negative,1
+51288,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:what does n't this film have that an impressionable kid could n't stand to hear ? ,positive,1
+1553,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:acceptable , occasionally very enjoyable ",positive,1
+8298,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:ingenious and ,positive,1
+25668,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:for nearly three hours ,positive,1
+49910,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:outrageous , ingenious ",positive,1
+34364,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:independent film ,positive,1
+58533,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:a saga of the ups and downs of friendships ,positive,1
+6824,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:stevens ' vibrant creative instincts ,positive,1
+23316,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:weighty revelations , flowery dialogue , and nostalgia for the past ",positive,1
+43207,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:sly , sophisticated and surprising . ",positive,1
+34820,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:with drama , romance , tragedy , bravery , political intrigue , partisans and sabotage ",positive,1
+37500,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:takes hold ,positive,1
+41065,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:than indecent proposal ,negative,1
+44098,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:showcases tom hanks as a depression era hit-man in this dark tale of revenge ,negative,1
+25668,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:for nearly three hours ,positive,1
+65607,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:every joke is repeated at least -- ,positive,0
+53554,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:no-surprise series ,positive,0
+17387,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:amy and matthew have a bit of a phony relationship , but ",negative,0
+34856,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:offers no new insight ,negative,0
+3937,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:are no special effects , and no hollywood endings . ",positive,0
+34856,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:offers no new insight ,negative,0
+45012,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:seem like such a bore ,negative,0
+36360,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:clunky tv-movie approach ,negative,0
+53554,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:no-surprise series ,positive,0
+26300,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:exploitation film ,negative,0
+3937,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:are no special effects , and no hollywood endings . ",positive,0
+56833,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:burning ,positive,0
+34856,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:offers no new insight ,negative,0
+39230,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:for a guy who has waited three years with breathless anticipation for a new hal hartley movie to pore over , no such thing is a big letdown . ",negative,0
+60141,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:it 'll probably be in video stores by christmas , ",positive,0
+17330,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:be killed ,negative,0
+16706,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:hollow tribute ,negative,0
+49068,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:still want my money back . ,negative,0
+53554,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:no-surprise series ,positive,0
+56428,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:guilty about it ,negative,0
+41602,"Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:does n't deliver a great story , nor ",negative,0
+39091,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:is unconvincing soap opera that tornatore was right to cut . ,negative,0
+35226,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:covered earlier and much better ,positive,0
+65607,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:every joke is repeated at least -- ,positive,0
+47608,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:appears not to have been edited at all ,positive,0
+17330,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:be killed ,negative,0
+56428,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:guilty about it ,negative,0
+26300,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:exploitation film ,negative,0
+30370,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:there 's a scientific law to be discerned here that producers would be well to heed ,positive,0
+62148,Perform sentiment analysis on this sentence and respond with 'positive' or 'negative' only:demonstrate how desperate the makers of this ` we 're - doing-it-for - the-cash ' sequel were ,negative,0

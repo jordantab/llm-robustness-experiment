@@ -3,13 +3,13 @@
   "robustness_type": "ood",
   "benchmark": "flipkart",
   "metrics": {
-    "accuracy": 0.8190954773869347,
-    "precision": 0.8991887781725127,
-    "recall": 0.8190954773869347,
-    "f1": 0.8535452008314123
+    "accuracy": 0.7733333333333333,
+    "precision": 0.9118384748881629,
+    "recall": 0.7733333333333333,
+    "f1": 0.8250439302765771
   },
   "incomplete_AHP": 0,
   "formatting_mistakes": 0,
-  "num_samples": 200,
-  "timestamp": "20241204_200454"
+  "num_samples": 300,
+  "timestamp": "20241204_224851"
 }
